@@ -1,0 +1,56 @@
+embed
+<drac2>
+# Baseline Variables
+args = argparse(&ARGS&)
+
+ch = character()
+cc = 'Intoxication'
+effects = [
+'Level 1. -2 to Dexterity checks/saves.',
+'\n\nLevel 2. Disadvantage on Stealth, Persuasion, and Deception checks. Advantage against being frightened. Disadvantage on Attacks.',
+'\n\nLevel 3. Disadvantage on all ability checks. Loss of Advantage against being frightened.',
+'\n\nLevel 4. Disadvantage on saving throws. Cannot move more than 10 feet without changing direction.',
+'\n\nLevel 5. -5 to hit and disadvantage on attack rolls. Roll 1d6 when moving and fall prone on an odd result, 15 foot movement cost to stand.',
+'\n\nLevel 6. Roll on the Drunken Shenanigans Table! For up to 10 minutes you must act out the results. Afterwards fall unconcious for the next 8 hours wherever you end up. When you wake up you will not remember what happened.',
+'\n\nLevel 7. You immediately fall unconcious for the next 12 hours. You drop to 0 hit points, and for the next 24 hours you are poisoned. Somebody must treat you with a DC 13 Medicine check or cure you of poison, or you risk dying.'
+]
+
+# Make the counter if it doesn't exist
+ch.create_cc_nx(cc, 0, 7, 'long', 'bubble', 0, None, cc)
+
+# Logic of the alias
+vowels = ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U')
+drinkName = 'Ale'
+drinkDC = 13
+drinkPrefix = 'a'
+if drinkName.startswith(vowels):
+    drinkPrefix = 'an'
+
+# CON save and lookup
+drinkOut = ''
+
+# Get our roll string and make the roll
+rollString = ch.saves.get('constitution').d20()
+drinkRoll = vroll(rollString)
+
+# Counter goes up on a failure
+success = drinkRoll.total >= drinkDC
+footer = '**Effects**\n'
+if not success:
+    ch.mod_cc(cc, 1)
+
+# Build the footer listing effects for each level of intoxication
+for i in range(ch.get_cc(cc)):
+    footer += effects[i]
+
+F = f"{cc}|{ch.cc_str(cc) if ch.cc_exists(cc) else '*None*'}"
+drinkOut = f"""-title "{name} drinks {drinkPrefix} {drinkName}!"
+-desc "**Meta**\nDC: {drinkDC}\nCON Save\n\n**Save**\n{drinkRoll}; {["Failure!", "Success!"][success]}"
+-f "{F}"
+"""
+
+if ch.get_cc(cc) > 0:
+    drinkOut += f""" -footer "{footer}" """
+
+return drinkOut
+</drac2>
