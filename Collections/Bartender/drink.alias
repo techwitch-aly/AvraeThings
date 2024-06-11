@@ -1,7 +1,7 @@
 embed
 <drac2>
 # Baseline Variables
-passedDrink = &ARGS& or ['no drink']
+argList = &ARGS& or ['no drink']
 
 ch = character()
 cc = 'Intoxication'
@@ -16,8 +16,25 @@ effects = [
 ]
 
 drinkList = {
-    'tea': {'name': 'Tea', 'dc':2}
+    'wine': {'name': 'Wine', 'dc':12},
+	'lager': {'name': 'Lager', 'dc':12},
+	'stout': {'name': 'Stout', 'dc':13},
+	'ale': {'name': 'Ale', 'dc':14},
+	'rum': {'name': 'Rum', 'dc':15},
+	'gin': {'name': 'Gin', 'dc':15},
+	'brandy': {'name': 'Brandy', 'dc':16},
+	'vodka': {'name': 'Vodka', 'dc':16},
+	'whiskey': {'name': 'Whiskey', 'dc':18},
+	'scotch': {'name': 'Scotch', 'dc':18},
+	'moonshine': {'name': 'Moonshine', 'dc':20},
+	'white lightning': {'name': 'White Lightning', 'dc':22}
 }
+
+serverDrinksVar = get_svar('extraDrinks')
+
+if serverDrinksVar:
+    serverDrinks = load_json(serverDrinksVar)
+    drinkList = drinkList | serverDrinks
 
 # Make the counter if it doesn't exist
 ch.create_cc_nx(cc, 0, 7, 'long', 'bubble', 0, None, cc)
@@ -27,7 +44,8 @@ vowels = ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U')
 drinkPrefix = 'a'
 
 # Do the drink lookup
-lookupVal = passedDrink[0].lower()
+passedDrink = ' '.join(argList)
+lookupVal = passedDrink.lower()
 try:
     lookup = drinkList[lookupVal]
     if lookup:
@@ -53,7 +71,8 @@ success = drinkRoll.total >= drinkDC
 footer = ''
 if not success:
     # Nat1 means two levels of intoxication
-    if drinkRoll.result.total == 1:
+	# Avrae defines CritType.FAIL to be 2
+    if drinkRoll.result.crit == 2:
         ch.mod_cc(cc, 2)
     else:
         ch.mod_cc(cc, 1)
