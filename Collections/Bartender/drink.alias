@@ -1,7 +1,7 @@
 embed
 <drac2>
 # Baseline Variables
-args = argparse(&ARGS&)
+passedDrink = &ARGS& or ['no drink']
 
 ch = character()
 cc = 'Intoxication'
@@ -15,14 +15,29 @@ effects = [
 '\n\nLevel 7. You immediately fall unconcious for the next 12 hours. You drop to 0 hit points, and for the next 24 hours you are poisoned. Somebody must treat you with a DC 13 Medicine check or cure you of poison, or you risk dying.'
 ]
 
+drinkList = {
+    'tea': {'name': 'Tea', 'dc':2}
+}
+
 # Make the counter if it doesn't exist
 ch.create_cc_nx(cc, 0, 7, 'long', 'bubble', 0, None, cc)
 
 # Logic of the alias
 vowels = ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U')
-drinkName = 'Ale'
-drinkDC = 13
 drinkPrefix = 'a'
+
+# Do the drink lookup
+lookupVal = passedDrink[0].lower()
+try:
+    lookup = drinkList[lookupVal]
+    if lookup:
+        drinkName = lookup['name']
+        drinkDC = lookup['dc']
+except ('KeyError'):
+    drinkName = 'Alcoholic Beverage'
+    drinkDC = 13
+
+# Some English Grammar stuff
 if drinkName.startswith(vowels):
     drinkPrefix = 'an'
 
@@ -35,22 +50,25 @@ drinkRoll = vroll(rollString)
 
 # Counter goes up on a failure
 success = drinkRoll.total >= drinkDC
-footer = '**Effects**\n'
+footer = ''
 if not success:
-    ch.mod_cc(cc, 1)
+    # Nat1 means two levels of intoxication
+    if drinkRoll.result.total == 1:
+        ch.mod_cc(cc, 2)
+    else:
+        ch.mod_cc(cc, 1)
 
 # Build the footer listing effects for each level of intoxication
-for i in range(ch.get_cc(cc)):
-    footer += effects[i]
+if ch.get_cc(cc) > 0:
+    footer += '\n**Effects**\n'
+    for i in range(ch.get_cc(cc)):
+        footer += effects[i]
 
 F = f"{cc}|{ch.cc_str(cc) if ch.cc_exists(cc) else '*None*'}"
 drinkOut = f"""-title "{name} drinks {drinkPrefix} {drinkName}!"
 -desc "**Meta**\nDC: {drinkDC}\nCON Save\n\n**Save**\n{drinkRoll}; {["Failure!", "Success!"][success]}"
--f "{F}"
+-f "{F}\n{footer}"
 """
-
-if ch.get_cc(cc) > 0:
-    drinkOut += f""" -footer "{footer}" """
 
 return drinkOut
 </drac2>
