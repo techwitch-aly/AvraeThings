@@ -23,5 +23,8 @@ if not args:
 """
 # Otherwise, we can cast and add extra damage
 else:
-    return f"""cast "{spellName}" {' '.join([(f'"{i}"' if ' ' in i else i) for i in args[1:]])} """
+    # Bloodletting Focus (2 + the spell's level
+    bonus = 2 + spellLevel if spellLevel > 0 else 0
+    bonusString = f""" -d {bonus}""" if bonus > 0 else ''
+    return f"""cast "{spellName}" {' '.join([(f'"{i}"' if ' ' in i else i) for i in args[1:]])}""" + f"""{bonusString}"""
 </drac2>
