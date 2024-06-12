@@ -1,0 +1,27 @@
+<drac2>
+ spell_gvar = load_json(get_gvar('5e2c8e11-6ade-4ce2-9ece-562fc9db70c7'))
+ 
+ args = &ARGS&
+ 
+ spellName = args[0] if args else ''
+ spellLevel = argparse(args).last('l', 0, type_=int)
+ 
+ # If not provided, find the spell in the gvar
+ if not spellLevel:
+    for spell in spell_gvar:
+        if spellName.lower() in spell.name.lower():
+            spellName = spell.name
+            spellLevel = spell.level
+            break
+        # If we can't find it, safely error
+        else:
+            return f"""embed -title "Spell not found!" -desc "Sorry, `{spellName}` could not be matched to a level in the database. If this is a valid spell (perhaps homebrew?) you can bypass this by specifying a level with `-l #`" """
+
+# If no arguments, return basic help text
+if not args:
+     return f"""embed -title "For all your Blood Cleric Casting needs!"
+"""
+# Otherwise, we can cast and add extra damage
+else:
+    return f"""cast "{spellName}" {' '.join([(f'"{i}"' if ' ' in i else i) for i in args[1:]])} """
+</drac2>
