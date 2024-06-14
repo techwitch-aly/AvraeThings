@@ -12,5 +12,5 @@ shenanigans = [
 
 choice = shenanigans[roll(f'1d{len(shenanigans)}-1')]
 </drac2>
--title f"{{name}} has rolled for drunken shenanigans!"
--f f"{{choice}}"
+-title "{{name}} has rolled for drunken shenanigans!"
+-f "{{choice}}"
