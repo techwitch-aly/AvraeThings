@@ -1,4 +1,16 @@
 embed
 <drac2>
 # Define the table of shenanigans
+shenanigans = [
+    '1. The Floor is Lava! Your character must not touch the floor!',
+    '2. Your character can only speak in rhymes!',
+    '3. Your character has a sudden aversion to turning right. You must navigate by only turning to the left!',
+    '4. Your character has a sudden fear of the color yellow.',
+    '5. ',
+    '6. ',
+]
+
+choice = shenanigans[roll(f'1d{len(shenanigans)}-1')]
 </drac2>
+-title f"{name} has rolled for drunken shenanigans!"
+-f f"{choice}"
