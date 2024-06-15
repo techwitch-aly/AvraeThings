@@ -1,5 +1,5 @@
 <drac2>
-spell_gvar = load_json(get_gvar('5e2c8e11-6ade-4ce2-9ece-562fc9db70c7'))
+spell_gvar = load_json(get_gvar('96e421db-1cfa-449c-8ddc-5bb0ad44857c'))
 
 args = &ARGS&
 
