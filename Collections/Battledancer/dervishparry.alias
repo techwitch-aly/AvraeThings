@@ -22,4 +22,22 @@ bardicDie = [
 '1d12',
 '1d12'
 ]
+
+# Setup
+args = argparse(&ARGS&)
+cc = 'Bardic Inspiration'
+amt = args.get("amt")
+v = character().cc_exists(cc) and character().get_cc(cc) > 0 or i
+lvl = int(get("BardLevel", 0))
+dexMod = int(get("DexterityMod"))
+
+if BardLevel > 0 and v:
+    # Modify the Counter
+    character().mod_cc(cc, -1)
+
+    # Roll the Bardic Die
+    absorbRoll = vroll('+'.join(bardicDie[lvl-1], dexMod))
 </drac2>
+-title "{{name}} "
+-desc = ""
+-footer "Bard | College of Battledancing"
