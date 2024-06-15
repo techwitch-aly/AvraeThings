@@ -22,6 +22,7 @@ bardicDie = [
 '1d12',
 '1d12'
 ]
+
 args = argparse(&ARGS&)
 c = combat()
 cc = 'Bardic Inspiration'
@@ -35,7 +36,7 @@ character().mod_cc(cc, -1)
 
 # Roll the Bardic Die
 roundsRoll = vroll(bardicDie[lvl-1])
-rounds = roundsRoll.total
+rounds = roundsRoll.total + 1
 
 # Update the output to go on the embed card with the Bardic roll and counter info
 
