@@ -1,13 +1,13 @@
 <drac2>
- spell_gvar = load_json(get_gvar('5e2c8e11-6ade-4ce2-9ece-562fc9db70c7'))
- 
- args = &ARGS&
- 
- spellName = args[0] if args else ''
- spellLevel = argparse(args).last('l', 0, type_=int)
- 
- # If not provided, find the spell in the gvar
- if not spellLevel:
+spell_gvar = load_json(get_gvar('5e2c8e11-6ade-4ce2-9ece-562fc9db70c7'))
+
+args = &ARGS&
+
+spellName = args[0] if args else ''
+spellLevel = argparse(args).last('l', 0, type_=int)
+
+# If not provided, find the spell in the gvar
+if not spellLevel:
     for spell in spell_gvar:
         if spellName.lower() in spell.name.lower():
             spellName = spell.name
