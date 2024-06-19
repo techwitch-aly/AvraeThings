@@ -1,0 +1,59 @@
+embed
+<drac2>
+
+# Setup variables and args
+args = &ARGS&
+attackArg = args[0] if args else ''
+argsList = argparse(&ARGS&)
+t = argsList.last('t')
+
+c = combat()
+
+combatant = c.get_combatant(name)
+target = c.get_combatant(t)
+
+# We need a valid combatant as the target to continue
+if not target:
+    return f"""embed -title "Could not find target {target} in the current combat." """
+
+# Save this off for reference
+ac = target.ac
+
+# Find the attack the user wants
+for attack in combatant.attacks:
+    if attackArg.lower() in attack.name.lower():
+        attackForUse = attack.raw
+        break
+
+if not attackForUse:
+    return f"""embed -title "Cound not find attack {attackArg} on your character." """"
+
+# Shortcuts
+# TODO - This seems very horrible. Is there a better way?
+attackBonus = attackForUse.automation[0].effects[0].attackBonus
+damageDice = attackForUse.automation[0].effects[0].hit[0].damage
+
+desc = "**Meta**\n"
+totalDamage = 0
+
+# Maximum of 6 attacks if they call hit
+for r in range(6):
+    # 1d20 + attack Bonus - iteration for penalty
+    # Thousand Cuts: You suffer a -1 penality on your attack each time you successfully hit
+    toHit = vroll('1d20'+attackBonus+'-'+str(r))
+
+    # If we meet or exceed the target AC we hit
+    if toHit.total >= ac:
+        damageRoll = target.damage(damageDice, crit = toHit.result.crit == 1)
+        totalDamage += damageRoll.total
+        desc += toHit.full + ' (Hit!) ' + damageRoll.result + '\n'
+    else:
+        # Stop iterating and attacking on a miss
+        desc += toHit.full + ' (Miss!)'
+        break
+
+desc += f"\n\n Total Damage: {totalDamage}"
+</drac2>
+-title = "{{name}} performs One Thousand Cuts against {{target.name}}!"
+-desc = "{{desc}}"
+-footer = "College of Battledancing (Homebrew)"
