@@ -9,6 +9,9 @@ t = argsList.last('t')
 
 c = combat()
 
+# TODO check for the appropriate bard levels
+# TODO create a counter if necessary
+
 combatant = c.get_combatant(name)
 target = c.get_combatant(t)
 
