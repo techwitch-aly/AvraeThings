@@ -33,7 +33,7 @@ lvl = int(get("BardLevel", 0))
 dexMod = int(get("DexterityMod"))
 
 # Level 6 Bard feature, make sure the user is high enough and has charges of Inspo
-if BardLevel >= 6 and v:
+if BardLevel > 5 and v:
     # Modify the Counter
     character().mod_cc(cc, -1)
 
