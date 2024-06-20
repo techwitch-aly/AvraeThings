@@ -25,19 +25,31 @@ bardicDie = [
 
 # Setup
 args = argparse(&ARGS&)
+i = args.last('i')
 cc = 'Bardic Inspiration'
 amt = args.get("amt")
 v = character().cc_exists(cc) and character().get_cc(cc) > 0 or i
 lvl = int(get("BardLevel", 0))
 dexMod = int(get("DexterityMod"))
 
-if BardLevel > 0 and v:
+# Level 6 Bard feature, make sure the user is high enough and has charges of Inspo
+if BardLevel >= 6 and v:
     # Modify the Counter
     character().mod_cc(cc, -1)
 
     # Roll the Bardic Die
     absorbRoll = vroll('+'.join(bardicDie[lvl-1], dexMod))
+
+    # Can only heal up to the amount of damage taken, no extra healing here
+    reduction = min(absorbRoll.total, amt)
+
+    # Update the HP
+    combatant = c.get_combatant(name)
+    result = combatant.modify_hp(reduction)
+
+    return f"""-title "{name} performs a Battledancer Parry!" -desc "**Meta**:\n{absorbRoll.full}\n\n{character.cc_str(cc)}" -footer "{result}" """
+elif BardLevel < 6:
+    return f"""-title "Battledancer Parry requires 6 levels in Bard to be used!" -desc "Please ensure you're a skilled enough Battledancer to do this!" """
+else:
+    return f"""-title "No Charges of Bardic Inspiration Left!" -desc "{character.cc_str(cc)}" """
 </drac2>
--title "{{name}} "
--desc = ""
--footer "Bard | College of Battledancing"
