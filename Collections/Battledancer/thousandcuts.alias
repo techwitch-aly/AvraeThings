@@ -34,6 +34,8 @@ attackBonus = attackForUse.automation[0].effects[0].attackBonus
 damageDice = attackForUse.automation[0].effects[0].hit[0].damage
 
 desc = "**Meta**\n"
+footerText = ''
+tName = target.name
 totalDamage = 0
 
 # Maximum of 6 attacks if they call hit
@@ -47,6 +49,7 @@ for r in range(6):
         damageRoll = target.damage(damageDice, crit = toHit.result.crit == 1)
         totalDamage += damageRoll.total
         desc += toHit.full + ' (Hit!) ' + damageRoll.result + '\n'
+        footer += tName + ' ' + target.hp_str() + '\n' 
     else:
         # Stop iterating and attacking on a miss
         desc += toHit.full + ' (Miss!)'
@@ -56,4 +59,4 @@ desc += f"\n\n Total Damage: {totalDamage}"
 </drac2>
 -title = "{{name}} performs One Thousand Cuts against {{target.name}}!"
 -desc = "{{desc}}"
--footer = "College of Battledancing (Homebrew)"
+-footer = "{{footerText}}"
