@@ -41,6 +41,8 @@ rounds = roundsRoll.total + 1
 # Update the output to go on the embed card with the Bardic roll and counter info
 
 if combatant and v:
+    # TODO finish the embed return into
+    # TODO add a button to initative to end the dance for when players don't move
     combatant.add_effect("Dervish Dancing", passive_effects={"ac_bonus"=2}, duration=rounds, desc="You enter a dervish dance. Your AC increases by 2 and enemies have disadvantage on opportunity attacks against you. You must move 10 feet on each of your turns or the dance ends. While dancing you may make a melee attack against any number of creatures within 5 feet of you, with a separate attack roll for each target.")
     return f"""-f "" """
 </drac2>
