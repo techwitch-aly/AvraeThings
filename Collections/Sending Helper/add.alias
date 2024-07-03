@@ -1,0 +1,25 @@
+embed
+<drac2>
+args = &ARGS&
+name = ' '.join(args)
+ch = character()
+
+if not args:
+    return f"""-title "Please Provide a Contact Name" -desc "Add characters you know like this: `!sending add Jenetta`" -footer "Sending Stone Helper" -thumb "https://i.imgur.com/tSrQHRF.png" """
+else:
+    rolodex = ch.get_cvar("sending_helper_contacts")
+    if (rolodex):
+        contacts = load_json(rolodex)
+        contacts["contacts"].append(name)
+        rolodex = dump_json(contacts)
+        ch.set_cvar("sending_helper_contacts", rolodex)
+    else:
+        contacts = {"contacts":[name]}
+        rolodex = dump_json(contacts)
+        ch.set_cvar("sending_helper_contacts", rolodex)
+    
+    desc = "**Connections:**\n"
+    desc += "\n".join(contacts["contacts"])
+
+    return f"""-title "Added {name} as a Contact!" -desc "{desc}" -footer "Sending Stone Helper" -thumb "https://i.imgur.com/tSrQHRF.png" """
+</drac2>

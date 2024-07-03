@@ -1,0 +1,15 @@
+embed
+<drac2>
+ch = character()
+rolodex = ch.get_cvar("sending_helper_contacts")
+
+if not rolodex:
+    return f"""-title "{ch.name} has no Sending Stone Connections" -desc "Tap your stone with somebody else or purchase a sending stone if needed!\nAdd connections with: `!sending add`\nExample:`!sending add Jenetta`" -footer "Sending Stone Helper" -thumb "https://i.imgur.com/tSrQHRF.png" """
+else:
+    contacts = load_json(rolodex)
+
+    desc = "**Connections:**\n"
+    desc += "\n".join(contacts["contacts"])
+
+    return f"""-title "{ch.name} has Connected Sending Stones!" -desc "{desc}" -footer "Sending Stone Helper" -thumb "https://i.imgur.com/tSrQHRF.png" """
+</drac2>

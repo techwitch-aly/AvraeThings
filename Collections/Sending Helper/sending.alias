@@ -1,0 +1,5 @@
+embed
+<drac2>
+ch = character()
+return f"""-title "{ch.name} needs help managing their Sending Stone!" -desc "**Sending Stone Helper commands:**\nUse `!sending add <name>` to add names to your contact list.\nUse `!sending list` to view all your saved contacts.\nUse `!sending remove <name>` to remove a name from your list!\n\n**Examples:**\n`!sending add Sariel` or `!sending add Jenetta Rose`\n`!sending list`\n`!sending remove Jenetta Rose`" -footer "Sending Stone Helper" -thumb "https://i.imgur.com/tSrQHRF.png" """
+</drac2>
