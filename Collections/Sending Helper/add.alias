@@ -18,7 +18,7 @@ else:
         rolodex = dump_json(contacts)
         ch.set_cvar("sending_helper_contacts", rolodex)
     
-    desc = "**Connections:**\n"
+    desc = f"**{ch.name}'s Connections:**\n"
     desc += "\n".join(contacts["contacts"])
 
     return f"""-title "Added {name} as a Contact!" -desc "{desc}" -footer "Sending Stone Helper" -thumb "https://i.imgur.com/tSrQHRF.png" """
