@@ -85,7 +85,7 @@ if ch.get_cc(cc) > 0:
 
 F = f"{cc}|{ch.cc_str(cc) if ch.cc_exists(cc) else '*None*'}"
 drinkOut = f"""-title "{name} drinks {drinkPrefix} {drinkName}!"
--desc "**Meta**\nDC: {drinkDC}\nCON Save\n\n**Save**\n{drinkRoll}; {["Failure!", "Success!"][success]}"
+-desc "**Meta**\nDC: {drinkDC}\nCON Save\n\n**Save**\n{drinkRoll}: {["Failure!", "Success!"][success]}"
 -f "{F}\n{footer}"
 """
 
