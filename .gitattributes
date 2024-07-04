@@ -1,3 +1,5 @@
+# Auto detect text files and perform LF normalization
 * text=auto
-*.alias lingquist-language=python
+*.gvar linguist-language=python
+*.alias linguist-language=python
 *.snippet linguist-language=python
