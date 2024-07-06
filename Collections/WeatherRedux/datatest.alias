@@ -1,0 +1,32 @@
+embed
+<drac2>
+a, n = &ARGS&,"\n"
+args = argparse(a)
+x = a[0] if a else "&1&"
+v = x not in "list"
+h = get_gvar("d8b223f9-e8f9-47ec-8d7c-214550a3cf20")
+f = h.lower().find(x.lower()) if x != "&1" + "&" else -1
+f2 = -1 if f < 0 else 0 if f == 0 else f if h[f] == n else 1 + h.rfind(n, 0, f) if f > 0 else -1
+dl = h[f2:-1] if f != -1 else h
+x2=dl.split(n)[0]
+v = f != -1
+p = a[1] if len(a) > 1 and not "-" in a[1] else "&2&"
+s = 1 if p in "spring" else 2 if p in "summer" else 3 if p in "fallautumn" else 0
+var = dl.split(n)[1].split(" ")
+r1 = dl.split(n)[2].split(" ")
+w1 = dl.split(n)[3].split(" ")
+t = dl.split(n)[4].split(" ")
+th = int(args.last("high", roll(str(int(t[s])) + "+" + var[0])))
+tl = int(args.last("low", roll(str(int(t[s])) + "-" + var[0])))
+r = roll("1d20+"+r1[s])
+w = int(args.last("speed", max(0,roll(var[1]+"-"+var[1]+"+"+w1[s]))))
+</drac2>
+-title "Weather Data Sheet Test"
+-desc "{{"Today's Weather: "+x2+", "+("Winter" if s==0 else "Spring" if s==1 else "Summer" if s==2 else "Fall") if v else ""}}"
+-f {{f}}
+-f {{f2}}
+-f "{{x2}}"
+-f "{{var}}"
+-f "{{r1}}"
+-f "{{w1}}"
+-f "{{t}}"
