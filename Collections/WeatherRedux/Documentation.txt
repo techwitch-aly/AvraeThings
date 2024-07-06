@@ -1,3 +1,13 @@
+Settings file definition:
+Line 1: Biome/Region Name - Needs to match input from Discord. E.g. Elysia
+Line 2: Variability dice strings. First is the temperature swing, second is the windspeed swing
+Line 3: Weather seeding - See extended notes below
+Line 4: Windspeed seeding
+Line 5: Temperature set points per season. In order: Winter, Spring, Summer, Fall
+
+
+Weather Patterns Notes:
+
 c[0] if 21<r<27 and tl<33     # Snow
 else c[1] if r>26 and tl<33   # Blizzard
 else c[2] if r<16             # Clear
