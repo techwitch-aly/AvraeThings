@@ -1,0 +1,36 @@
+c[0] if 21<r<27 and tl<33     # Snow
+else c[1] if r>26 and tl<33   # Blizzard
+else c[2] if r<16             # Clear
+else c[3] if r<17             # Mostly Clear
+else c[4] if r<19             # Partly Cloudy
+else c[5] if r<20             # Mostly Cloudy
+else c[6] if r<21             # Overcast
+else c[7] if r<23             # Showers
+else c[8] if r<28             # Downpour
+else c[9]                     # Storm
+
+
+
+#######################################
+
+1d20 + value from settings
+
+Isles
+Winter    7
+Spring    6
+Summer    11
+Fall      6
+
+
+Meseriis
+Winter    5
+Spring    3
+Summer    0
+Fall      2
+
+
+Vrettodell
+Winter    16
+Spring    13
+Summer    10
+Fall      13
