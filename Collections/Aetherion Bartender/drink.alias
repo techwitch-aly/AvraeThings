@@ -1,4 +1,4 @@
-tembed
+embed
 <drac2>
 args = &ARGS&
 n,nn = '\n', '\n\n'
