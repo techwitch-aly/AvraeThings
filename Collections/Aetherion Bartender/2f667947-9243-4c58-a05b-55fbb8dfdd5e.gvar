@@ -1,0 +1,601 @@
+{
+  "drinks": {
+    "water": {
+      "name": "Water",
+      "dc": 1,
+      "effect": "",
+      "bar": "DC 1 (1SP)"
+    },
+    "hot cocoa": {
+      "name": "Hot Cocoa",
+      "dc": 1,
+      "effect": "",
+      "bar": "DC 1 (1SP)"
+    },
+    "tea": {
+      "name": "Tea",
+      "dc": 1,
+      "effect": "",
+      "bar": "DC 1 (1SP)"
+    },
+    "coffee": {
+      "name": "Coffee",
+      "dc": 1,
+      "effect": "",
+      "bar": "DC 1 (1SP)"
+    },
+    "mushroom wine": {
+      "name": "Mushroom Wine",
+      "dc": 12,
+      "effect": "",
+      "bar": "DC 12 (2SP)"
+    },
+    "blue crystal shiraz": {
+      "name": "Blue Crystal Shiraz",
+      "dc": 12,
+      "effect": "",
+      "bar": "DC 12 (2SP)"
+    },
+    "house fruit ale": {
+      "name": "House Fruit Ale",
+      "dc": 13,
+      "effect": "",
+      "bar": "DC 13 (2SP)"
+    },
+    "strawberry ale": {
+      "name": "Strawberry Ale",
+      "dc": 13,
+      "effect": "",
+      "bar": "DC 13 (2SP)"
+    },
+    "blade and ladder ale": {
+      "name": "Blade and Ladder Ale",
+      "dc": 14,
+      "effect": "",
+      "bar": "DC 14 (4SP)"
+    },
+    "dwarven ale": {
+      "name": "Dwarven Ale",
+      "dc": 14,
+      "effect": "",
+      "bar": "DC 14 (4SP)"
+    },
+    "eggnog": {
+      "name": "Eggnog",
+      "dc": 14,
+      "effect": "",
+      "bar": "DC 14 (4SP)"
+    },
+    "meseriis mulled wine": {
+      "name": "Meseriis Mulled Wine",
+      "dc": 14,
+      "effect": "",
+      "bar": "DC 14 (4SP)"
+    },
+    "elysia mulled wine": {
+      "name": "Elysia Mulled Wine",
+      "dc": 14,
+      "effect": "",
+      "bar": "DC 14 (4SP)"
+    },
+    "skalavik mulled wine": {
+      "name": "Skalavik Mulled Wine",
+      "dc": 14,
+      "effect": "",
+      "bar": "DC 14 (4SP)"
+    },
+    "vrettodell mulled wine": {
+      "name": "Vrettodell Mulled Wine",
+      "dc": 14,
+      "effect": "",
+      "bar": "DC 14 (4SP)"
+    },
+    "old fashioned": {
+      "name": "Old Fashioned",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "apple shine": {
+      "name": "Apple Shine",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "house hard cider": {
+      "name": "House Hard Cider",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "house pilsner": {
+      "name": "House Pilsner",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "flirty devil rum": {
+      "name": "Flirty Devil Rum",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "loveless wyrm lager": {
+      "name": "Loveless Wyrm Lager",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "orderly hag gin": {
+      "name": "Orderly Hag Gin",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "rosebane revolt": {
+      "name": "Rosebane Revolt",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "toasted ogre rum": {
+      "name": "Toasted Ogre Rum",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "simple spirit": {
+      "name": "Simple Spirit",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "chaotic chest pilsner": {
+      "name": "Chaotic Chest Pilsner",
+      "dc": 16,
+      "effect": "",
+      "bar": "DC 16 (3GP)"
+    },
+    "house brandy": {
+      "name": "House Brandy",
+      "dc": 16,
+      "effect": "",
+      "bar": "DC 16 (3GP)"
+    },
+    "house gin": {
+      "name": "House Gin",
+      "dc": 16,
+      "effect": "",
+      "bar": "DC 16 (3GP)"
+    },
+    "powerful spirit": {
+      "name": "Powerful Spirit",
+      "dc": 16,
+      "effect": "",
+      "bar": "DC 16 (3GP)"
+    },
+    "sorns remembrance ": {
+      "name": "Sorn's Remembrance",
+      "dc": 16,
+      "effect": "",
+      "bar": "DC 16 (3GP)"
+    },
+    "wolf and crow chardonnay": {
+      "name": "Wolf and Crow Chardonnay",
+      "dc": 16,
+      "effect": "",
+      "bar": "DC 16 (3GP)"
+    },
+    "chaotic couatl vermouth": {
+      "name": "Chaotic Couatl Vermouth",
+      "dc": 17,
+      "effect": "The drinker becomes hyperactive, extra-talkative, jittery, and feels that they have unlimited energy! Until the drinker is sober, they have disadvantage on attack rolls and dexterity based checks, and for each failed save the drinker gains 5ft of movement speed. when sobering up, the drinker must make a hangover save for each failed save against this drink, in addition to any other hangover saves.",
+      "bar": "DC 17 (6GP)"
+    },
+    "nyssas nectar": {
+      "name": "Nyssa's Nectar",
+      "dc": 17,
+      "effect": "Clear with pearl/opalesque swirls and feint random tiny glowing pink lights. A delicious alchemical / alcoholic concoction. Made with Tiefling Fire vodka and a dash of a pixie sugar dust, a teaspoon of honey, and two spells, one of which is Faerie fire. The other spell is not named but its process easily followed even by the most novice spell caster. Its an ancient spell of warlock / fey origin. This drink designed for the patrons in the tavern, usually female, who tire of the endless rude adventuring lot, making advance after rude advance on them. The ladies often buy this drink for the truly offending adventurer and enjoy the effects caused on the unsuspecting offender. This drink tastes amazing. It's almost EXACTLY what the drinker was wishing for. Nice buzz. No hangover. DC 17 CON save to notice effects of the drink, as you enjoy your time in the tavern. Treat as Dazed for the 1st minute. After that minute is over, and your head is not so fuzzy, you enjoy the rest of the night, in the form of the opposite gender. Right down to the clothes your wearing as well. Effects wear off after 6 hours from the last swallow.",
+      "bar": "DC 17 (6GP)"
+    },
+    "jungle stride": {
+      "name": "Jungle Stride",
+      "dc": 17,
+      "effect": "",
+      "bar": "DC 17 (6GP)"
+    },
+    "mossy harpy vodka": {
+      "name": "Mossy Harpy Vodka",
+      "dc": 18,
+      "effect": "",
+      "bar": "DC 18 (8GP)"
+    },
+    "whiskey": {
+      "name": "Whiskey",
+      "dc": 18,
+      "effect": "",
+      "bar": "DC 18 (8GP)"
+    },
+    "blade and maul whiskey": {
+      "name": "Blade and Maul Whiskey",
+      "dc": 20,
+      "effect": "Fail 3 times with this drink go straight to 6 for intoxication",
+      "bar": "DC 20 (10GP)"
+    },
+    "fire giant whiskey": {
+      "name": "Fire Giant Whiskey",
+      "dc": 20,
+      "effect": "Fail 3 times with this drink go straight to 6 for intoxication",
+      "bar": "DC 20 (10GP)"
+    },
+    "moonshine": {
+      "name": "Moonshine",
+      "dc": 20,
+      "effect": "",
+      "bar": "DC 20 (10GP)"
+    },
+    "aged moonshine": {
+      "name": "Aged Moonshine",
+      "dc": 22,
+      "effect": "",
+      "bar": "DC 22 (13GP)"
+    },
+    "silver scimitar porter": {
+      "name": "Silver Scimitar Porter",
+      "dc": 22,
+      "effect": "",
+      "bar": "DC 22 (13GP)"
+    },
+    "butterscotch hot cocoa": {
+      "name": "Butterscotch Hot Cocoa",
+      "dc": 14,
+      "effect": "",
+      "bar": "DC 14 (4SP)"
+    },
+    "ale": {
+      "name": "Ale",
+      "dc": 13,
+      "effect": "",
+      "bar": "DC 13 (2SP)"
+        },
+    "wine": {
+      "name": "Wine",
+      "dc": 14,
+      "effect": "",
+      "bar": "DC 14 (4SP)"
+    },
+    "the firebomb": {
+      "name": "The Firebomb",
+      "dc": 16,
+      "effect": "A spiced shot, lit on fire, and then dropped in a pint of ale. It feels like fire in your mouth but gives you a nice warm sensation afterwards.",
+      "bar": "DC 16 (3GP)"
+    },
+    "the stormbreaker": {
+      "name": "The Stormbreaker",
+      "dc": 15,
+      "effect": "The favorite of the Mixologist's homemade brews. A chilled pint of this drink will be sure to hit the spot after a long day in the lab.",
+      "bar": "DC 15 (5SP)"
+    },
+    "earthen shower": {
+      "name": "Earthen Shower",
+      "dc": 18,
+      "effect": "This Coffee-Vodka cocktail is a sweet, sugary drink served with a topping of whipped cream. The hangover will hit you like a bunch of rocks falling out of the sky in the morning if you drink too many.",
+      "bar": "DC 18 (8GP)"
+    },
+    "butterbrew": {
+      "name": "Butterbrew",
+      "dc": 15,
+      "effect": "One of the Mixologist's homemade brews. It's beer that tastes like butter, it's cheap for a reason, but it'll get the job done.",
+      "bar": "DC 15 (5SP)"
+    },
+    "dragon's breath": {
+      "name": "Dragon's Breath",
+      "dc": 18,
+      "effect": "It's a Flamed Dark Smoke Bourbon with a shot of Dragonblood Wine with sprinkled cinnamon over it and is always served hot. The motto is \\\"What it's like to breathe fire.\\\"",
+      "bar": "DC 18 (8GP)"
+        },
+    "gruul shine": {
+      "name": "Gruul Shine",
+      "dc": 20,
+      "effect": "A brew made by the giants of the waste. Rumor has it, it's just Izzet fuel. Tastes like fuel.",
+      "bar": "DC 20 (10GP)"
+        },
+    "hippie fruits": {
+      "name": "Hippie Fruits",
+      "dc": 15,
+      "effect": "These Berries soaked in Gruul Shine have diluted the alcohol and soaked some of it up. This a Fruit tray with various Fruits and Berres served in a Tankard. You can mash the fruits to drink them or eat the fruit to get a meal and get drunk at the same time.",
+      "bar": "DC 15 (5SP)"
+        },
+    "twisted tea": {
+      "name": "Twisted Tea",
+      "dc": 14,
+      "effect": "Tea Mixed with copious amounts of alcohol.  While it isn't the strongest drink around, it will get you drunk all the same.",
+      "bar": "DC 14 (4SP)"
+        },
+    "lawgivers kiss": {
+      "name": "Lawgiver's Kiss",
+      "dc": 15,
+      "effect": "A sense of ease and peace comes over the drinker for a small amount of time before the world returns to normal, this drink is locked to 3 drinks per week.",
+      "bar": "DC 15 (5SP)"
+        },
+    "ode to the peace giver": {
+      "name": "Ode to the Peace Giver",
+      "dc": 17,
+      "effect": "The drinker feels as if they're being praised for their efforts for once.  The drinker is paralyzed in place for the next 30min reliving the best moments of their lives before being slowly brought back to reality. This drink is locked to 2 drinks per week.",
+      "bar": "DC 17 (6GP)"
+        },
+    "autumn embers": {
+      "name": "Autumn Embers",
+      "dc": 14,
+      "effect": "It has a slice of orange muddled with a splash of simple syrup and thyme in a shaker. Then 2 ozs of bourbon are poured in. It's given a quick stir before being strained into a low ball glass with a large cube of ice. Garnished with a sprig of thyme with one end dipped into a candle's flame. Let it burn slowly for a moment before blowing it out. The spring sits on the rim of the glass with a steady stream of smoke.",
+      "bar": "DC 14 (4SP)"
+    },
+    "thundershot": {
+      "name": "Thundershot",
+      "dc": 15,
+      "effect": "A shot of alcohol that feels like lighting as you drink it. Tasty, hints of ozone, hits like a punch the the gut. Family Recipe.",
+      "bar": "DC 15 (5SP)"
+    },
+    "stained glass": {
+      "name": "Stained Glass",
+      "dc": 17,
+      "effect": "One con save, two effects, Intoxication DC 17, Hallucinogen DC 12. Failed save inflicts the poisoned condition causes automatic failures on Perception checks relying on sight. The room spins and you see colours, this is great! This drink was first brewed with the mushrooms grown from a friendly giant in the sewers when the tavern was still new some 500 years ago. We've diluted this giant-strength down for mortal consumption. It has an earthy taste, once you've handled the burn.",
+      "bar": "DC 17 (6GP)"
+    },
+    "cinnabomb": {
+      "name": "Cinnabomb",
+      "dc": 16,
+      "effect": "This is your basic whiskey, with a kick. It burns all the way down and possibly even on the way out. Made with cinnamon sticks, brown sugar, and red pepper flakes, it's sure to leave an impression.",
+      "bar": "DC 16 (3GP)"
+    },
+    "bloodier mary": {
+      "name": "Bloodier Mary",
+      "dc": 16,
+      "effect": "With Dhampir being a bit more present at night, we came up with the Bloodier Mary. It is very similar to a normal Bloody Mary, except we have willing volunteers eat tomatoes for a week and donate their blood. During nights, these drinks are highly popular and Dhampirs say it still takes like a normal Bloody Mary.",
+      "bar": "DC 16 (3GP)"
+    },
+    "dragon dark brew": {
+      "name": "Dragon Dark Brew",
+      "dc": 15,
+      "effect": "This drink is very simple. A dark brewed beer that is lit on fire before serving. We are not at fault for any burns the buyer acquires.",
+      "bar": "DC 15 (5SP)"
+    },
+    "goblin gargle": {
+      "name": "Goblin Gargle",
+      "dc": 18,
+      "effect": "Issues arise when you sell a wide variety of drinks, what to do with the small drops left? Well we now have a drink that is all alcoholic drinks put together. We cannot promise you'll walk out of here.",
+      "bar": "DC 18 (8GP)"
+    },
+    "sunlight sorrow": {
+      "name": "Sunlight Sorrow",
+      "dc": 17,
+      "effect": "We have had chats with many farmers as they always give good advice for growing our grapes. From them we learned about their sunlight liquid, so we came up with a drink that incorporates it. It comes from the farmers only needing it in very desperate times, then there's others who drink this to feel more energized.",
+      "bar": "DC 17 (6GP)"
+    },
+    "hells up": {
+      "name": "Hell's up",
+      "dc": 20,
+      "effect": "We decided to have folks have a taste of Rix Maadi, so we came up with this nice taste of the opposite of holy. Hell's Up is a hard whiskey that is made by our few fiend brewers, with a nice kick from a powdering of gunpowder. If you drink this, stay away from open flames.",
+      "bar": "DC 20 (10GP)"
+    },
+    "fire and brimstone": {
+      "name": "Fire and Brimstone",
+      "dc": 17,
+      "effect": "Some folks at our establishment asked for something that hurt as much as it could, we debated razor blade booze but decided living patrons pay more. Fire and Brimstone is a Cinnamon Whiskey with 3 shots of Vodka added to it, and for a boost we added a sliced up special pepper given to us from Simic, this pepper is many times hotter than a natural pepper.",
+      "bar": "DC 17 (6GP)"
+    },
+    "devilsight dark brew": {
+      "name": "Devilsight Dark Brew",
+      "dc": 12,
+      "effect": "we know that some people have a sweetooth, and to them we give you this pleasant experience (just alittle mental scarring) this drink tastes slightly of chocolate. In the drink is a candied eye from a devil, if you can handle the thing staring at you then this is the drink to have!",
+      "bar": "DC 12 (2SP)"
+    },
+    "blood orange allure": {
+      "name": "Blood Orange Allure",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "lavender blueberry mojito": {
+      "name": "Lavander Blueberry Mojito",
+      "dc": 14,
+      "effect": "",
+      "bar": "DC 14 (4SP)"
+    },
+    "druidic mandrake wine": {
+      "name": "Druidic Mandrake Wine",
+      "dc": 16,
+      "effect": "The drinker enters a pleasant dreamlike but slightly delirious state until sober. Failing additional saves against this drink causes **{{roll('1d10')}}** poison damage, and the drinker gains the Poisoned condition until they become sober.",
+      "bar": "DC 16 (3GP)"
+    },
+    "tiki twist": {
+      "name": "Tiki Twist",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "karlov reserve": {
+      "name": "Karlov Reserve",
+      "dc": 14,
+      "effect": "A very dry red.",
+      "bar": "DC 14 (4SP)"
+    },
+    "angel dew": {
+      "name": "Angel Dew",
+      "dc": 14,
+      "effect": "A very sweet *rosé*.",
+      "bar": "DC 14 (4SP)"
+    },
+    "cobbled street 84 vintage whiskey": {
+      "name": "Cobbled Street 84 Vintage Whiskey",
+      "dc": 18,
+      "effect": "Strong whiskey spirit.",
+      "bar": "DC 18 (8GP)"
+    },
+    "canard-duckevski": {
+      "name": "Canard-Duckevski",
+      "dc": 16,
+      "effect": "Arcanised Champagne for those sacred occasions.",
+      "bar": "DC 16 (3GP)"
+    },
+    "fungal fruition": {
+      "name": "Fungal Fruition",
+      "dc": 16,
+      "effect": "A fascinating blend of Undercity-grown fungus and fruit from the surface, fermented in the cellar of the Respite for many months, this drink mixes perfectly, the earthy tones of the fungi with the bursting flavor of the fermented fruits to create an enjoyable beverage that would be perfect for both Undercity residents and surface dwellers.",
+      "bar": "DC 16 (3GP)"
+    },
+    "golgari glas":{
+      "name": "Golgari Glas",
+      "dc": 13,
+      "effect": "Brewed with psychedelic mushrooms, Golgari Glas is a whiskey that loosens a persons grip with reality instead of getting them drunk as traditional spirits do. The mix of mushroom, khorasant wheat and yeast accentuate the earthy flavour that combines with the sweetness of the raspberries and inherent smokiness, makes any Golgari think the damp undercity. It can be served with or without ice, and pairs well with ginger ale and citruses. Created by Yrilien Deathroar.",
+      "bar": "DC 13 (2SP)"
+    },
+    "kraul wine": {
+      "name": "Kraul Wine",
+      "dc": 14,
+      "effect": "A secret recipe held close by the Kraul of the undercity and imported from them, the wine has an acquired, musky taste, but is relatively enjoyable and able to be imbibed in somewhat large quantities.",
+      "bar": "DC 14 (4SP)"
+    },
+    "redcap whiskey": {
+      "name": "Redcap Whiskey",
+      "dc": 18,
+      "effect": "One of the strongest drinks offered at the Respite, this whiskey, made in house from base fungi, Redcap mushrooms and spices brought in, provides quite a burn and can cause minor hallucinations after only one shot in those of weak constitution.",
+      "bar": "DC 18 (8GP)"
+    },
+    "battle brew": {
+      "name": "Battle Brew",
+      "dc": 15,
+      "effect": "This clear cool liquor is specially brewed in a location kept a fiercely guarded Boros secret in the South Wastes, perfect thing to cure fatigue after patrol. (Everclear more or less)",
+      "bar": "DC 15 (5SP)"
+    },
+    "skyjek shocker": {
+      "name": "Skyjek Shocker",
+      "dc": 13,
+      "effect": "A mixture of gin, vodka, and lemon bitters served over ice with a candied lemon peel goes great on a hot summer day.",
+      "bar": "DC 13 (2SP)"
+    },
+    "berserker blast": {
+      "name": "Berserker Blast",
+      "dc": 18,
+      "effect": "Habañero whiskey on the rocks. Great for celebration of accomplishments!",
+      "bar": "DC 18 (8GP)"
+    },
+    "macho mixer": {
+      "name": "Macho Mixer",
+      "dc": 20,
+      "effect": "Boarderline Blackout. For those days when you just want to pass out, gin, rum, whiskey, tequila, absinthe, persecco, vodka all mixed and poured into a commemorative stein.",
+      "bar": "DC 20 (10GP)"
+    }
+},
+  "effects": [
+    "Level 1. -2 to Dexterity check/saves",
+    "Level 2. Disadvantage on Steath, Persuasion and Deception checks. Adv against being frightened. Dis on Attack.",
+    "Level 3. Disadvantage on ability checks. Loss of Adv against frightened",
+    "Level 4. Disadvantage on saving throws. Cannot move more than 10' without changing direction",
+    "Level 5. -5 to hit and Dis on attack rolls. Roll a 1d6 when moving and fall prone on an odd result, 15 movement cost to stand.",
+    "Level 6. Roll on the Drunken Shenanigans Table! For up to 10 minutes, act out the results. Afterwards, fall Unconscious for the next 8 hours wherever you end up (but still gain the benefit of a rest). When you wake up, you will not remember what happened.",
+"Level 7. You immediately fall unconscious for the next 12 hours, but don't gain the benefits of a rest upon waking."
+  ],
+  "drunken": [
+    "Roll again, twice.",
+    "You trip over your own feet and hit your head.",
+    "You aren't done drinking yet! You chug another drink.",
+    "You find yourself slurring your words to the extent that they're incomprehensible.",
+    "You puke.",
+    "You space out for a while, staring at nothing in particular.",
+    "You suddenly remember something upsetting and get really sad about it.",
+    "You suddenly remember something annoying and get really angry about it.",
+    "You suddenly remember something funny and start laughing uncontrollably.",
+    "You suddenly remember something from your youth and get nostalgic.",
+    "You feel compelled to buy a lot more alcohol.",
+    "You feel nauseous and want to step outside and get some fresh air.",
+    "You suddenly feel paranoid and superstitious.",
+    "You break a piece of furniture somehow.",
+    "You begin posturing and try to start a fight with someone.",
+    "You feel compelled to buy something very expensive.",
+    "You begin singing a rousing sea shanty, poorly.",
+    "You are exceedingly hungry and feel compelled to buy far more food than you can eat.",
+    "You achieve a zen drunken advice giving state.",
+    "You attempt to juggle some nearby objects.",
+    "Remember that one rude thing that friend/relationship partner did? You suddenly feel the need to get really angry and talk about that.",
+    "You reflect on something someone said to you during your drinking session and decide that you found it extremely insulting.",
+    "You try to fight an inanimate object and lose.",
+    "You try to make a snow angel on the floor talking about how beautiful the ceiling is.",
+    "You really want to curl up in a nice ball under a table.",
+    "You feel compelled to stack all the furniture in the room into a large pile.",
+    "You attempt to make everyone join you in singing a song loudly and poorly.",
+    "You need to lie down. Regardless of the time or place.",
+    "You can't focus properly and are seeing double.",
+    "You're feeling generous today! You feel compelled to buy a round of drinks for everyone in your immediate vicinity.",
+    "You have an uncontrollable urge to get on a table and show the other patreons your greatest Performance!",
+    "You suddenly feel really apologetic, especially about things you've done in the last few minutes.",
+    "As a game or just for fun, you suddenly feel like spinning...",
+    "You sure wanna impress the other patreons of the bar! Show them your greatest magical or acrobatic trick!",
+    "You feel really dizzy, the world is suddenly spinning... try to hold yourself on point or slowly move towards the nice and comfy ground!",
+    "You suddenly remember an embarassing or shameful story about yourself and feel compelled to loudly tell the nearest people - perhaps for advice or because you find it funny?",
+    "You get a sudden burst of Wanderlust and venture forth on an adventure to the first place that comes to your mind! You don't even make it out of town, though.",
+    "You have to do something quickly! You know what you have to do but you have to do it right now- but you forget about it again a few seconds later.",
+    "You're having a great time and feel really happy to be surrounded by such great people and you just have to drunkely tell everyone about it.",
+    "You feel the need to regale anybody who will listen with a tale of your recent adventuring exploits.",
+    "You get really overly excited about something that isn't really important.",
+    "You suddenly feel really philosophical and begin questioning the meaning of your existence.",
+    "You want to find your best buddy and tell them how great they are.",
+    "You're convinced that the nearest person is your best buddy.",
+    "You're convinced that someone nearby is someone from your past that you haven't seen in a long time.",
+    "Despite it still being on your person, you're convinced that you've misplaced something and start looking around for it.",
+    "You're suddenly really impressed by some nearby craftsmanship or architecture.",
+    "You suddenly want to talk the nearest person about your issues.",
+    "You feel compelled to ride a table like a surfboard.",
+    "You gain clarity for a few moments, having your entire life flash before your eyes in the span of mere seconds.",
+    "You feel the need to round everyone up for a nice tavern conga line!",
+    "You're in a poetic mood today, and even though you're hiccuping, you want the world to hear your words.",
+    "You lay on the floor or table in a daze while screaming for a minute or two.",
+    "You've realized something really profound... well, you think it's profound anyway. You must tell someone!.",
+    "A mundane object reminds you of a painful memory and you feel the need to hold and protect it while reminiscing.",
+    "You think a piece of furniture is some adorable animal and start fawning over it.",
+    "You start counting your fingers and panicking because you only see 1 less the amount your of normal fingers, even though in reality everything's fine.",
+    "You feel as though you've lost all your balance on your feet, and want to regain your balance by doing a handstand on the nearest table.",
+    "You feel compelled to speak as though you are from the highest noble family in the land.",
+    "You feel compelled to take repettitive small sips of your drink with your pinky extended, you also are having a hard time finding your mouth and spill most of the sips on yourself.",
+    "You feel the need to cry and express your love for small cute animals.",
+    "You feel compelled to get the person next to you to sing a song, music is wonderful.",
+    "You feel compelled to dance like no one's watching because your favorite song is on...in your head.",
+    "You want everyone to see how to sit in a chair the fun way, with a running start and a jump, the chair however cannot support the impact.",
+    "You realize how fun the tiki bar looks and decide to go there and make a new friend.",
+    "You sing a song composed of only a single word over and over in an upbeat fashion.",
+    "You daze off and go on a mental quest of epic proportions, remembering every detail vividly, but none of these actually happened.",
+    "You've closed your eyes and cannot seem to open them.",
+    "You feel an intense love for the closest inanimate object, like a long lost sibling or relative.",
+    "You become convinced that a nearby object is actually a mimic in disguise, and that it must be slain.",
+    "You feel the need to do lots of push ups or else you'll cry.",
+    "You become convinced that everything around you is an illusion.",
+    "You fully believe you are sober, and no one else can convince you otherwise.",
+    "You believe you are a carpenter here to fix the furniture, and will attempt to do exactly that.",
+    "You become paranoid that you are being followed/hunted by a goose.",
+    "You convince others to join your religion. If you do not follow an existing god, feel free to create a fake religion.",
+    "You believe that you are the owner of the tavern and must kick out the rowdy adventurers.",
+    "You believe you are the lead character in a play, and you must entertain the other patrons of the bar as your audirnce.",
+    "You think yourself a drunken sage, and give out some terrible life advice.",
+    "You believe someone in the bar is an assassin sent to kill the bartender, and that you must stop them.",
+    "You have become enraptured by an insect buzzing nearby, and will do anything and everything in your power to kill it.",
+    "You believe that you are the best in the world at some small unimportant task and must brag about it.",
+    "You are convinced that a deadly disease has gotten into the tavern and that you need to quarantine the area.",
+    "You have the sudden urge to let people know how you feel about them with complete honesty.",
+    "You make a speech about why they should vote for you as mayor of snowhaven.",
+    "You are convinced that there is an invisible man somewhere in the bar at that you must find them at all cost.",
+    "You are convinced that you are under the effects of a curse and need to be cured.",
+    "You are convinced the tastiest sandwich of the world is being served by the bar even if they don't serve sandwiches, and every sandwich they bring out is not the real sandwich.",
+    "You try to find the comfiest chair in the tavern by testing them all out, even if someone is already sitting there.",
+    "With the help of anyone willing to exchange coins, you trade all your silver and gold pieces for copper pieces for you think that the price of copper is gonna rise dramatically in the next 24 hours.",
+    "You select one person in the tavern and attempt to give them a manicure by any means necessary.",
+    "You feel the urge to convince everyone that birds are hiding the secret of flight from pigs and that if not for birds keeping it secret that pigs would be the greatest flyers in nature.",
+    "You feel like there's a coin hidden somewhere in your pockets or bags which you are determined to use for payment this evening.",
+    "You feel as though there us giant blood inside you and you want to impress people by trying to lift the heaviest thing in the room.",
+    "You start yelling the names of all people you know out loud in a random order.",
+    "Your right leg feels very weak such that you're convinced it's safer to just hop around on your left than use it.",
+    "The floor is lava, and you must do everything possible to avoid touching it. You try to convince others of the imminent danger.",
+    "Time to hit the hay... go and find a questionable place to pass out.",
+    "Time to hit the hay... go and find an appropraite place to pass out.",
+"You realize you're really drunk and request a nice glass of water, taking a time out and reducing your intoxication level by 1 without passing out."
+  ]
+}
