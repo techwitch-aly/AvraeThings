@@ -25,7 +25,7 @@ bardicDie = [
 
 args = argparse(&ARGS&)
 c = combat()
-ch - character()
+ch = character()
 cc = 'Bardic Inspiration'
 i = args.get("i")
 combatant = c.get_combatant(name)
