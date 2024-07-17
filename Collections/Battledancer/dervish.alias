@@ -43,7 +43,7 @@ if lvl > 2 and v:
     resource = character.cc_str(cc)
 
     if combatant and v:
-        combatant.add_effect("Dervish Dancing", passive_effects={"ac_bonus"=2}, buttons=[{"label": "End Dervish Dance", "verb":"ends their Dervish Dance!", "style":4, "automation":[{"type":"remove_ieffect"}]}], duration=rounds, desc="You enter a dervish dance. Your AC increases by 2 and enemies have disadvantage on opportunity attacks against you. You must move 10 feet on each of your turns or the dance ends. While dancing you may make a melee attack against any number of creatures within 5 feet of you, with a separate attack roll for each target.")
+        combatant.add_effect("Dervish Dancing", passive_effects={"ac_bonus": 2}, buttons=[{"label": "End Dervish Dance", "verb":"ends their Dervish Dance!", "style":4, "automation":[{"type":"remove_ieffect"}]}], duration=rounds, desc="You enter a dervish dance. Your AC increases by 2 and enemies have disadvantage on opportunity attacks against you. You must move 10 feet on each of your turns or the dance ends. While dancing you may make a melee attack against any number of creatures within 5 feet of you, with a separate attack roll for each target.")
 elif lvl < 3:
     return f"""embed -title "Must be a level 3 Bard and Battledancer to Dervish Dance!" """
 else:
