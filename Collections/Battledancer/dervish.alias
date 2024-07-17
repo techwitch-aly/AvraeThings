@@ -42,7 +42,7 @@ if lvl > 2 and v:
 
     # Update the output to go on the embed card with the Bardic roll and counter info
     resource = ch.cc_str(cc)
-    meta = f"""**Meta**\n{roundsRoll}\nDancing for {{rounds}} rounds!"""
+    meta = f"""**Meta**\n1 + {roundsRoll}\nDancing for {rounds} rounds!"""
 
     if combatant and v:
         combatant.add_effect("Dervish Dancing", passive_effects={"ac_bonus": 2}, buttons=[{"label": "End Dervish Dance", "verb":"ends their Dervish Dance!", "style":4, "automation":[{"type":"remove_ieffect"}]}], duration=rounds, desc="You enter a dervish dance. Your AC increases by 2 and enemies have disadvantage on opportunity attacks against you. You must move 10 feet on each of your turns or the dance ends. While dancing you may make a melee attack against any number of creatures within 5 feet of you, with a separate attack roll for each target.")
