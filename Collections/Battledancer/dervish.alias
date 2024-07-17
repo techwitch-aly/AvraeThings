@@ -25,22 +25,23 @@ bardicDie = [
 
 args = argparse(&ARGS&)
 c = combat()
+ch - character()
 cc = 'Bardic Inspiration'
 i = args.get("i")
 combatant = c.get_combatant(name)
-v = character().cc_exists(cc) and character().get_cc(cc) > 0 or i
+v = ch.cc_exists(cc) and ch.get_cc(cc) > 0 or i
 lvl = int(get("BardLevel", 0))
 
 if lvl > 2 and v:
     # Modify the Counter
-    character().mod_cc(cc, -1)
+    ch.mod_cc(cc, -1)
 
     # Roll the Bardic Die
     roundsRoll = vroll(bardicDie[lvl-1])
     rounds = roundsRoll.total + 1
 
     # Update the output to go on the embed card with the Bardic roll and counter info
-    resource = character.cc_str(cc)
+    resource = ch.cc_str(cc)
 
     if combatant and v:
         combatant.add_effect("Dervish Dancing", passive_effects={"ac_bonus": 2}, buttons=[{"label": "End Dervish Dance", "verb":"ends their Dervish Dance!", "style":4, "automation":[{"type":"remove_ieffect"}]}], duration=rounds, desc="You enter a dervish dance. Your AC increases by 2 and enemies have disadvantage on opportunity attacks against you. You must move 10 feet on each of your turns or the dance ends. While dancing you may make a melee attack against any number of creatures within 5 feet of you, with a separate attack roll for each target.")
