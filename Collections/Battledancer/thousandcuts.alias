@@ -50,8 +50,8 @@ for r in range(6):
     # If we meet or exceed the target AC we hit
     if toHit.total >= ac:
         damageRoll = target.damage(damageDice, crit = toHit.result.crit == 1)
-        totalDamage += damageRoll.total
-        desc += toHit.full + ' (Hit!) ' + damageRoll.result + '\n'
+        totalDamage += damageRoll.roll.total
+        desc += toHit.full + ' (Hit!) ' + damageRoll.damage + '\n'
         footer += tName + ' ' + target.hp_str() + '\n' 
     else:
         # Stop iterating and attacking on a miss
