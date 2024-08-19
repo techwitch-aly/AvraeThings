@@ -28,9 +28,9 @@ args = argparse(&ARGS&)
 i = args.last('i')
 cc = 'Bardic Inspiration'
 amt = args.get("amt")
-v = character().cc_exists(cc) and character().get_cc(cc) > 0 or i
-lvl = int(get("BardLevel", 0))
-dexMod = int(get("DexterityMod"))
+ch = character()
+v = ch.cc_exists(cc) and character().get_cc(cc) > 0 or i
+lvl = ch.levels.get("Bard", 0)
 
 # Level 6 Bard feature, make sure the user is high enough and has charges of Inspo
 if BardLevel > 5 and v:
@@ -38,7 +38,7 @@ if BardLevel > 5 and v:
     character().mod_cc(cc, -1)
 
     # Roll the Bardic Die
-    absorbRoll = vroll('+'.join(bardicDie[lvl-1], dexMod))
+    absorbRoll = vroll('+'.join(bardicDie[lvl-1], dexterityMod))
 
     # Can only heal up to the amount of damage taken, no extra healing here
     reduction = min(absorbRoll.total, amt)
