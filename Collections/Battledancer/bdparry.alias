@@ -27,7 +27,7 @@ bardicDie = [
 args = argparse(&ARGS&)
 i = args.last('i')
 cc = 'Bardic Inspiration'
-amt = args.get("amt")
+amt = args.last("amt")
 ch = character()
 v = ch.cc_exists(cc) and ch.get_cc(cc) > 0 or i
 lvl = ch.levels.get("Bard", 0)
@@ -41,16 +41,16 @@ if lvl > 5 and v:
     absorbRoll = vroll('+'.join((bardicDie[lvl-1], str(dexterityMod))))
 
     # Can only heal up to the amount of damage taken, no extra healing here
-    reduction = min(absorbRoll.total, amt)
+    reduction = min(absorbRoll.total, int(amt))
 
     # Update the HP
     c = combat()
     combatant = c.get_combatant(name)
     result = combatant.modify_hp(reduction)
 
-    return f"""-title "{name} performs a Battledancer Parry!" -desc "**Meta**:\n{absorbRoll.full}\n\n{character.cc_str(cc)}" -footer "{result}" """
+    return f"""-title "{name} performs a Battledancer Parry!" -desc "**Meta**:\n{absorbRoll.full}\n\n{ch.cc_str(cc)}" -footer "{result}" """
 elif lvl < 6:
     return f"""-title "Battledancer Parry requires 6 levels in Bard to be used!" -desc "Please ensure you're a skilled enough Battledancer to do this!" """
 else:
-    return f"""-title "No Charges of Bardic Inspiration Left!" -desc "{character.cc_str(cc)}" """
+    return f"""-title "No Charges of Bardic Inspiration Left!" -desc "{ch.cc_str(cc)}" """
 </drac2>
