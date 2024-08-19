@@ -29,8 +29,7 @@ i = args.last('i')
 cc = 'Bardic Inspiration'
 amt = args.get("amt")
 ch = character()
-c = combat()
-v = ch.cc_exists(cc) and character().get_cc(cc) > 0 or i
+v = ch.cc_exists(cc) and ch.get_cc(cc) > 0 or i
 lvl = ch.levels.get("Bard", 0)
 
 # Level 6 Bard feature, make sure the user is high enough and has charges of Inspo
@@ -45,6 +44,7 @@ if lvl > 5 and v:
     reduction = min(absorbRoll.total, amt)
 
     # Update the HP
+    c = combat()
     combatant = c.get_combatant(name)
     result = combatant.modify_hp(reduction)
 
