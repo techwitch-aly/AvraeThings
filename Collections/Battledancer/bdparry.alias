@@ -29,16 +29,17 @@ i = args.last('i')
 cc = 'Bardic Inspiration'
 amt = args.get("amt")
 ch = character()
+c = combat()
 v = ch.cc_exists(cc) and character().get_cc(cc) > 0 or i
 lvl = ch.levels.get("Bard", 0)
 
 # Level 6 Bard feature, make sure the user is high enough and has charges of Inspo
-if BardLevel > 5 and v:
+if lvl > 5 and v:
     # Modify the Counter
     character().mod_cc(cc, -1)
 
     # Roll the Bardic Die
-    absorbRoll = vroll('+'.join(bardicDie[lvl-1], dexterityMod))
+    absorbRoll = vroll('+'.join((bardicDie[lvl-1], str(dexterityMod))))
 
     # Can only heal up to the amount of damage taken, no extra healing here
     reduction = min(absorbRoll.total, amt)
@@ -48,7 +49,7 @@ if BardLevel > 5 and v:
     result = combatant.modify_hp(reduction)
 
     return f"""-title "{name} performs a Battledancer Parry!" -desc "**Meta**:\n{absorbRoll.full}\n\n{character.cc_str(cc)}" -footer "{result}" """
-elif BardLevel < 6:
+elif lvl < 6:
     return f"""-title "Battledancer Parry requires 6 levels in Bard to be used!" -desc "Please ensure you're a skilled enough Battledancer to do this!" """
 else:
     return f"""-title "No Charges of Bardic Inspiration Left!" -desc "{character.cc_str(cc)}" """
