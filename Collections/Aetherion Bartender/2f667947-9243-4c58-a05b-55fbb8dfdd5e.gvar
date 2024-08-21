@@ -240,6 +240,12 @@
       "effect": "",
       "bar": "DC 13 (2SP)"
     },
+    "mulled wine": {
+      "name": "Mulled Wine",
+      "dc": 13,
+      "effect": "",
+      "bar": "DC 13 (2SP)"
+    },
     "wine": {
       "name": "Wine",
       "dc": 14,
