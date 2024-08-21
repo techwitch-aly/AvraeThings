@@ -66,30 +66,6 @@
       "effect": "",
       "bar": "DC 14 (4SP)"
     },
-    "meseriis mulled wine": {
-      "name": "Meseriis Mulled Wine",
-      "dc": 14,
-      "effect": "",
-      "bar": "DC 14 (4SP)"
-    },
-    "elysia mulled wine": {
-      "name": "Elysia Mulled Wine",
-      "dc": 14,
-      "effect": "",
-      "bar": "DC 14 (4SP)"
-    },
-    "skalavik mulled wine": {
-      "name": "Skalavik Mulled Wine",
-      "dc": 14,
-      "effect": "",
-      "bar": "DC 14 (4SP)"
-    },
-    "vrettodell mulled wine": {
-      "name": "Vrettodell Mulled Wine",
-      "dc": 14,
-      "effect": "",
-      "bar": "DC 14 (4SP)"
-    },
     "old fashioned": {
       "name": "Old Fashioned",
       "dc": 15,
@@ -257,7 +233,13 @@
       "dc": 13,
       "effect": "",
       "bar": "DC 13 (2SP)"
-        },
+    },
+    "mead": {
+      "name": "Mead",
+      "dc": 13,
+      "effect": "",
+      "bar": "DC 13 (2SP)"
+    },
     "wine": {
       "name": "Wine",
       "dc": 14,
@@ -336,12 +318,6 @@
       "effect": "A shot of alcohol that feels like lighting as you drink it. Tasty, hints of ozone, hits like a punch the the gut. Family Recipe.",
       "bar": "DC 15 (5SP)"
     },
-    "stained glass": {
-      "name": "Stained Glass",
-      "dc": 17,
-      "effect": "One con save, two effects, Intoxication DC 17, Hallucinogen DC 12. Failed save inflicts the poisoned condition causes automatic failures on Perception checks relying on sight. The room spins and you see colours, this is great! This drink was first brewed with the mushrooms grown from a friendly giant in the sewers when the tavern was still new some 500 years ago. We've diluted this giant-strength down for mortal consumption. It has an earthy taste, once you've handled the burn.",
-      "bar": "DC 17 (6GP)"
-    },
     "cinnabomb": {
       "name": "Cinnabomb",
       "dc": 16,
@@ -373,7 +349,7 @@
       "bar": "DC 17 (6GP)"
     },
     "hells up": {
-      "name": "Hell's up",
+      "name": "Hell's Up",
       "dc": 20,
       "effect": "We decided to have folks have a taste of Rix Maadi, so we came up with this nice taste of the opposite of holy. Hell's Up is a hard whiskey that is made by our few fiend brewers, with a nice kick from a powdering of gunpowder. If you drink this, stay away from open flames.",
       "bar": "DC 20 (10GP)"
@@ -465,7 +441,7 @@
     "battle brew": {
       "name": "Battle Brew",
       "dc": 15,
-      "effect": "This clear cool liquor is specially brewed in a location kept a fiercely guarded Boros secret in the South Wastes, perfect thing to cure fatigue after patrol. (Everclear more or less)",
+      "effect": "This clear cool liquor is specially brewed in a location kept a fiercely guarded nomad secret in the Meseriis Deserts, perfect thing to cure fatigue after patrol. (Everclear more or less)",
       "bar": "DC 15 (5SP)"
     },
     "skyjek shocker": {
@@ -482,9 +458,9 @@
     },
     "macho mixer": {
       "name": "Macho Mixer",
-      "dc": 20,
+      "dc": 24,
       "effect": "Boarderline Blackout. For those days when you just want to pass out, gin, rum, whiskey, tequila, absinthe, persecco, vodka all mixed and poured into a commemorative stein.",
-      "bar": "DC 20 (10GP)"
+      "bar": "DC 24 (10GP)"
     }
 },
   "effects": [
@@ -596,6 +572,6 @@
     "The floor is lava, and you must do everything possible to avoid touching it. You try to convince others of the imminent danger.",
     "Time to hit the hay... go and find a questionable place to pass out.",
     "Time to hit the hay... go and find an appropraite place to pass out.",
-"You realize you're really drunk and request a nice glass of water, taking a time out and reducing your intoxication level by 1 without passing out."
+    "You realize you're really drunk and request a nice glass of water, taking a time out and reducing your intoxication level by 1 without passing out."
   ]
 }
