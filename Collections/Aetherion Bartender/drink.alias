@@ -38,7 +38,7 @@ if "&1&".lower()=="menu":
 
   pubList = []
   for tavern in locationDict:  # for each tavern in our locationDict above, we make an output and display the list in reverse ([::-1]) so the last drink has 'and' in front
-    pubList.append(f""" -f "The {tavern}|{', '.join([x for x in locationDict[tavern] ][::-1])}" """)
+    pubList.append(f""" -f "{tavern}|{', '.join([x for x in locationDict[tavern] ][::-1])}" """)
 
   genericDrinks = [g.drinks[x].name for x in g.drinks if 'bar' not in g.drinks[x]]+['Coffee', "Tea", "Milk", "Whiskey"]  # make a list of the generic drinks
   genericDrinks.sort()  # alphabetize the generic drinks
