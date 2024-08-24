@@ -1,0 +1,26 @@
+{
+  "dc12": {
+    "bronze": {
+      "name": "Bronze"
+    },
+    "copper": {
+        "name": "Copper"
+    },
+    "tin": {
+        "name": "Tin"
+    }
+  },
+  "dc15": {
+    "iron": {
+      "name": "Iron"
+    }
+  },
+  "dc17": {
+    "silver": {
+      "name": "Silver"
+    },
+    "gold": {
+      "name": "Gold"
+    }
+  }
+}

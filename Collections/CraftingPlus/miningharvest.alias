@@ -1,0 +1,17 @@
+embed
+<drac2>
+args = argparse(&ARGS&)
+target = args[0].title()
+ch = character()
+harvestables = load_json(get_gvar("97458d50-2bde-4751-9af1-952208b92f2e"))
+
+rollString = ch.skills.athletics.d20()
+harvestItRoll = vroll(rollString)
+
+if harvestItRoll.total < 12:
+    return f"""-desc "**Meta:**\nDC 12 Athletics Check\nAthletics: {harvestItRoll}" -f "Unfortunately you couldn't extract anything on this trek into the mines." """
+else:
+
+</drac2>
+-title "{{name}} tries to harvest {{target}}!"
+-footer "CraftingPlus | !mining harvest"

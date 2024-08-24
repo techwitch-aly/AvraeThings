@@ -1,0 +1,26 @@
+embed
+<drac2>
+args = argparse(&ARGS&)
+ch = character()
+harvestables = load_json(get_gvar("97458d50-2bde-4751-9af1-952208b92f2e"))
+
+# We need to find an ore vein or a gem vein to harvest
+# Roll a survival check
+rollString = ch.skills.survival.d20()
+findItRoll = vroll(rollString)
+
+if findItRoll.total < 12:
+    return f"""-desc "**Meta:**\nDC 12 Survival Check\nSurvival: {findItRoll}" -f "Unfortunately you didn't find anything on this trek into the mines." """
+else:
+    options = "```"
+    # Roll + 1 because range() is not inclusive of the end
+    for i in range(12, findItRoll.total+1):
+        n = "dc"+str(i)
+        if n in harvestables:
+            for j in harvestables[n]:
+                options += f"""{harvestables[n][j]["name"]}\n"""
+    options += "```"
+    return f"""-desc "**Meta:**\nDC 12 Survival Check\n\Survival: {findItRoll}" -f "You found things! Choose one of the following to try to mine:\n{options}" """
+</drac2>
+-title "{{name}} goes mining!"
+-footer "CraftingPlus | !mining"
