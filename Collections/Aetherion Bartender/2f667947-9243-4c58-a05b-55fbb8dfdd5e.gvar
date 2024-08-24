@@ -36,12 +36,6 @@
       "effect": "",
       "bar": "DC 12 (2SP)"
     },
-    "house fruit ale": {
-      "name": "House Fruit Ale",
-      "dc": 13,
-      "effect": "",
-      "bar": "DC 13 (2SP)"
-    },
     "strawberry ale": {
       "name": "Strawberry Ale",
       "dc": 13,
@@ -108,29 +102,11 @@
       "effect": "",
       "bar": "DC 15 (5SP)"
     },
-    "rosebane revolt": {
-      "name": "Rosebane Revolt",
-      "dc": 15,
-      "effect": "",
-      "bar": "DC 15 (5SP)"
-    },
     "toasted ogre rum": {
       "name": "Toasted Ogre Rum",
       "dc": 15,
       "effect": "",
       "bar": "DC 15 (5SP)"
-    },
-    "simple spirit": {
-      "name": "Simple Spirit",
-      "dc": 15,
-      "effect": "",
-      "bar": "DC 15 (5SP)"
-    },
-    "chaotic chest pilsner": {
-      "name": "Chaotic Chest Pilsner",
-      "dc": 16,
-      "effect": "",
-      "bar": "DC 16 (3GP)"
     },
     "house brandy": {
       "name": "House Brandy",
@@ -140,12 +116,6 @@
     },
     "house gin": {
       "name": "House Gin",
-      "dc": 16,
-      "effect": "",
-      "bar": "DC 16 (3GP)"
-    },
-    "powerful spirit": {
-      "name": "Powerful Spirit",
       "dc": 16,
       "effect": "",
       "bar": "DC 16 (3GP)"
@@ -264,12 +234,6 @@
       "effect": "The favorite of the Mixologist's homemade brews. A chilled pint of this drink will be sure to hit the spot after a long day in the lab.",
       "bar": "DC 15 (5SP)"
     },
-    "earthen shower": {
-      "name": "Earthen Shower",
-      "dc": 18,
-      "effect": "This Coffee-Vodka cocktail is a sweet, sugary drink served with a topping of whipped cream. The hangover will hit you like a bunch of rocks falling out of the sky in the morning if you drink too many.",
-      "bar": "DC 18 (8GP)"
-    },
     "butterbrew": {
       "name": "Butterbrew",
       "dc": 15,
@@ -281,37 +245,25 @@
       "dc": 18,
       "effect": "It's a Flamed Dark Smoke Bourbon with a shot of Dragonblood Wine with sprinkled cinnamon over it and is always served hot. The motto is \\\"What it's like to breathe fire.\\\"",
       "bar": "DC 18 (8GP)"
-        },
+    },
     "gruul shine": {
       "name": "Gruul Shine",
       "dc": 20,
       "effect": "A brew made by the giants of the waste. Rumor has it, it's just Izzet fuel. Tastes like fuel.",
       "bar": "DC 20 (10GP)"
-        },
-    "hippie fruits": {
-      "name": "Hippie Fruits",
-      "dc": 15,
-      "effect": "These Berries soaked in Gruul Shine have diluted the alcohol and soaked some of it up. This a Fruit tray with various Fruits and Berres served in a Tankard. You can mash the fruits to drink them or eat the fruit to get a meal and get drunk at the same time.",
-      "bar": "DC 15 (5SP)"
-        },
+    },
     "twisted tea": {
       "name": "Twisted Tea",
       "dc": 14,
       "effect": "Tea Mixed with copious amounts of alcohol.  While it isn't the strongest drink around, it will get you drunk all the same.",
       "bar": "DC 14 (4SP)"
-        },
+    },
     "lawgivers kiss": {
       "name": "Lawgiver's Kiss",
       "dc": 15,
       "effect": "A sense of ease and peace comes over the drinker for a small amount of time before the world returns to normal, this drink is locked to 3 drinks per week.",
       "bar": "DC 15 (5SP)"
-        },
-    "ode to the peace giver": {
-      "name": "Ode to the Peace Giver",
-      "dc": 17,
-      "effect": "The drinker feels as if they're being praised for their efforts for once.  The drinker is paralyzed in place for the next 30min reliving the best moments of their lives before being slowly brought back to reality. This drink is locked to 2 drinks per week.",
-      "bar": "DC 17 (6GP)"
-        },
+    },
     "autumn embers": {
       "name": "Autumn Embers",
       "dc": 14,
@@ -347,18 +299,6 @@
       "dc": 18,
       "effect": "Issues arise when you sell a wide variety of drinks, what to do with the small drops left? Well we now have a drink that is all alcoholic drinks put together. We cannot promise you'll walk out of here.",
       "bar": "DC 18 (8GP)"
-    },
-    "sunlight sorrow": {
-      "name": "Sunlight Sorrow",
-      "dc": 17,
-      "effect": "We have had chats with many farmers as they always give good advice for growing our grapes. From them we learned about their sunlight liquid, so we came up with a drink that incorporates it. It comes from the farmers only needing it in very desperate times, then there's others who drink this to feel more energized.",
-      "bar": "DC 17 (6GP)"
-    },
-    "hells up": {
-      "name": "Hell's Up",
-      "dc": 20,
-      "effect": "We decided to have folks have a taste of Rix Maadi, so we came up with this nice taste of the opposite of holy. Hell's Up is a hard whiskey that is made by our few fiend brewers, with a nice kick from a powdering of gunpowder. If you drink this, stay away from open flames.",
-      "bar": "DC 20 (10GP)"
     },
     "fire and brimstone": {
       "name": "Fire and Brimstone",
@@ -396,12 +336,6 @@
       "effect": "",
       "bar": "DC 15 (5SP)"
     },
-    "karlov reserve": {
-      "name": "Karlov Reserve",
-      "dc": 14,
-      "effect": "A very dry red.",
-      "bar": "DC 14 (4SP)"
-    },
     "angel dew": {
       "name": "Angel Dew",
       "dc": 14,
@@ -414,41 +348,17 @@
       "effect": "Strong whiskey spirit.",
       "bar": "DC 18 (8GP)"
     },
-    "canard-duckevski": {
-      "name": "Canard-Duckevski",
-      "dc": 16,
-      "effect": "Arcanised Champagne for those sacred occasions.",
-      "bar": "DC 16 (3GP)"
-    },
-    "fungal fruition": {
-      "name": "Fungal Fruition",
-      "dc": 16,
-      "effect": "A fascinating blend of Undercity-grown fungus and fruit from the surface, fermented in the cellar of the Respite for many months, this drink mixes perfectly, the earthy tones of the fungi with the bursting flavor of the fermented fruits to create an enjoyable beverage that would be perfect for both Undercity residents and surface dwellers.",
-      "bar": "DC 16 (3GP)"
-    },
     "golgari glas":{
       "name": "Golgari Glas",
       "dc": 13,
       "effect": "Brewed with psychedelic mushrooms, Golgari Glas is a whiskey that loosens a persons grip with reality instead of getting them drunk as traditional spirits do. The mix of mushroom, khorasant wheat and yeast accentuate the earthy flavour that combines with the sweetness of the raspberries and inherent smokiness, makes any Golgari think the damp undercity. It can be served with or without ice, and pairs well with ginger ale and citruses. Created by Yrilien Deathroar.",
       "bar": "DC 13 (2SP)"
     },
-    "kraul wine": {
-      "name": "Kraul Wine",
-      "dc": 14,
-      "effect": "A secret recipe held close by the Kraul of the undercity and imported from them, the wine has an acquired, musky taste, but is relatively enjoyable and able to be imbibed in somewhat large quantities.",
-      "bar": "DC 14 (4SP)"
-    },
     "redcap whiskey": {
       "name": "Redcap Whiskey",
       "dc": 18,
       "effect": "One of the strongest drinks offered at the Respite, this whiskey, made in house from base fungi, Redcap mushrooms and spices brought in, provides quite a burn and can cause minor hallucinations after only one shot in those of weak constitution.",
       "bar": "DC 18 (8GP)"
-    },
-    "battle brew": {
-      "name": "Battle Brew",
-      "dc": 15,
-      "effect": "This clear cool liquor is specially brewed in a location kept a fiercely guarded nomad secret in the Meseriis Deserts, perfect thing to cure fatigue after patrol. (Everclear more or less)",
-      "bar": "DC 15 (5SP)"
     },
     "skyjek shocker": {
       "name": "Skyjek Shocker",
@@ -461,12 +371,6 @@
       "dc": 18,
       "effect": "Habañero whiskey on the rocks. Great for celebration of accomplishments!",
       "bar": "DC 18 (8GP)"
-    },
-    "macho mixer": {
-      "name": "Macho Mixer",
-      "dc": 24,
-      "effect": "Boarderline Blackout. For those days when you just want to pass out, gin, rum, whiskey, tequila, absinthe, persecco, vodka all mixed and poured into a commemorative stein.",
-      "bar": "DC 24 (10GP)"
     }
 },
   "effects": [
@@ -476,7 +380,7 @@
     "Level 4. Disadvantage on saving throws. Cannot move more than 10' without changing direction",
     "Level 5. -5 to hit and Dis on attack rolls. Roll a 1d6 when moving and fall prone on an odd result, 15 movement cost to stand.",
     "Level 6. Roll on the Drunken Shenanigans Table! For up to 10 minutes, act out the results. Afterwards, fall Unconscious for the next 8 hours wherever you end up (but still gain the benefit of a rest). When you wake up, you will not remember what happened.",
-"Level 7. You immediately fall unconscious for the next 12 hours, but don't gain the benefits of a rest upon waking."
+    "Level 7. You immediately fall unconscious for the next 12 hours, but don't gain the benefits of a rest upon waking."
   ],
   "drunken": [
     "Roll again, twice.",
