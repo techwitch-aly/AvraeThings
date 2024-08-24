@@ -1,4 +1,12 @@
 {
+  "dcLookup": {
+    "bronze": 12,
+    "copper": 12,
+    "tin": 12,
+    "iron": 15,
+    "silver": 17,
+    "gold": 17
+  },
   "dc12": {
     "bronze": {
       "name": "Bronze"

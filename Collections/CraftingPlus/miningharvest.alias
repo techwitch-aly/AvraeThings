@@ -1,17 +1,29 @@
 embed
 <drac2>
-args = argparse(&ARGS&)
+args = &ARGS&
+a = argparse(&ARGS&)
 target = args[0].title()
 ch = character()
 harvestables = load_json(get_gvar("97458d50-2bde-4751-9af1-952208b92f2e"))
 
+# Make sure we have something to harvest
+if not args[0]:
+    return f"""-desc "Make sure you try to harvest something! Please pass in the ore or gem you want to extract!" -f "Example: `!mining harvest Copper`" """
+
+# Make sure it's something we can harvest
+if not args[0] in harvestables["dcLookup"]:
+    return f"""-desc "Couldn't find `{args[0]}` as something to harvest, double check your spelling and the list of found ore or gems!" """
+
 rollString = ch.skills.athletics.d20()
 harvestItRoll = vroll(rollString)
+dc = harvestables["dcLookup"][args[0]]
 
-if harvestItRoll.total < 12:
-    return f"""-desc "**Meta:**\nDC 12 Athletics Check\nAthletics: {harvestItRoll}" -f "Unfortunately you couldn't extract anything on this trek into the mines." """
+if harvestItRoll.total < dc:
+    return f"""-desc "**Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}" -f "Unfortunately you couldn't extract anything on this trek into the mines." """
 else:
-
+    # We found something AND we could extract! How much did we get?
+    amount = vroll("1d5")
+    return f"""-desc "**Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}\n\n **Meta:**\n{amount}\n Found {amount.total} {target}!" """
 </drac2>
 -title "{{name}} tries to harvest {{target}}!"
 -footer "CraftingPlus | !mining harvest"
