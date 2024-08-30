@@ -1,0 +1,50 @@
+embed
+<drac2>
+hellfireDie = [
+'1d6[fire]', #1
+'1d6[fire]',
+'1d6[fire]', 
+'1d[fire]6',
+'1d6[fire]',
+'1d6[fire]',
+'1d6[fire]',
+'1d6[fire]',
+'1d6[fire]',
+'2d6[fire]', #10
+'2d6[fire]',
+'2d6[fire]',
+'2d6[fire]',
+'3d6[fire]', #14
+'3d6[fire]',
+'3d6[fire]',
+'3d6[fire]',
+'3d6[fire]',
+'3d6[fire]',
+'3d6[fire]'
+]
+
+args = argparse(&ARGS&)
+t = args.last("t")
+c = combat()
+ch = character()
+lvl = int(get("BarbarianLevel", 0))
+
+if lvl > 2:
+    hellfireToRoll = hellfireDie[lvl-1]
+    if c and t:
+        target = c.get_combatant(t)
+        if target:
+            damage = target.damage(hellfireToRoll)
+            meta = f"""**Meta**\n{damage} """
+            footer = f"""{target.name} {target.hp_str()} """
+    else:
+        damage = vroll(hellfireToRoll)
+        meta = f"""**Meta**\n{damage} """
+        footer = "No target."
+else:
+    return f"""embed -title "{name} attempts to perform a Hellfire Strike!" -desc "You must be at least a level 3 Path of Hellfire Barbarian to do this!" """
+</drac2>
+-title "{{name}} performs a Hellfire Strike"
+-desc "{{meta}}"
+-f "Hellfire Strike|At 3rd level, you unleash the fires of the nine Hells with your attacks. On one of your attacks per turn while you're raging, you fuel your strikes with a burst of hellfire when you hit a target with a melee weapon attack. When you do, that target takes an extra 1d6 fire damage from the attack. This damage increases when you reach certain levels in this class, increasing to 2d6 fire damage at 10th level and 3d6 at 14th level."
+-footer "{{footer}}"
