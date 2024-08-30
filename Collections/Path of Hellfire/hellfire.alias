@@ -35,7 +35,7 @@ if lvl > 2:
         target = c.get_combatant(t)
         if target:
             damage = target.damage(hellfireToRoll)
-            meta = f"""**Meta**\n{damage} """
+            meta = f"""**Meta**\n{damage.damage} """
             footer = f"""{target.name} {target.hp_str()} """
     else:
         damage = vroll(hellfireToRoll)
