@@ -36,7 +36,7 @@ if lvl > 2:
         if target:
             damage = target.damage(hellfireToRoll)
             meta = f"""**Meta**\n{damage.damage} """
-            footer = f"""{target.name} {target.hp_str()} """
+            footer = f"""{target.name} {target.hp_str()} (-{damage.total}) """
     else:
         damage = vroll(hellfireToRoll)
         meta = f"""**Meta**\n{damage} """
