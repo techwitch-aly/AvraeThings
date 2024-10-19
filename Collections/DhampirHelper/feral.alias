@@ -19,7 +19,7 @@ today = int(now - (now % day))
 if nextFeeding > today:
     return f"""-title "{ch.name} is safe from their dhampiric hunger!" -desc "Next feeding required by {dateutils.unix_to_date(int(nextFeeding))}" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feral" """
 elif nextFeeding == today:
-    return f"""-title "{ch.name}" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feral" """
+    return f"""-title "{ch.name} feels their hunger growing!" -desc "Today is the last safe day before they risk going feral." -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feral" """
 
 # Otherwise, the feeding is past due, roll a wisdom save
 # The DC is 10 + Days Overdue
@@ -38,7 +38,9 @@ if daysDiff > 0:
     # Adjust for the offset
     saveDC += daysDiff
 
-if wisSave.total >= saveDC:
+# The roll is successful if it is over the DC AND not a NAT1 OR is a NAT20
+success = (wisSave.total >= saveDC and wisSAve.result.crit != 2) or wisSave.result.crit == 1
+if success:
     return f"""-title "{ch.name} resists the growing dhampiric hunger!" -desc "**Meta**\nDC: {saveDC} WIS Save\n\n**Save**\n{wisSave}: Success!" -f "Feeding Required|Feeding was required on {dateutils.unix_to_date(int(nextFeeding))}" {dcIncreaseNote} -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feral" """
 else:
     return f"""-title "{ch.name} succumbs the growing dhampiric hunger!" -desc "**Meta**\nDC: {saveDC} WIS Save\n\n**Save**\n{wisSave}: Failure!" -f "Feeding Required|Feeding was required on {dateutils.unix_to_date(int(nextFeeding))}" {dcIncreaseNote} -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feral" """

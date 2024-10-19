@@ -23,5 +23,5 @@ nextFeed = today + interval
 
 ch.set_cvar("dhampir_next_feeding", str(int(nextFeed)))
 
-return f"""-title "{ch.name} has satiated their dhampiric hunger!" -desc "Next feeding required by {dateutils.unix_to_date(nextFeed)}" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feed" """
+return f"""-title "{ch.name} has satiated their dhampiric hunger!" -desc "{ch.name} must feed every {interval} months." -f "Hunger Satiated|Next feeding required by {dateutils.unix_to_date(nextFeed)}" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feed" """
 </drac2>
