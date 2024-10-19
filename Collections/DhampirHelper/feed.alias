@@ -1,0 +1,27 @@
+embed
+<drac2>
+using(dateutils="4129e4b2-008d-4836-a094-40459c886cce")
+ch = character()
+
+# seconds in a minute, times minutes in an hour, times hours in a day
+day = 60 * 60 * 24
+
+# the default feeding interval is six IRL weeks
+interval = day * 7 * 6
+
+# Check if the character has a custom interval
+customModifier = ch.get_cvar("dhampir_interval")
+if customModifier:
+    interval = day * 7 * int(customModifier)
+
+# current unix timestamp (seconds since 1/1/70 00:00:00)
+now = time()
+
+# subtract the remainder by dividing NOW by the seconds in a day to round "down" to today
+today = now - (now % day)
+nextFeed = today + interval
+
+ch.set_cvar("dhampir_next_feeding", str(int(nextFeed)))
+
+return f"""-title "{ch.name} has satiated their dhampiric hunger!" -desc "Next feeding required by {dateutils.unix_to_date(nextFeed)}" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feed" """
+</drac2>

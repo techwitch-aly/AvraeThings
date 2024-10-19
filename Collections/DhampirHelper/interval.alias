@@ -1,0 +1,11 @@
+embed
+<drac2>
+args = &ARGS&
+ch = character()
+
+if not args:
+    return f"""-title "{ch.name} is trying to set a custom interval for DhampirHelper" -desc "Please include the new interval to use for Dhampir Hunger checks.\n\nExample:\n`!dhampir interval 12`" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir interval" """
+
+ch.set_cvar("dhampir_interval", int(args[0]))
+return f"""-title "{ch.name} sets a custom interval for DhampirHelper" -f "New Interval|{int(args[0])} in-game months or real life weeks." -thumb "{ch.image}" -footer "DhampirHelper | !dhampir interval" """
+</drac2>

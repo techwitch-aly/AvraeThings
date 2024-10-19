@@ -1,0 +1,11 @@
+embed
+<drac2>
+using(dateutils="4129e4b2-008d-4836-a094-40459c886cce")
+ch = character()
+nextFeeding = ch.get_cvar("dhampir_next_feeding")
+
+if nextFeeding:
+    return f"""-title "{ch.name} must feed again soon!" -desc "Next feeding required by {dateutils.unix_to_date(int(nextFeeding))}" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir" """
+else:
+    return f"""-title "{ch.name} does not remember when last they fed!" -desc "Dhampirs must feed every six months in-game (six weeks IRL)" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir" """
+</drac2>

@@ -1,0 +1,45 @@
+embed
+<drac2>
+using(dateutils="4129e4b2-008d-4836-a094-40459c886cce")
+day = 60 * 60 * 24
+ch = character()
+
+# Make sure that we're beyond the required feeding date
+nextFeeding = ch.get_cvar("dhampir_next_feeding")
+
+if not nextFeeding:
+    return f"""-title "{ch.name} does not remember when last they fed!" -desc "Dhampirs must feed every six months in-game (six weeks IRL)" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feral" """
+
+nextFeeding = int(nextFeeding)
+now = time()
+today = int(now - (now % day))
+
+# If the next feeding is clearing in the future, give a chill message
+# If today is the last safe day, give a more clear warning about feeding soon
+if nextFeeding > today:
+    return f"""-title "{ch.name} is safe from their dhampiric hunger!" -desc "Next feeding required by {dateutils.unix_to_date(int(nextFeeding))}" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feral" """
+elif nextFeeding == today:
+    return f"""-title "{ch.name}" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feral" """
+
+# Otherwise, the feeding is past due, roll a wisdom save
+# The DC is 10 + Days Overdue
+# First day is flat 10, second day is 11, third day is 12, etc.
+saveDC = 10
+rollString = ch.saves.get('wisdom').d20()
+wisSave = vroll(rollString)
+
+# Update the save DC as needed
+secondsDiff = today - nextFeeding
+daysDiff = secondsDiff // day
+
+dcIncreaseNote = ""
+if daysDiff > 0:
+    dcIncreaseNote = f"""-f "DC Increased|The DC was increased because feeding is {daysDiff+1} days overdue." """
+    # Adjust for the offset
+    saveDC += daysDiff
+
+if wisSave.total >= saveDC:
+    return f"""-title "{ch.name} resists the growing dhampiric hunger!" -desc "**Meta**\nDC: {saveDC} WIS Save\n\n**Save**\n{wisSave}: Success!" -f "Feeding Required|Feeding was required on {dateutils.unix_to_date(int(nextFeeding))}" {dcIncreaseNote} -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feral" """
+else:
+    return f"""-title "{ch.name} succumbs the growing dhampiric hunger!" -desc "**Meta**\nDC: {saveDC} WIS Save\n\n**Save**\n{wisSave}: Failure!" -f "Feeding Required|Feeding was required on {dateutils.unix_to_date(int(nextFeeding))}" {dcIncreaseNote} -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feral" """
+</drac2>
