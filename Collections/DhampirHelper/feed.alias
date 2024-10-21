@@ -3,16 +3,19 @@ embed
 using(dateutils="4129e4b2-008d-4836-a094-40459c886cce")
 ch = character()
 
+period = 6
+
 # seconds in a minute, times minutes in an hour, times hours in a day
 day = 60 * 60 * 24
 
 # the default feeding interval is six IRL weeks
-interval = day * 7 * 6
+interval = day * 7 * period
 
 # Check if the character has a custom interval
 customModifier = ch.get_cvar("dhampir_interval")
 if customModifier:
-    interval = day * 7 * int(customModifier)
+    period = int(customModifier)
+    interval = day * 7 * period
 
 # current unix timestamp (seconds since 1/1/70 00:00:00)
 now = time()
@@ -23,5 +26,5 @@ nextFeed = today + interval
 
 ch.set_cvar("dhampir_next_feeding", str(int(nextFeed)))
 
-return f"""-title "{ch.name} has satiated their dhampiric hunger!" -desc "{ch.name} must feed every {interval} months." -f "Hunger Satiated|Next feeding required by {dateutils.unix_to_date(nextFeed)}" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feed" """
+return f"""-title "{ch.name} has satiated their dhampiric hunger!" -desc "{ch.name} must feed every {period} months." -f "Hunger Satiated|Next feeding required by {dateutils.unix_to_date(nextFeed)}" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feed" """
 </drac2>
