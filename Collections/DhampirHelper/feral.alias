@@ -39,7 +39,7 @@ if daysDiff > 0:
     saveDC += daysDiff
 
 # The roll is successful if it is over the DC AND not a NAT1 OR is a NAT20
-success = (wisSave.total >= saveDC and wisSAve.result.crit != 2) or wisSave.result.crit == 1
+success = (wisSave.total >= saveDC and wisSave.result.crit != 2) or wisSave.result.crit == 1
 if success:
     return f"""-title "{ch.name} resists the growing dhampiric hunger!" -desc "**Meta**\nDC: {saveDC} WIS Save\n\n**Save**\n{wisSave}: Success!" -f "Feeding Required|Feeding was required on {dateutils.unix_to_date(int(nextFeeding))}" {dcIncreaseNote} -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feral" """
 else:
