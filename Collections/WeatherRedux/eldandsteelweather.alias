@@ -1,0 +1,33 @@
+embed
+<drac2>
+a,n=&ARGS&,"\n"
+gvar=get_gvar('39f57261-9510-4d2d-bbb4-cd2cf9c530c8').split(n)
+args=argparse(a)
+x=a[0] if a else "&1&"
+v=x not in "list"
+h=get_gvar(gvar[0])
+f=h.lower().find(x.lower()) if x!="&1"+"&" else -1
+f2=-1 if f<0 else 0 if f==0 else f if h[f]==n else 1+h.rfind(n,0,f) if f>0 else -1
+dl=h[f2:-1] if f!=-1 else h
+x2=dl.split(n)[0]
+v=f!=-1
+p=a[1] if len(a) > 1 and not "-" in a[1] else "&2&"
+s=1 if p in "spring" else 2 if p in "summer" else 3 if p in "fallautumn" else 0
+var=dl.split(n)[1].split(" ")
+r1=dl.split(n)[2].split(" ")
+w1=dl.split(n)[3].split(" ")
+t=dl.split(n)[4].split(" ")
+th=int(args.last("high", roll(str(int(t[s]))+"+"+var[0])))
+tl=int(args.last("low", roll(str(int(t[s]))+"-"+var[0])))
+r=roll("1d20+"+r1[s])
+w=int(args.last("speed", max(0,roll(var[1]+"-"+var[1]+"+"+w1[s]))))
+wd=roll("1d8")
+dir=get_gvar(gvar[1]).split(n)
+c=get_gvar(gvar[2]).split(n)
+</drac2>
+-title "{{"Today's Weather: "+x2+", "+("Winter" if s==0 else "Spring" if s==1 else "Summer" if s==2 else "Fall") if v else ""}}"
+{{"-f \"Weather|"+([c[aoweather] for aoweather in range(len(c)) if c[aoweather][2:].lower().startswith(args.last('weather').lower())][0] if args.get('weather') else c[0] if 21<r<27 and tl<33 else c[1] if r>26 and tl<33 else c[2] if r<16 else c[3] if r<17 else c[4] if r<19 else c[5] if r<20 else c[6] if r<21 else c[7] if r<23 else c[8] if r<28 else c[9])+"\"" if v else ""}}
+{{dir.sort()}}
+{{"-f \"Wind|💨 "+str(w)+" mph ("+str(round(0.447*w))+" m/s), "+([dir[AOD] for AOD in range(len(dir)) if dir[AOD].lower()[4:].startswith(args.last("direction").lower())][0] if args.get("direction") else dir[wd-1] if w!=0 else "Still")+"\"" if v else ""}}
+{{"-f \"Temperature|🌡️ **High:** "+str(th)+" °F ("+str(round((th-32)/(9/5)))+" °C) | **Low**: "+str(tl)+" °F ("+str(round((tl-32)/(9/5)))+" °C) \"" if v else ""}}
+{{get_gvar(gvar[3]) if not v else get_gvar(gvar[4])}} -color {{color}}
