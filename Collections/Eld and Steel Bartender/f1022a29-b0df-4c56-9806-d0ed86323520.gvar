@@ -24,56 +24,122 @@
       "effect": "",
       "bar": "DC 1 (1SP)"
     },
-    "mushroom wine": {
-      "name": "Mushroom Wine",
+    "sorcerer's sangrira": {
+      "name": "Sorcerer's Sangria",
       "dc": 12,
       "effect": "",
       "bar": "DC 12 (2SP)"
     },
-    "blue crystal shiraz": {
-      "name": "Blue Crystal Shiraz",
+    "feywilde riesling": {
+      "name": "Feywilde Riesling",
       "dc": 12,
       "effect": "",
       "bar": "DC 12 (2SP)"
     },
-    "strawberry ale": {
-      "name": "Strawberry Ale",
+    "holo-hops": {
+      "name": "Holo-Hops",
+      "dc": 12,
+      "effect": "",
+      "bar": "DC 12 (2SP)"
+    },
+    "mystic blush": {
+      "name": "Mystic Blush",
+      "dc": 12,
+      "effect": "",
+      "bar": "DC 12 (2SP)"
+    },
+    "aether ale": {
+      "name": "Aether Ale",
       "dc": 13,
       "effect": "",
-      "bar": "DC 13 (2SP)"
+      "bar": "DC 13 (3SP)"
     },
-    "blade and ladder ale": {
-      "name": "Blade and Ladder Ale",
+    "celestial cider": {
+      "name": "Celestial Cider",
+      "dc": 13,
+      "effect": "",
+      "bar": "DC 13 (3SP)"
+    },
+    "fusion fizz": {
+      "name": "Fusion Fizz",
+      "dc": 13,
+      "effect": "",
+      "bar": "DC 13 (3SP)"
+    },
+    "dhampir red": {
+      "name": "Dhampir Red",
+      "dc": 13,
+      "effect": "",
+      "bar": "DC 13 (3SP)"
+    },
+    "neon nectar": {
+      "name": "Neon Nectar",
       "dc": 14,
       "effect": "",
       "bar": "DC 14 (4SP)"
     },
-    "dwarven ale": {
-      "name": "Dwarven Ale",
+    "dwarven stout": {
+      "name": "Dwarven Stout",
       "dc": 14,
       "effect": "",
       "bar": "DC 14 (4SP)"
     },
-    "eggnog": {
-      "name": "Eggnog",
+    "dragonfire ale": {
+      "name": "Dragonfire Ale",
       "dc": 14,
       "effect": "",
       "bar": "DC 14 (4SP)"
     },
-    "old fashioned": {
-      "name": "Old Fashioned",
+    "wraith's whisper": {
+      "name": "Wraith's Whisper",
+      "dc": 14,
+      "effect": "",
+      "bar": "DC 14 (4SP)"
+    },
+    "siren's call": {
+      "name": "Siren's Call",
+      "dc": 14,
+      "effect": "",
+      "bar": "DC 14 (4SP)"
+    },
+    "battlefield blend": {
+      "name": "Battlefield Blend",
+      "dc": 14,
+      "effect": "",
+      "bar": "DC 14 (4SP)"
+    },
+    "ghost ship grog": {
+      "name": "Ghost Ship Grog",
       "dc": 15,
       "effect": "",
       "bar": "DC 15 (5SP)"
     },
-    "apple shine": {
-      "name": "Apple Shine",
+    "rumble in the jungle": {
+      "name": "Rumble in the Jungle",
       "dc": 15,
       "effect": "",
       "bar": "DC 15 (5SP)"
     },
-    "house hard cider": {
-      "name": "House Hard Cider",
+    "druid's harvest": {
+      "name": "Druid's Harvest",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "siren's call": {
+      "name": "Siren's Call",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "frostbite martini": {
+      "name": "Frostbite Martini",
+      "dc": 15,
+      "effect": "",
+      "bar": "DC 15 (5SP)"
+    },
+    "arcane infusion": {
+      "name": "Arcane Infusion",
       "dc": 15,
       "effect": "",
       "bar": "DC 15 (5SP)"
@@ -84,32 +150,56 @@
       "effect": "",
       "bar": "DC 15 (5SP)"
     },
-    "flirty devil rum": {
-      "name": "Flirty Devil Rum",
+    "house hard cider": {
+      "name": "House Hard Cider",
       "dc": 15,
       "effect": "",
       "bar": "DC 15 (5SP)"
     },
-    "loveless wyrm lager": {
-      "name": "Loveless Wyrm Lager",
+    "apple shine": {
+      "name": "Apple Shine",
       "dc": 15,
       "effect": "",
       "bar": "DC 15 (5SP)"
     },
-    "orderly hag gin": {
-      "name": "Orderly Hag Gin",
+    "old fashioned": {
+      "name": "Old Fashioned",
       "dc": 15,
       "effect": "",
       "bar": "DC 15 (5SP)"
     },
-    "toasted ogre rum": {
-      "name": "Toasted Ogre Rum",
-      "dc": 15,
+    "bard's bliss": {
+      "name": "Bard's Bliss",
+      "dc": 16,
       "effect": "",
-      "bar": "DC 15 (5SP)"
+      "bar": "DC 16 (3GP)"
     },
-    "house brandy": {
-      "name": "House Brandy",
+    "grove spirit": {
+      "name": "Grove Spirit",
+      "dc": 16,
+      "effect": "",
+      "bar": "DC 16 (3GP)"
+    },
+    "shadow gin sour": {
+      "name": "Shadow Gin Sour",
+      "dc": 16,
+      "effect": "",
+      "bar": "DC 16 (3GP)"
+    },
+    "tropical twist": {
+      "name": "Tropical Twist",
+      "dc": 16,
+      "effect": "",
+      "bar": "DC 16 (3GP)"
+    },
+    "moonlit malbec": {
+      "name": "Moonlit Malbex",
+      "dc": 16,
+      "effect": "",
+      "bar": "DC 16 (3GP)"
+    },
+    "ghostly grenache": {
+      "name": "Ghostly Grenache",
       "dc": 16,
       "effect": "",
       "bar": "DC 16 (3GP)"
@@ -120,58 +210,100 @@
       "effect": "",
       "bar": "DC 16 (3GP)"
     },
-    "sorns remembrance ": {
-      "name": "Sorn's Remembrance",
+    "house brandy": {
+      "name": "House Brandy",
       "dc": 16,
       "effect": "",
       "bar": "DC 16 (3GP)"
     },
-    "wolf and crow chardonnay": {
-      "name": "Wolf and Crow Chardonnay",
-      "dc": 16,
-      "effect": "",
-      "bar": "DC 16 (3GP)"
-    },
-    "chaotic couatl vermouth": {
-      "name": "Chaotic Couatl Vermouth",
-      "dc": 17,
-      "effect": "The drinker becomes hyperactive, extra-talkative, jittery, and feels that they have unlimited energy! Until the drinker is sober, they have disadvantage on attack rolls and dexterity based checks, and for each failed save the drinker gains 5ft of movement speed. when sobering up, the drinker must make a hangover save for each failed save against this drink, in addition to any other hangover saves.",
-      "bar": "DC 17 (6GP)"
-    },
-    "nyssa's nectar": {
-      "name": "Nyssa's Nectar",
-      "dc": 17,
-      "effect": "Clear with pearl/opalesque swirls and feint random tiny glowing pink lights. A delicious concoction made with vodka and a dash of a pixie dust, a honey, and two spells, one of which is Faerie Fire. The other spell is not named but its process easily followed even by the most novice spell caster. Its an ancient spell of warlock / fey origin. This drink tastes amazing. Nice buzz. No hangover. DC 17 CON save to notice effects of the drink, as you enjoy your time in the tavern. Treat as Dazed for the 1st minute. After that minute is over, and your head is not so fuzzy, you enjoy the rest of the night, in the form of the opposite gender including your clothes. Effects wear off 6 hours from the last swallow.\n\n**NOTE: If this effect would cause any dysphoria for the player or character, this effect may be ignored.**",
-      "bar": "DC 17 (6GP)"
-    },
-    "jungle stride": {
-      "name": "Jungle Stride",
+    "draconic tonic": {
+      "name": "Draconic Tonic",
       "dc": 17,
       "effect": "",
       "bar": "DC 17 (6GP)"
     },
-    "mossy harpy vodka": {
-      "name": "Mossy Harpy Vodka",
+    "vortex vodka": {
+      "name": "Vortex Vodka",
+      "dc": 17,
+      "effect": "",
+      "bar": "DC 17 (6GP)"
+    },
+    "elven summer": {
+      "name": "Elven Summer",
+      "dc": 17,
+      "effect": "",
+      "bar": "DC 17 (6GP)"
+    },
+    "frosted fairy": {
+      "name": "Frosted Fairy",
+      "dc": 17,
+      "effect": "",
+      "bar": "DC 17 (6GP)"
+    },
+    "dragon roar": {
+      "name": "Dragon Roar",
+      "dc": 17,
+      "effect": "",
+      "bar": "DC 17 (6GP)"
+    },
+    "phantom brew": {
+      "name": "Phantom Brew",
+      "dc": 17,
+      "effect": "",
+      "bar": "DC 17 (6GP)"
+    },
+    "runic rum punch": {
+      "name": "Runic Rum Punch",
+      "dc": 17,
+      "effect": "",
+      "bar": "DC 18 (8GP)"
+    },
+    "dhampir's veil": {
+      "name": "Dhampir's Veil",
       "dc": 18,
       "effect": "",
       "bar": "DC 18 (8GP)"
     },
-    "whiskey": {
-      "name": "Whiskey",
+    "titan's tonic": {
+      "name": "Titan's Tonic",
       "dc": 18,
       "effect": "",
       "bar": "DC 18 (8GP)"
     },
-    "blade and maul whiskey": {
-      "name": "Blade and Maul Whiskey",
+    "forsaken spirit": {
+      "name": "Forsaken Spirit",
+      "dc": 18,
+      "effect": "",
+      "bar": "DC 18 (8GP)"
+    },
+    "warlord's whiskey": {
+      "name": "Warlord's Whiskey",
+      "dc": 18,
+      "effect": "",
+      "bar": "DC 18 (8GP)"
+    },
+    "house whiskey": {
+      "name": "House Whiskey",
+      "dc": 18,
+      "effect": "",
+      "bar": "DC 18 (8GP)"
+    },
+    "warrior's resolve": {
+      "name": "Warrior's Resolve",
       "dc": 20,
-      "effect": "Fail 3 times with this drink go straight to 6 for intoxication",
+      "effect": "",
       "bar": "DC 20 (10GP)"
     },
-    "fire giant whiskey": {
-      "name": "Fire Giant Whiskey",
+    "gravewalker's grit": {
+      "name": "Gravewalker's Grit",
       "dc": 20,
-      "effect": "Fail 3 times with this drink go straight to 6 for intoxication",
+      "effect": "",
+      "bar": "DC 20 (10GP)"
+    },
+    "banshee's wail": {
+      "name": "Banshee's Wail",
+      "dc": 20,
+      "effect": "",
       "bar": "DC 20 (10GP)"
     },
     "moonshine": {
@@ -180,197 +312,23 @@
       "effect": "",
       "bar": "DC 20 (10GP)"
     },
+    "soulbinder's tonic": {
+      "name": "Soulbinder's Tonic",
+      "dc": 22,
+      "effect": "",
+      "bar": "DC 22 (13GP)"
+    },
+    "wrath of the ancients": {
+      "name": "Wrath of the Ancients",
+      "dc": 22,
+      "effect": "",
+      "bar": "DC 22 (13GP)"
+    },
     "aged moonshine": {
       "name": "Aged Moonshine",
       "dc": 22,
       "effect": "",
       "bar": "DC 22 (13GP)"
-    },
-    "silver scimitar porter": {
-      "name": "Silver Scimitar Porter",
-      "dc": 22,
-      "effect": "",
-      "bar": "DC 22 (13GP)"
-    },
-    "butterscotch hot cocoa": {
-      "name": "Butterscotch Hot Cocoa",
-      "dc": 14,
-      "effect": "",
-      "bar": "DC 14 (4SP)"
-    },
-    "ale": {
-      "name": "Ale",
-      "dc": 13,
-      "effect": "",
-      "bar": "DC 13 (2SP)"
-    },
-    "mead": {
-      "name": "Mead",
-      "dc": 13,
-      "effect": "",
-      "bar": "DC 13 (2SP)"
-    },
-    "mulled wine": {
-      "name": "Mulled Wine",
-      "dc": 13,
-      "effect": "",
-      "bar": "DC 13 (2SP)"
-    },
-    "wine": {
-      "name": "Wine",
-      "dc": 14,
-      "effect": "",
-      "bar": "DC 14 (4SP)"
-    },
-    "the firebomb": {
-      "name": "The Firebomb",
-      "dc": 16,
-      "effect": "A spiced shot, lit on fire, and then dropped in a pint of ale. It feels like fire in your mouth but gives you a nice warm sensation afterwards.",
-      "bar": "DC 16 (3GP)"
-    },
-    "the stormbreaker": {
-      "name": "The Stormbreaker",
-      "dc": 15,
-      "effect": "The favorite of the Mixologist's homemade brews. A chilled pint of this drink will be sure to hit the spot after a long day in the lab.",
-      "bar": "DC 15 (5SP)"
-    },
-    "butterbrew": {
-      "name": "Butterbrew",
-      "dc": 15,
-      "effect": "One of the Mixologist's homemade brews. It's beer that tastes like butter, it's cheap for a reason, but it'll get the job done.",
-      "bar": "DC 15 (5SP)"
-    },
-    "dragon's breath": {
-      "name": "Dragon's Breath",
-      "dc": 18,
-      "effect": "It's a Flamed Dark Smoke Bourbon with a shot of Dragonblood Wine with sprinkled cinnamon over it and is always served hot. The motto is \\\"What it's like to breathe fire.\\\"",
-      "bar": "DC 18 (8GP)"
-    },
-    "gruul shine": {
-      "name": "Gruul Shine",
-      "dc": 20,
-      "effect": "A brew made by the giants of the waste. Rumor has it, it's just Izzet fuel. Tastes like fuel.",
-      "bar": "DC 20 (10GP)"
-    },
-    "twisted tea": {
-      "name": "Twisted Tea",
-      "dc": 14,
-      "effect": "Tea Mixed with copious amounts of alcohol.  While it isn't the strongest drink around, it will get you drunk all the same.",
-      "bar": "DC 14 (4SP)"
-    },
-    "lawgivers kiss": {
-      "name": "Lawgiver's Kiss",
-      "dc": 15,
-      "effect": "A sense of ease and peace comes over the drinker for a small amount of time before the world returns to normal, this drink is locked to 3 drinks per week.",
-      "bar": "DC 15 (5SP)"
-    },
-    "autumn embers": {
-      "name": "Autumn Embers",
-      "dc": 14,
-      "effect": "It has a slice of orange muddled with a splash of simple syrup and thyme in a shaker. Then 2 ozs of bourbon are poured in. It's given a quick stir before being strained into a low ball glass with a large cube of ice. Garnished with a sprig of thyme with one end dipped into a candle's flame. Let it burn slowly for a moment before blowing it out. The spring sits on the rim of the glass with a steady stream of smoke.",
-      "bar": "DC 14 (4SP)"
-    },
-    "thundershot": {
-      "name": "Thundershot",
-      "dc": 15,
-      "effect": "A shot of alcohol that feels like lighting as you drink it. Tasty, hints of ozone, hits like a punch the the gut. Family Recipe.",
-      "bar": "DC 15 (5SP)"
-    },
-    "cinnabomb": {
-      "name": "Cinnabomb",
-      "dc": 16,
-      "effect": "This is your basic whiskey, with a kick. It burns all the way down and possibly even on the way out. Made with cinnamon sticks, brown sugar, and red pepper flakes, it's sure to leave an impression.",
-      "bar": "DC 16 (3GP)"
-    },
-    "bloodier mary": {
-      "name": "Bloodier Mary",
-      "dc": 16,
-      "effect": "With Dhampir being a bit more present at night, we came up with the Bloodier Mary. It is very similar to a normal Bloody Mary, except we have willing volunteers eat tomatoes for a week and donate their blood. During nights, these drinks are highly popular and Dhampirs say it still takes like a normal Bloody Mary.",
-      "bar": "DC 16 (3GP)"
-    },
-    "dragon dark brew": {
-      "name": "Dragon Dark Brew",
-      "dc": 15,
-      "effect": "This drink is very simple. A dark brewed beer that is lit on fire before serving. We are not at fault for any burns the buyer acquires.",
-      "bar": "DC 15 (5SP)"
-    },
-    "goblin gargle": {
-      "name": "Goblin Gargle",
-      "dc": 18,
-      "effect": "Issues arise when you sell a wide variety of drinks, what to do with the small drops left? Well we now have a drink that is all alcoholic drinks put together. We cannot promise you'll walk out of here.",
-      "bar": "DC 18 (8GP)"
-    },
-    "fire and brimstone": {
-      "name": "Fire and Brimstone",
-      "dc": 17,
-      "effect": "Some folks at our establishment asked for something that hurt as much as it could, we debated razor blade booze but decided living patrons pay more. Fire and Brimstone is a Cinnamon Whiskey with 3 shots of Vodka added to it, and for a boost we added a sliced up special pepper given to us from Simic, this pepper is many times hotter than a natural pepper.",
-      "bar": "DC 17 (6GP)"
-    },
-    "devilsight dark brew": {
-      "name": "Devilsight Dark Brew",
-      "dc": 12,
-      "effect": "we know that some people have a sweetooth, and to them we give you this pleasant experience (just alittle mental scarring) this drink tastes slightly of chocolate. In the drink is a candied eye from a devil, if you can handle the thing staring at you then this is the drink to have!",
-      "bar": "DC 12 (2SP)"
-    },
-    "blood orange allure": {
-      "name": "Blood Orange Allure",
-      "dc": 15,
-      "effect": "",
-      "bar": "DC 15 (5SP)"
-    },
-    "lavender blueberry mojito": {
-      "name": "Lavander Blueberry Mojito",
-      "dc": 14,
-      "effect": "",
-      "bar": "DC 14 (4SP)"
-    },
-    "druidic mandrake wine": {
-      "name": "Druidic Mandrake Wine",
-      "dc": 16,
-      "effect": "The drinker enters a pleasant dreamlike but slightly delirious state until sober. Failing additional saves against this drink causes **{{roll('1d10')}}** poison damage, and the drinker gains the Poisoned condition until they become sober.",
-      "bar": "DC 16 (3GP)"
-    },
-    "tiki twist": {
-      "name": "Tiki Twist",
-      "dc": 15,
-      "effect": "",
-      "bar": "DC 15 (5SP)"
-    },
-    "angel dew": {
-      "name": "Angel Dew",
-      "dc": 14,
-      "effect": "A very sweet *rosé*.",
-      "bar": "DC 14 (4SP)"
-    },
-    "cobbled street 84 vintage whiskey": {
-      "name": "Cobbled Street 84 Vintage Whiskey",
-      "dc": 18,
-      "effect": "Strong whiskey spirit.",
-      "bar": "DC 18 (8GP)"
-    },
-    "golgari glas":{
-      "name": "Golgari Glas",
-      "dc": 13,
-      "effect": "Brewed with psychedelic mushrooms, Golgari Glas is a whiskey that loosens a persons grip with reality instead of getting them drunk as traditional spirits do. The mix of mushroom, khorasant wheat and yeast accentuate the earthy flavour that combines with the sweetness of the raspberries and inherent smokiness, makes any Golgari think the damp undercity. It can be served with or without ice, and pairs well with ginger ale and citruses. Created by Yrilien Deathroar.",
-      "bar": "DC 13 (2SP)"
-    },
-    "redcap whiskey": {
-      "name": "Redcap Whiskey",
-      "dc": 18,
-      "effect": "One of the strongest drinks offered at the Respite, this whiskey, made in house from base fungi, Redcap mushrooms and spices brought in, provides quite a burn and can cause minor hallucinations after only one shot in those of weak constitution.",
-      "bar": "DC 18 (8GP)"
-    },
-    "skyjek shocker": {
-      "name": "Skyjek Shocker",
-      "dc": 13,
-      "effect": "A mixture of gin, vodka, and lemon bitters served over ice with a candied lemon peel goes great on a hot summer day.",
-      "bar": "DC 13 (2SP)"
-    },
-    "berserker blast": {
-      "name": "Berserker Blast",
-      "dc": 18,
-      "effect": "Habañero whiskey on the rocks. Great for celebration of accomplishments!",
-      "bar": "DC 18 (8GP)"
     }
 },
   "effects": [
