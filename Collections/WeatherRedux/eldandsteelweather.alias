@@ -25,7 +25,9 @@ wd=roll("1d8")
 dir=get_gvar(gvar[1]).split(n)
 c=get_gvar(gvar[2]).split(n)
 </drac2>
--title "{{"Today's Weather: "+x2+", "+("Winter" if s==0 else "Spring" if s==1 else "Summer" if s==2 else "Fall") if v else ""}}"
+-title "{{"Today's Weather - "+x2+" ("+("Winter)" if s==0 else "Spring)" if s==1 else "Summer)" if s==2 else "Fall)") if v else ""}}"
+-thumb "https://i.imgur.com/f9emTyg.jpeg"
+-desc "{{"Hello! I'm Gale Frost, and here's today's weather for "+x2+"!"}}"
 {{"-f \"Weather|"+([c[aoweather] for aoweather in range(len(c)) if c[aoweather][2:].lower().startswith(args.last('weather').lower())][0] if args.get('weather') else c[0] if 21<r<27 and tl<33 else c[1] if r>26 and tl<33 else c[2] if r<16 else c[3] if r<17 else c[4] if r<19 else c[5] if r<20 else c[6] if r<21 else c[7] if r<23 else c[8] if r<28 else c[9])+"\"" if v else ""}}
 {{dir.sort()}}
 {{"-f \"Wind|💨 "+str(w)+" mph ("+str(round(0.447*w))+" m/s), "+([dir[AOD] for AOD in range(len(dir)) if dir[AOD].lower()[4:].startswith(args.last("direction").lower())][0] if args.get("direction") else dir[wd-1] if w!=0 else "Still")+"\"" if v else ""}}
