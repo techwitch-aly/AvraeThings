@@ -4,6 +4,7 @@ args = argparse(&ARGS&)
 ch = character()
 harvestables = load_json(get_gvar("97458d50-2bde-4751-9af1-952208b92f2e"))
 extraFields = ""
+minDC = 12
 
 # Determine advantage from args
 adv = True if "adv" in args else None
@@ -13,6 +14,11 @@ bonus = args.join("b", "+")
 
 # Check for guidance
 guidance = "+1d4[guidance]" if args.last("guidance") else ""
+
+# Check if there is a pending vein found
+charMiningData = ch.get_cvar("crafting_plus_mining")
+if charMiningData:
+    return f"""-desc "**Warning!** {name} has already found something to mine and has not yet mined it!" """
 
 # We need to find an ore vein or a gem vein to harvest
 # Roll a survival check
@@ -27,17 +33,21 @@ if guidance != "":
 
 findItRoll = vroll(rollString)
 
-if findItRoll.total < 12:
-    return f"""-desc "**Meta:**\nDC 12 Survival Check\n\nSurvival: {findItRoll}" -f "Unfortunately you didn't find anything on this trek into the mines." {extraFields} """
+if findItRoll.total < minDC:
+    return f"""-desc "**Meta:**\nDC {minDC} Survival Check\n\nSurvival: {findItRoll}" -f "Unfortunately you didn't find anything on this trek into the mines." {extraFields} """
 else:
     options = "```"
-    # Roll + 1 because range() is not inclusive of the end, build the list of options
-    for i in range(12, findItRoll.total+1):
+    # Roll total + 1 because range() is not inclusive of the end
+    # build the list of options
+    for i in range(minDC, findItRoll.total+1):
         n = "dc"+str(i)
         if n in harvestables:
             for j in harvestables[n]:
                 options += f"""{harvestables[n][j]["name"]}\n"""
     options += "```"
+
+    # TODO - Properly store the info we need in the cvar
+    ch.set_cvar("crafting_plus_mining", "found")
     return f"""-desc "**Meta:**\nDC 12 Survival Check\n\nSurvival: {findItRoll}" -f "You found things! Choose one of the following to try to mine:\n{options}\nUse `!mining harvest` to gather your resources.\nExample: `!mining harvest iron`" {extraFields} """
 </drac2>
 -title "{{name}} goes mining!"

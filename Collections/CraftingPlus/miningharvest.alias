@@ -8,13 +8,13 @@ harvestables = load_json(get_gvar("97458d50-2bde-4751-9af1-952208b92f2e"))
 extraFields = ""
 
 # Determine advantage from args
-adv = True if "adv" in args else None
+adv = True if "adv" in a else None
 
 # Collect manual roll bonuses
-bonus = args.join("b", "+")
+bonus = a.join("b", "+")
 
 # Check for guidance
-guidance = "+1d4[guidance]" if args.last("guidance") else ""
+guidance = "+1d4[guidance]" if a.last("guidance") else ""
 
 # Make sure we have something to harvest
 if not args[0]:
@@ -23,6 +23,9 @@ if not args[0]:
 # Make sure it's something we can harvest
 if not args[0] in harvestables["dcLookup"]:
     return f"""-desc "Couldn't find `{args[0]}` as something to harvest, double check your spelling and the list of found ore or gems!" """
+
+# Make sure it's something the user actually found
+
 
 rollString = ch.skills.athletics.d20()
 
@@ -40,6 +43,7 @@ if harvestItRoll.total < dc:
     return f"""-desc "**Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}" -f "Unfortunately you couldn't extract anything on this trek into the mines." {extraFields} """
 else:
     # We found something AND we could extract! How much did we get?
+    ch.delete_cvar("crafting_plus_mining")
     amount = vroll("1d5")
     return f"""-desc "**Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}\n\n **Meta:**\n{amount}\n Found {amount.total} {target}!" {extraFields} """
 </drac2>
