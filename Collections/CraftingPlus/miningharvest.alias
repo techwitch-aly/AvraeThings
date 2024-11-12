@@ -27,7 +27,7 @@ if not args[0] in harvestables["dcLookup"]:
 # Make sure it's something the user actually found
 
 
-rollString = ch.skills.athletics.d20()
+rollString = ch.skills.athletics.d20(adv)
 
 if bonus:
     rollString += f"+{bonus}"
