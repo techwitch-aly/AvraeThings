@@ -60,6 +60,6 @@ else:
 
   eff = nn.join(g.effects[0:ch.get_cc(cc)])  # display all our effects of intoxications
 
-  return f""" -title "{name} drinks{'' if not drinkType else (' an' if g.drinks[drinkType[0]].name[0].lower() in "aeiou" else ' a')} {f'''{g.drinks[drinkType[0]]['name']}''' if drinkType else 'an alcoholic beverage'}!" -f "Meta|DC: {dc+n}CON Save" {' '.join(out)} {f''' -f "Effect|{effect}"''' if effect and total else ''} {f'''-f "Effects|{eff}"''' if eff else ""} {f'''-f "Shenanigans|{g.drunken[roll('1d100')]}"''' if (prevCC<6 and ch.get_cc(cc)>=6) and get('total', 0) else ""} -f "{cc} {f'({total:+})' if total else ''}|{ch.cc_str(cc)}" """
+  return f""" -title "{name} drinks{'' if not drinkType else (' an' if g.drinks[drinkType[0]].name[0].lower() in "aeiou" else ' a')} {f'''{g.drinks[drinkType[0]]['name']}''' if drinkType else 'an alcoholic beverage'}!" -thumb "{ch.image}" -f "Meta|DC: {dc+n}CON Save" {' '.join(out)} {f''' -f "Effect|{effect}"''' if effect and total else ''} {f'''-f "Effects|{eff}"''' if eff else ""} {f'''-f "Shenanigans|{g.drunken[roll('1d100')]}"''' if (prevCC<6 and ch.get_cc(cc)>=6) and get('total', 0) else ""} -f "{cc} {f'({total:+})' if total else ''}|{ch.cc_str(cc)}" """
 
 </drac2>
