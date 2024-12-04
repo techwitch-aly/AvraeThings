@@ -371,6 +371,12 @@
       "dc": 18,
       "effect": "Habañero whiskey on the rocks. Great for celebration of accomplishments!",
       "bar": "DC 18 (8GP)"
+    },
+    "lilith's bane": {
+      "name": "Lilith's Bane",
+      "dc": 26,
+      "effect": "A combination of several forms of alcohol purely designed to allow one to forget their troubles.",
+      "bar": "DC 26 (15GP)"
     }
 },
   "effects": [
