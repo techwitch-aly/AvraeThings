@@ -1,0 +1,17 @@
+embed
+<drac2>
+ch = character()
+skillOptions = [("Investigation", ch.skills.investigation), ("Survival", ch.skills.survival), ("Sleight of Hand", ch.skills.sleightOfHand)]
+skillToUse = max(skillOptions, key=lambda x: x[1].value)
+
+rollString = skillToUse[1].d20()
+fishingResult = vroll(rollString)
+
+success = fishingResult.total >= 10  # did we succeed?
+result = ['Success!', 'Failure!'][success-1]  # grab our result text
+meta = f"""**Meta**\nDC: 10\n{skillToUse[0]} Check\n\n**Check**\n{fishingResult}; {result}"""
+
+</drac2>
+-title "{{name}} goes magnet fishing!"
+-desc "{{meta}}"
+-thumb "{{ch.image}}"
