@@ -4,16 +4,14 @@ args = &ARGS&
 roster = load_json(get_gvar("b9ecd861-c89c-4393-bb15-183d22f7ff3a"))
 workPlaces = ([a for a in roster if args[0].lower() == a] if args else []) or [a for a in roster if args[0].lower() in a] if args else []
 
-if len(workPlaces) < 1:
-    out = ""
-    for workPlace in roster:
-        roster[workPlace].employees.sort()
-        out += f"""**{roster[workPlace].name}**\n{", ".join(roster[workPlace].employees)}\n\n"""
-    return f"""-title "Coworkers for Everywhere!" -desc "{out}" -footer "!coworkers | Listing everyone!" """
+if not args:
+    return f"""-title "Coworkers Search!" -desc "Please provide a search query!\n\nUsage: `!coworkers <search term>`\nExample:`!coworkers inn`" -footer "!coworkers" """
 else:
     out = ""
+    if len(workPlaces) == 0:
+        return f"""-title "Coworkers Search!" -desc "Couldn't find any workplace matching that search term!" -footer "Search was: !coworkers {args[0].lower()}" """
     for place in workPlaces:
         roster[place].employees.sort()
         out += f"""**{roster[place].name}**\n{", ".join(roster[place].employees)}\n\n"""
-    return f"""-title "Your Coworkers!" -desc "{out}" -footer "Search was: !coworkers {args[0].lower()}" """
+    return f"""-title "Coworkers Search!" -desc "{out}" -footer "Search was: !coworkers {args[0].lower()}" """
 </drac2>
