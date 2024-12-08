@@ -16,5 +16,50 @@
         "dc": 11,
         "rarity": "Common",
         "value": 5
+    },
+    "javelin": {
+        "name": "Javelin",
+        "materials": ["ingot", "short haft"],
+        "quantities": [1, 1],
+        "checks": 1,
+        "dc": 11,
+        "rarity": "Common",
+        "value": 3
+    },
+    "light hammer": {
+        "name": "Light Hammer",
+        "materials": ["ingot", "short haft"],
+        "quantities": [1, 1],
+        "checks": 1,
+        "dc": 10,
+        "rarity": "Common",
+        "value": 3
+    },
+    "mace": {
+        "name": "Mace",
+        "materials": ["ingot", "short haft"],
+        "quantities": [2, 1],
+        "checks": 1,
+        "dc": 12,
+        "rarity": "Common",
+        "value": 5
+    },
+    "sickle": {
+        "name": "Sickle",
+        "materials": ["ingot", "short haft"],
+        "quantities": [1, 1],
+        "checks": 1,
+        "dc": 12,
+        "rarity": "Common",
+        "value": 3
+    },
+    "spear": {
+        "name": "Spear",
+        "materials": ["ingot", "short haft"],
+        "quantities": [1, 1],
+        "checks": 1,
+        "dc": 10,
+        "rarity": "Common",
+        "value": 3
     }
 }
