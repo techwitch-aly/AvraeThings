@@ -1,0 +1,62 @@
+embed
+<drac2>
+# Basics
+a = &ARGS&
+args = argparse(&ARGS&)
+ch = character()
+craftingOptions = load_json(get_gvar("97b494ed-7729-4a6f-ae95-8bcc31f65062"))
+
+# We need some kind of proficiency to craft
+toolProVar = ch.get_cvar("toolProficiencies")
+if not toolProVar:
+    return f"""-title "{ch.name} attempts to smith! But has no Tool Proficiencies Learned." -desc "Crafting requires tool proficiencies, please see `!tool help` for help adding proficiencies." """
+
+toolProficiencies = load_yaml(toolProVar)
+
+# Validate that we have Smith's Tools proficiency or expertise
+if "smithstools" not in toolProficiencies:
+    return f"""-title "{ch.name} attempts to smith! But doesn't have Smith's Tool Proficiency." -desc "Blacksmithing requires Smith's Tool proficiency, please see `!tool help` for help adding proficiencies." """
+
+# Validate that what they want to craft is something we allow
+itemSearch = ([k for k in craftingOptions if a[0].lower() == k] if a else []) or [k for k in craftingOptions if a[0].lower() in k] if a else []
+
+if len(itemSearch) == 0:
+    return f"""-title "Blacksmithing - Couldn't Find Item" -desc "Search was: `{a[0]}`" """
+
+if len(itemSearch) > 1:
+    return f"""-title "The blacksmith is confused." -desc "There are many items that match that description: `{'`, `'.join(itemSearch)}`. Could you be more specific?" """
+
+# We found a single thing to craft, let's make it!
+itemToCraft = craftingOptions[itemSearch[0]]
+
+# Determine advantage from args
+adv = True if "adv" in args else None
+
+# Collect manual roll bonuses
+bonus = args.join("b", "+")
+
+# Check for guidance
+guidance = "+1d4[guidance]" if args.last("guidance") else ""
+
+# Setup the roll
+rollString = ch.skills.strength.d20(adv)
+
+# Add proficiency or expertise
+rollString += f"+{ch.stats.prof_bonus}" if toolProficiencies.smithstools == 1 else f"+{ch.stats.prof_bonus * 2}"
+
+# Add any manual bonuses
+if bonus:
+    rollString += f"+{bonus}"
+
+# Add guidance if supplied
+if guidance != "":
+    rollString += guidance
+
+craftItRoll = vroll(rollString)
+
+# Did we pass the DC to craft?
+if craftItRoll.total >= itemToCraft.dc:
+    return f"""-title "{ch.name} successfully crafts {itemToCraft.name}!" -desc "**Meta**:\nDC {itemToCraft.dc} Smith's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafted**: {itemToCraft.name}\n**Rarity**: {itemToCraft.rarity}\n**Value**: {itemToCraft.value}gp" """
+else:
+    return f"""-title "{ch.name} failed to craft {itemToCraft.name}!" -desc "**Meta**:\nDC {itemToCraft.dc} Smith's Tools Check\n**Check**:\n{craftItRoll}; Failure!" """
+</drac2>

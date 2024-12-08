@@ -1,0 +1,20 @@
+{
+    "daggers": {
+        "name": "2x Daggers",
+        "materials": ["ingot"],
+        "quantities": [1],
+        "checks": 1,
+        "dc": 12,
+        "rarity": "Common",
+        "value": 2
+    },
+    "handaxe": {
+        "name": "Handaxe",
+        "materials": ["ingot", "short haft"],
+        "quantities": [2, 1],
+        "checks": 1,
+        "dc": 11,
+        "rarity": "Common",
+        "value": 5
+    }
+}
