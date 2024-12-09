@@ -1,0 +1,56 @@
+embed
+<drac2>
+a = &ARGS&
+args = argparse(&ARGS&)
+blacksmithCvar = "craftingplus_blacksmith"
+ch = character()
+
+pendingCraft = ch.get_cvar(blacksmithCvar)
+if not pendingCraft:
+    return f"""-title "{ch.name} has no in-progress blacksmithing projects." -desc "Since nothing is in progress, you have nothing to cancel! Try starting a new project with `!blacksmithing`!" """
+
+toolProVar = ch.get_cvar("toolProficiencies")
+
+# We need some kind of proficiency to craft
+toolProVar = ch.get_cvar("toolProficiencies")
+if not toolProVar:
+    return f"""-title "{ch.name} attempts to smith! But has no Tool Proficiencies Learned." -desc "Crafting requires tool proficiencies, please see `!tool help` for help adding proficiencies." """
+
+toolProficiencies = load_yaml(toolProVar)
+craft = load_json(pendingCraft)
+
+# Validate that we have Smith's Tools proficiency or expertise
+if "smithstools" not in toolProficiencies:
+    return f"""-title "{ch.name} attempts to smith! But doesn't have Smith's Tool Proficiency." -desc "Blacksmithing requires Smith's Tool proficiency, please see `!tool help` for help adding proficiencies." """
+
+# Determine advantage from args
+adv = True if "adv" in args else None
+
+# Collect manual roll bonuses
+bonus = args.join("b", "+")
+
+# Check for guidance
+guidance = "+1d4[guidance]" if args.last("guidance") else ""
+
+# Setup the roll
+rollString = ch.skills.strength.d20(adv)
+
+# Add proficiency or expertise
+rollString += f"+{ch.stats.prof_bonus}" if toolProficiencies.smithstools == 1 else f"+{ch.stats.prof_bonus * 2}"
+
+# Add any manual bonuses
+if bonus:
+    rollString += f"+{bonus}"
+
+# Add guidance if supplied
+if guidance != "":
+    rollString += guidance
+
+craftItRoll = vroll(rollString)
+
+if craftItRoll.total >= craft.dc:
+    return f"""-title "" """
+else:
+    return f"""-title "" """
+</drac2>
+-footer "CraftingPlus | !blacksmithing continue"

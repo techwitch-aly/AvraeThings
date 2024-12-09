@@ -1,6 +1,7 @@
 embed
 <drac2>
 # Basics
+blacksmithCvar = "craftingplus_blacksmith"
 a = &ARGS&
 args = argparse(&ARGS&)
 ch = character()
@@ -29,6 +30,13 @@ if len(itemSearch) > 1:
 # We found a single thing to craft, let's make it!
 itemToCraft = craftingOptions[itemSearch[0]]
 
+# Before we go further, check if there is a DIFFERENT pending item being crafted
+pending = ch.get_cvar(blacksmithCvar)
+if pending:
+    craft = load_json(pending)
+    if craft.name != itemToCraft.name:
+        return f"""-title "{ch.name} has an in progress smithing project!" -desc "Your in-progress project is {craft.name}. You have {itemToCraft.checks - craft.checksDone} sessions remaining to finish!" -f "To continue your project use: `!blacksmithing continue`.\nOr to cancel that project use: `!blacksmithing cancel`." """
+
 # Determine advantage from args
 adv = True if "adv" in args else None
 
@@ -56,7 +64,11 @@ craftItRoll = vroll(rollString)
 
 # Did we pass the DC to craft?
 if craftItRoll.total >= itemToCraft.dc:
+    if itemToCraft.checks > 1:
+        # TODO If the item takes multiple checks to craft, we need to see if we've made progress and update/track progress appropriately
+        checksToGo = 1
     return f"""-title "{ch.name} successfully crafts {itemToCraft.name}!" -desc "**Meta**:\nDC {itemToCraft.dc} Smith's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafted**: {itemToCraft.name}\n**Rarity**: {itemToCraft.rarity}\n**Value**: {itemToCraft.value}gp" """
 else:
     return f"""-title "{ch.name} failed to craft {itemToCraft.name}!" -desc "**Meta**:\nDC {itemToCraft.dc} Smith's Tools Check\n**Check**:\n{craftItRoll}; Failure!" """
 </drac2>
+-footer "CraftingPlus | !blacksmithing"
