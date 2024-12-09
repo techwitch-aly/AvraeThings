@@ -55,11 +55,83 @@
     },
     "spear": {
         "name": "Spear",
-        "materials": ["ingot", "short haft"],
+        "materials": ["ingot", "long haft"],
         "quantities": [1, 1],
         "checks": 1,
         "dc": 10,
         "rarity": "Common",
         "value": 3
+    },
+    "battleaxe": {
+        "name": "Battleaxe",
+        "materials": ["ingot", "short haft"],
+        "quantities": [4, 1],
+        "checks": 2,
+        "dc": 13,
+        "rarity": "Common",
+        "value": 10
+    },
+    "flail": {
+        "name": "Flail",
+        "materials": ["ingot", "short haft", "short chain"],
+        "quantities": [3, 1, 1],
+        "checks": 2,
+        "dc": 13,
+        "rarity": "Common",
+        "value": 10
+    },
+    "glaive": {
+        "name": "Glaive",
+        "materials": ["ingot", "long haft"],
+        "quantities": [8, 1],
+        "checks": 2,
+        "dc": 14,
+        "rarity": "Common",
+        "value": 20
+    },
+    "greataxe": {
+        "name": "Greataxe",
+        "materials": ["ingot", "short haft"],
+        "quantities": [9, 1],
+        "checks": 2,
+        "dc": 13,
+        "rarity": "Common",
+        "value": 25
+    },
+    "greatsword": {
+        "name": "Greatsword",
+        "materials": ["ingot"],
+        "quantities": [10],
+        "checks": 2,
+        "dc": 15,
+        "rarity": "Common",
+        "value": 35
+    },
+    "halberd": {
+        "name": "Halbern",
+        "materials": ["ingot", "long haft"],
+        "quantities": [8, 1],
+        "checks": 2,
+        "dc": 14,
+        "rarity": "Common",
+        "value": 20
+    },
+    "longsword": {
+        "name": "Longsword",
+        "materials": ["ingot"],
+        "quantities": [4],
+        "checks": 2,
+        "dc": 14,
+        "rarity": "Common",
+        "value": 15
+    },
+    "maul": {
+        "name": "Maul",
+        "materials": ["ingot", "short haft"],
+        "quantities": [9, 1],
+        "checks": 2,
+        "dc": 14,
+        "rarity": "Common",
+        "value": 25
     }
 }
