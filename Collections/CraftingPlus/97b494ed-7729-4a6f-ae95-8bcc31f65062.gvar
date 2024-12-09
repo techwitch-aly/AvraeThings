@@ -133,5 +133,86 @@
         "dc": 14,
         "rarity": "Common",
         "value": 25
+    },
+    "morning star": {
+        "name": "Morning Star",
+        "materials": ["ingot", "short haft"],
+        "quantities": [4, 1],
+        "checks": 2,
+        "dc": 14,
+        "rarity": "Common",
+        "value": 15
+    },
+    "pike": {
+        "name": "Pike",
+        "materials": ["ingot", "long haft"],
+        "quantities": [6, 1],
+        "checks": 2,
+        "dc": 14,
+        "rarity": "Common",
+        "value": 15
+    },
+    "rapier": {
+        "name": "Rapier",
+        "materials": ["ingot"],
+        "quantities": [2],
+        "checks": 2,
+        "dc": 15,
+        "rarity": "Common",
+        "value": 15
+    },
+    "scimitar": {
+        "name": "Rapier",
+        "materials": ["ingot"],
+        "quantities": [2],
+        "checks": 2,
+        "dc": 15,
+        "rarity": "Common",
+        "value": 15
+    },
+    "shortsword": {
+        "name": "Shortsword",
+        "materials": ["ingot"],
+        "quantities": [2],
+        "checks": 2,
+        "dc": 15,
+        "rarity": "Common",
+        "value": 15
+    },
+    "war pick": {
+        "name": "War Pick",
+        "materials": ["ingot", "short half"],
+        "quantities": [4, 1],
+        "checks": 2,
+        "dc": 13,
+        "rarity": "Common",
+        "value": 10
+    },
+    "war hammer": {
+        "name": "Rapier",
+        "materials": ["ingot", "short half"],
+        "quantities": [4, 1],
+        "checks": 2,
+        "dc": 13,
+        "rarity": "Common",
+        "value": 10
+    },
+    "blacksmithing tools": {
+        "name": "Blacksmithing Tools",
+        "materials": ["ingot", "part"],
+        "quantities": [4, 4],
+        "checks": 4,
+        "dc": 12,
+        "rarity": "Common",
+        "value": 20
+    },
+    "carpenters tools": {
+        "name": "Carpenter's Tools",
+        "materials": ["ingot", "part"],
+        "quantities": [2, 1],
+        "checks": 3,
+        "dc": 12,
+        "rarity": "Common",
+        "value": 8
     }
 }
