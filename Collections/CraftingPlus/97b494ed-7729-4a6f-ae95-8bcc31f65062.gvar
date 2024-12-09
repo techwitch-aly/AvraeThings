@@ -206,7 +206,7 @@
         "rarity": "Common",
         "value": 20
     },
-    "carpenters tools": {
+    "carpenter's tools": {
         "name": "Carpenter's Tools",
         "materials": ["ingot", "part"],
         "quantities": [2, 1],
@@ -214,5 +214,104 @@
         "dc": 12,
         "rarity": "Common",
         "value": 8
+    },
+    "chain shirt": {
+        "name": "Chain Shirt",
+        "materials": ["ingot"],
+        "quantities": [5],
+        "checks": 6,
+        "dc": 13,
+        "rarity": "Common",
+        "value": 50
+    },
+    "scale mail": {
+        "name": "Scale Mail",
+        "materials": ["ingot", "armor padding"],
+        "quantities": [6, 1],
+        "checks": 6,
+        "dc": 12,
+        "rarity": "Common",
+        "value": 50
+    },
+    "breastplate": {
+        "name": "Breastplate",
+        "materials": ["ingot"],
+        "quantities": [8],
+        "checks": 8,
+        "dc": 14,
+        "rarity": "Common",
+        "value": 400
+    },
+    "half plate": {
+        "name": "Half Plate",
+        "materials": ["ingot", "armor padding"],
+        "quantities": [12, 1],
+        "checks": 12,
+        "dc": 15,
+        "rarity": "Common",
+        "value": 750
+    },
+    "ring mail": {
+        "name": "Ring Mail",
+        "materials": ["ingot", "armor padding"],
+        "quantities": [6, 1],
+        "checks": 6,
+        "dc": 13,
+        "rarity": "Common",
+        "value": 30
+    },
+    "chain mail": {
+        "name": "Chain Mail",
+        "materials": ["ingot", "armor padding"],
+        "quantities": [7, 1],
+        "checks": 6,
+        "dc": 13,
+        "rarity": "Common",
+        "value": 75
+    },
+    "splint": {
+        "name": "Splint",
+        "materials": ["ingot", "armor padding"],
+        "quantities": [10, 1],
+        "checks": 8,
+        "dc": 14,
+        "rarity": "Common",
+        "value": 200
+    },
+    "plate": {
+        "name": "Plate",
+        "materials": ["ingot", "armor padding"],
+        "quantities": [20, 1]
+        "checks": 16,
+        "dc": 15,
+        "rarity": "Common",
+        "value": 1500
+    },
+    "shield": {
+        "name": "Shield",
+        "materials": ["ingot"],
+        "quantities": [5],
+        "checks": 2,
+        "dc": 12,
+        "rarity": "Common",
+        "value": 10
+    },
+    "tower shield": {
+        "name": "Tower Shield",
+        "materials": ["ingot"],
+        "quantities": [10],
+        "checks": 4,
+        "dc": 14,
+        "rarity": "Common",
+        "value": 35
+    },
+    "bracers": {
+        "name": "Bracers",
+        "materials": ["ingot"],
+        "quantities": [2],
+        "checks": 2,
+        "dc": 14,
+        "rarity": "Common",
+        "value": 10
     }
 }
