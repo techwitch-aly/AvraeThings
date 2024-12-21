@@ -312,7 +312,7 @@
     "plate": {
         "name": "Plate",
         "materials": ["ingot", "armor padding"],
-        "quantities": [20, 1]
+        "quantities": [20, 1],
         "checks": 16,
         "dc": 15,
         "rarity": "Common",
