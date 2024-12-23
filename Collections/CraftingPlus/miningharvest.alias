@@ -1,11 +1,13 @@
 embed
 <drac2>
+using(baglib="4119d62e-6a98-4153-bea9-0a99bb36da2c")
 args = &ARGS&
 a = argparse(&ARGS&)
 action = "tries to harvest"
 ch = character()
 harvestables = load_json(get_gvar("97458d50-2bde-4751-9af1-952208b92f2e"))
 extraFields = ""
+bagMessage = ""
 
 # Determine advantage from args
 adv = True if "adv" in a else None
@@ -27,11 +29,19 @@ if not targetSearch in harvestables["dcLookup"]:
     return f"""-desc "Couldn't find `{targetSearch}` as something to harvest, double check your spelling and the list of found ore or gems!" """
 
 # Make sure it's something the user actually found
-foundMaterials = load_json(ch.get_cvar("crafting_plus_mining"))
-if not targetSearch in foundMaterials:
+foundSavedVar = ch.get_cvar("crafting_plus_mining")
+if not foundSavedVar:
+    return f"""-desc "You didn't find any ore or gems to harvest! Use `!mining` to find something to mine!" """
+
+foundMaterials = load_json(foundSavedVar)
+matchedMaterial = ([a for a in foundMaterials if targetSearch == a]) or [a for a in foundMaterials if targetSearch in a]
+if len(matchedMaterial) == 0:
     options = "\n".join([s.title() for s in foundMaterials])
     return f"""-desc "You didn't find any `{target}` to harvest! Double check the list of found ore or gems!" -f "\n\nYou might have found: ```{options}```\nUse `!mining harvest` to gather your resources.\nExample: `!mining harvest iron`" """
+else:
+    target = matchedMaterial[0].title()
 
+# Setup up the athletics check
 rollString = ch.skills.athletics.d20(adv)
 
 # Add any manual bonuses
@@ -51,12 +61,24 @@ if harvestItRoll.total < dc:
     return f"""-desc "**Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}" -f "Unfortunately you couldn't extract anything on this trek into the mines." {extraFields} """
 else:
     # We found something AND we could extract!
-    # Clean up the cvar
-    ch.delete_cvar("crafting_plus_mining")
     # How much did we get?
     amount = vroll("1d5")
+
+    # See if the user has Bags configured
+    bagsSetup = ch.get_cvar("bags")
+    if bagsSetup:
+        # If they are, keep track of Ore found in the bags
+        bags = baglib.load_bags()
+        baglib.modify_item(bags, target, amount.total, "Mining", True)
+        baglib.save_bags(bags)
+        bagMessage = f"""-f "Bags Updated|{amount.total} {target} added to your bags!" """
+
+    # Update the action text and return the embed
     action = "successfully harvests"
-    return f"""-desc "**Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}\n\n **Meta:**\n{amount}\n Found {amount.total} {target}!" {extraFields} """
+
+    # Clean up the cvar
+    ch.delete_cvar("crafting_plus_mining")
+    return f"""-desc "**Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}\n\n **Meta:**\n{amount}\n Found {amount.total} {target}!" {extraFields} {bagMessage} """
 </drac2>
 -title "{{name}} {{action}} {{target}}!"
 -footer "CraftingPlus | !mining harvest"
