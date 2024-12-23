@@ -9,26 +9,26 @@
   },
   "dc12": {
     "bronze": {
-      "name": "Bronze"
+      "name": "Bronze Ore"
     },
     "copper": {
-        "name": "Copper"
+        "name": "Copper Ore"
     },
     "tin": {
-        "name": "Tin"
+        "name": "Tin Ore"
     }
   },
   "dc15": {
     "iron": {
-      "name": "Iron"
+      "name": "Iron Ore"
     }
   },
   "dc17": {
     "silver": {
-      "name": "Silver"
+      "name": "Silver Ore"
     },
     "gold": {
-      "name": "Gold"
+      "name": "Gold Ore"
     }
   }
 }
