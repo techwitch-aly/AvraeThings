@@ -18,7 +18,9 @@ guidance = "+1d4[guidance]" if args.last("guidance") else ""
 # Check if there is a pending vein found
 charMiningData = ch.get_cvar("crafting_plus_mining")
 if charMiningData:
-    return f"""-desc "**Warning!** {name} has already found something to mine and has not yet mined it!" """
+    foundMaterials = load_json(charMiningData)
+    foundOptions = "\n".join([s.title() for s in foundMaterials])
+    return f"""-desc "**Warning!** {name} has already found something to mine and has not yet mined it!" -f "\n\nYou might have found: ```{foundOptions}```\nUse `!mining harvest` to gather your resources.\nExample: `!mining harvest iron`" """
 
 # We need to find an ore vein or a gem vein to harvest
 # Roll a survival check
