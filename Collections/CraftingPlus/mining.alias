@@ -37,6 +37,7 @@ if findItRoll.total < minDC:
     return f"""-desc "**Meta:**\nDC {minDC} Survival Check\n\nSurvival: {findItRoll}" -f "Unfortunately you didn't find anything on this trek into the mines." {extraFields} """
 else:
     options = "```"
+    foundMaterials = []
     # Roll total + 1 because range() is not inclusive of the end
     # build the list of options
     for i in range(minDC, findItRoll.total+1):
@@ -44,10 +45,11 @@ else:
         if n in harvestables:
             for j in harvestables[n]:
                 options += f"""{harvestables[n][j]["name"]}\n"""
+                foundMaterials.append(harvestables[n][j]["name"].lower())
     options += "```"
 
-    # TODO - Properly store the info we need in the cvar
-    ch.set_cvar("crafting_plus_mining", "found")
+    # Properly store the info we need in the cvar
+    ch.set_cvar("crafting_plus_mining", dump_json(foundMaterials))
     return f"""-desc "**Meta:**\nDC 12 Survival Check\n\nSurvival: {findItRoll}" -f "You found things! Choose one of the following to try to mine:\n{options}\nUse `!mining harvest` to gather your resources.\nExample: `!mining harvest iron`" {extraFields} """
 </drac2>
 -title "{{name}} goes mining!"

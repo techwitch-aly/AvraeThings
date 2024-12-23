@@ -2,7 +2,7 @@ embed
 <drac2>
 args = &ARGS&
 a = argparse(&ARGS&)
-target = args[0].title()
+action = "tries to harvest"
 ch = character()
 harvestables = load_json(get_gvar("97458d50-2bde-4751-9af1-952208b92f2e"))
 extraFields = ""
@@ -18,34 +18,45 @@ guidance = "+1d4[guidance]" if a.last("guidance") else ""
 
 # Make sure we have something to harvest
 if not args[0]:
-    return f"""-desc "Make sure you try to harvest something! Please pass in the ore or gem you want to extract!" -f "Example: `!mining harvest Copper`" """
+    return f"""-desc "Make sure you try to harvest something! Please pass in the ore or gem you want to extract!" -f "Example: `!mining harvest copper`" """
 
+target = args[0].title()
+targetSearch = args[0].lower()
 # Make sure it's something we can harvest
-if not args[0] in harvestables["dcLookup"]:
-    return f"""-desc "Couldn't find `{args[0]}` as something to harvest, double check your spelling and the list of found ore or gems!" """
+if not targetSearch in harvestables["dcLookup"]:
+    return f"""-desc "Couldn't find `{targetSearch}` as something to harvest, double check your spelling and the list of found ore or gems!" """
 
 # Make sure it's something the user actually found
-
+foundMaterials = load_json(ch.get_cvar("crafting_plus_mining"))
+if not targetSearch in foundMaterials:
+    options = "\n".join([s.title() for s in foundMaterials])
+    return f"""-desc "You didn't find any `{target}` to harvest! Double check the list of found ore or gems!" -f "\n\nYou might have found: ```{options}```\nUse `!mining harvest` to gather your resources.\nExample: `!mining harvest iron`" """
 
 rollString = ch.skills.athletics.d20(adv)
 
+# Add any manual bonuses
 if bonus:
     rollString += f"+{bonus}"
 
+# Add guidance if it's there
 if guidance != "":
     rollString += guidance
     extraFields += f"""-f "Guidance|Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends." """
 
 harvestItRoll = vroll(rollString)
-dc = harvestables["dcLookup"][args[0]]
+dc = harvestables["dcLookup"][args[0].lower()]
 
 if harvestItRoll.total < dc:
+    action = "fails to harvest"
     return f"""-desc "**Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}" -f "Unfortunately you couldn't extract anything on this trek into the mines." {extraFields} """
 else:
-    # We found something AND we could extract! How much did we get?
+    # We found something AND we could extract!
+    # Clean up the cvar
     ch.delete_cvar("crafting_plus_mining")
+    # How much did we get?
     amount = vroll("1d5")
+    action = "successfully harvests"
     return f"""-desc "**Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}\n\n **Meta:**\n{amount}\n Found {amount.total} {target}!" {extraFields} """
 </drac2>
--title "{{name}} tries to harvest {{target}}!"
+-title "{{name}} {{action}} {{target}}!"
 -footer "CraftingPlus | !mining harvest"
