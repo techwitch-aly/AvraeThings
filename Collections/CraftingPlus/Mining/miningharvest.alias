@@ -78,7 +78,7 @@ else:
 
     # Clean up the cvar
     ch.delete_cvar("crafting_plus_mining")
-    return f"""-desc "**Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}\n\n **Meta:**\n{amount}\n Found {amount.total} {target}!" {extraFields} {bagMessage} """
+    return f"""-desc "**Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}\n\n**Meta:**\n{amount}\n Found {amount.total} {target}!" {extraFields} {bagMessage} """
 </drac2>
 -title "{{name}} {{action}} {{target}}!"
 -footer "CraftingPlus | !mining harvest"
