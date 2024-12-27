@@ -17,17 +17,17 @@ toolProficiencies = load_yaml(toolProVar)
 
 # Validate that we have Smith's Tools proficiency or expertise
 if "smithstools" not in toolProficiencies:
-    return f"""-title "{ch.name} attempts to forge ingots! But doesn't have Smith's Tool Proficiency." -desc "Forging requires Smith's Tool proficiency, please see `!tool help` for help adding proficiencies." """
+    return f"""-desc "{ch.name} attempts to forge ingots! But doesn't have Smith's Tool Proficiency." -f "Forging requires Smith's Tool proficiency, please see `!tool help` for help adding proficiencies." """
 
 # What kind of ingot are we making?
 # Validate that what they want to craft is something we allow
 itemSearch = ([k for k in craftingOptions if a[0].lower() == k] if a else []) or [k for k in craftingOptions if a[0].lower() in k] if a else []
 
 if len(itemSearch) == 0:
-    return f"""-title "Forging - Couldn't Find Item" -desc "Search was: `{a[0]}`" """
+    return f"""-desc "Forging - Couldn't Find Item" -f "Search was: `{a[0]}`" """
 
 if len(itemSearch) > 1:
-    return f"""-title "The blacksmith is confused." -desc "There are many items that match that description: `{'`, `'.join(itemSearch)}`. Could you be more specific?" """
+    return f"""-desc "The blacksmith is confused." -f "There are many items that match that description: `{'`, `'.join(itemSearch)}`. Could you be more specific?" """
 
 # We found a single thing to craft, let's make it!
 itemToCraft = craftingOptions[itemSearch[0]]
@@ -78,11 +78,11 @@ else:
         # We need to remove the materials from the bags
         for material, amount in itemToCraft.materials.items():
             baglib.modify_item(bags, material, -amount, "Mining")
-            bagMessage += f"\n- {amount} {material} removed from bags."
+            bagMessage += f"\n- {amount} {material.title()} removed from bags."
 
         # We need to add the ingot to the bags
         baglib.modify_item(bags, itemToCraft.name, 1, "Ingots", True)
-        bagMessage += f"\n1 {itemToCraft.name} added to bags."
+        bagMessage += f"\n- 1 {itemToCraft.name} added to bags."
 
         # We need to save the bags
         bagMessage = f"""-f "Bags Updated|{bagMessage}" """
