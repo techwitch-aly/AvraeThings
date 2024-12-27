@@ -39,7 +39,7 @@ if hasBags:
     bags = baglib.load_bags()
     for material, _ in itemToCraft.materials.items():
         if baglib.find_bag_with_item(bags, material) is None:
-            return f"""-desc "Missing Materials" -f "You are missing the required materials ({material}) to craft {itemToCraft.name}." """
+            return f"""-desc "Missing Materials" -f "You are missing the required materials ({material.title()}) to craft {itemToCraft.name}." """
 
 # BONUS SETUP
 # Determine advantage from args
