@@ -88,7 +88,7 @@ else:
         bagMessage = f"""-f "Bags Updated|{bagMessage}" """
         baglib.save_bags(bags)
     
-    return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; Success!" -f "**Crafted**: {itemToCraft.name}" {bagMessage} """
+    return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; Success!" -f "**Crafted**: {itemToCraft.name} x1" {bagMessage} """
 
 </drac2>
 -title "{{name}} works the forge!"
