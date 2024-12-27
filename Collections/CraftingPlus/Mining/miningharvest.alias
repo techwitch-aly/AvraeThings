@@ -65,8 +65,8 @@ else:
     amount = vroll("1d5")
 
     # See if the user has Bags configured
-    bagsSetup = ch.get_cvar("bags")
-    if bagsSetup:
+    hasBags = ch.get_cvar("bags")
+    if hasBags:
         # If they are, keep track of Ore found in the bags
         bags = baglib.load_bags()
         baglib.modify_item(bags, target, amount.total, "Mining", True)
