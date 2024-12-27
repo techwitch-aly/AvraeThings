@@ -1,0 +1,44 @@
+{
+    "bronze ingot": {
+        "dc": 12,
+        "materials": {
+            "bronze ore": 1
+        }
+    },
+    "copper ingot": {
+        "dc": 12,
+        "materials": {
+            "copper ore": 1
+        }
+    },
+    "tin ingot": {
+        "dc": 12,
+        "materials": {
+            "tin ore": 1
+        }
+    },
+    "iron ingot": {
+        "dc": 15,
+        "materials": {
+            "iron ore": 1
+        }
+    },
+    "steel ingot": {
+        "dc": 16,
+        "materials": {
+            "iron ore": 2
+        }
+    },
+    "silver ingot": {
+        "dc": 17,
+        "materials": {
+            "silver ore": 1
+        }
+    },
+    "gold ingot": {
+        "dc": 17,
+        "materials": {
+            "gold ore": 1
+        }
+    }
+}
