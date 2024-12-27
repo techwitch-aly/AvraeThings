@@ -1,41 +1,48 @@
 {
     "bronze ingot": {
+        "name": "Bronze Ingot",
         "dc": 12,
         "materials": {
             "bronze ore": 1
         }
     },
     "copper ingot": {
+        "name": "Copper Ingot",
         "dc": 12,
         "materials": {
             "copper ore": 1
         }
     },
     "tin ingot": {
+        "name": "Tin Ingot",
         "dc": 12,
         "materials": {
             "tin ore": 1
         }
     },
     "iron ingot": {
+        "name": "Iron Ingot",
         "dc": 15,
         "materials": {
             "iron ore": 1
         }
     },
     "steel ingot": {
+        "name": "Steel Ingot",
         "dc": 16,
         "materials": {
             "iron ore": 2
         }
     },
     "silver ingot": {
+        "name": "Silver Ingot",
         "dc": 17,
         "materials": {
             "silver ore": 1
         }
     },
     "gold ingot": {
+        "name": "Gold Ingot",
         "dc": 17,
         "materials": {
             "gold ore": 1

@@ -1,5 +1,6 @@
 embed
 <drac2>
+using(baglib="4119d62e-6a98-4153-bea9-0a99bb36da2c")
 # Setup
 a = &ARGS&
 args = argparse(&ARGS&)
@@ -31,15 +32,24 @@ if len(itemSearch) > 1:
 # We found a single thing to craft, let's make it!
 itemToCraft = craftingOptions[itemSearch[0]]
 
+# If the character has bags setup, try to find the raw materials that are required.
+# If bags are setup and no materials are found, abort crafting
+hasBags = ch.get_cvar("bags")
+if hasBags:
+    bags = baglib.load_bags()
+    for material, _ in itemToCraft.materials.items():
+        if baglib.find_bag_with_item(bags, material) is None:
+            return f"""-desc "Missing Materials" -f "You are missing the required materials ({material}) to craft {itemToCraft.name}." """
+
 # BONUS SETUP
 # Determine advantage from args
-adv = True if "adv" in a else None
+adv = True if "adv" in args else None
 
 # Collect manual roll bonuses
-bonus = a.join("b", "+")
+bonus = args.join("b", "+")
 
 # Check for guidance
-guidance = "+1d4[guidance]" if a.last("guidance") else ""
+guidance = "+1d4[guidance]" if args.last("guidance") else ""
 
 # Setup the roll
 rollString = ch.skills.intelligence.d20(adv)
@@ -56,6 +66,29 @@ if guidance != "":
     rollString += guidance
 
 craftItRoll = vroll(rollString)
+
+if craftItRoll.total < itemToCraft.dc:
+    # Failure!
+    return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; Failure!" -f "Unfortunately you couldn't forge the {itemToCraft.name}." """
+else:
+    # Success!
+    # If the character has Bags setup...
+    bagMessage = ""
+    if hasBags:
+        # We need to remove the materials from the bags
+        for material, amount in itemToCraft.materials.items():
+            baglib.modify_item(bags, material, -amount, "Mining")
+            bagMessage += f"\n- {amount} {material} removed from bags."
+
+        # We need to add the ingot to the bags
+        baglib.modify_item(bags, itemToCraft.name, 1, "Ingots", True)
+        bagMessage += f"\n1 {itemToCraft.name} added to bags."
+
+        # We need to save the bags
+        bagMessage = f"""-f "Bags Updated|{bagMessage}" """
+        baglib.save_bags(bags)
+    
+    return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; Success!" -f "**Crafted**: {itemToCraft.name}" {bagMessage} """
 
 </drac2>
 -title "{{name}} works the forge!"
