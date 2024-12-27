@@ -1,8 +1,7 @@
 {
     "daggers": {
         "name": "2x Daggers",
-        "materials": ["ingot"],
-        "quantities": [1],
+        "materials": {"ingot": 1},
         "checks": 1,
         "dc": 12,
         "rarity": "Common",
@@ -11,8 +10,7 @@
     },
     "handaxe": {
         "name": "Handaxe",
-        "materials": ["ingot", "short haft"],
-        "quantities": [2, 1],
+        "materials": {"ingot": 2, "short haft": 1},
         "checks": 1,
         "dc": 11,
         "rarity": "Common",
@@ -21,8 +19,7 @@
     },
     "javelin": {
         "name": "Javelin",
-        "materials": ["ingot", "short haft"],
-        "quantities": [1, 1],
+        "materials": {"ingot": 1, "short haft": 1},
         "checks": 1,
         "dc": 11,
         "rarity": "Common",
@@ -31,8 +28,7 @@
     },
     "light hammer": {
         "name": "Light Hammer",
-        "materials": ["ingot", "short haft"],
-        "quantities": [1, 1],
+        "materials": {"ingot": 1, "short haft": 1},
         "checks": 1,
         "dc": 10,
         "rarity": "Common",
@@ -41,8 +37,7 @@
     },
     "mace": {
         "name": "Mace",
-        "materials": ["ingot", "short haft"],
-        "quantities": [2, 1],
+        "materials": {"ingot": 2, "short haft": 1},
         "checks": 1,
         "dc": 12,
         "rarity": "Common",
@@ -51,8 +46,7 @@
     },
     "sickle": {
         "name": "Sickle",
-        "materials": ["ingot", "short haft"],
-        "quantities": [1, 1],
+        "materials": {"ingot": 1, "short haft": 1},
         "checks": 1,
         "dc": 12,
         "rarity": "Common",
@@ -61,8 +55,7 @@
     },
     "spear": {
         "name": "Spear",
-        "materials": ["ingot", "long haft"],
-        "quantities": [1, 1],
+        "materials": {"ingot": 1, "long haft": 1},
         "checks": 1,
         "dc": 10,
         "rarity": "Common",
@@ -71,8 +64,7 @@
     },
     "battleaxe": {
         "name": "Battleaxe",
-        "materials": ["ingot", "short haft"],
-        "quantities": [4, 1],
+        "materials": {"ingot": 4, "short haft": 1},
         "checks": 2,
         "dc": 13,
         "rarity": "Common",
@@ -81,8 +73,7 @@
     },
     "flail": {
         "name": "Flail",
-        "materials": ["ingot", "short haft", "short chain"],
-        "quantities": [3, 1, 1],
+        "materials": {"ingot": 3, "short haft": 1, "short chain": 1},
         "checks": 2,
         "dc": 13,
         "rarity": "Common",
@@ -91,8 +82,7 @@
     },
     "glaive": {
         "name": "Glaive",
-        "materials": ["ingot", "long haft"],
-        "quantities": [8, 1],
+        "materials": {"ingot": 8, "long haft": 1},
         "checks": 2,
         "dc": 14,
         "rarity": "Common",
@@ -101,8 +91,7 @@
     },
     "greataxe": {
         "name": "Greataxe",
-        "materials": ["ingot", "short haft"],
-        "quantities": [9, 1],
+        "materials": {"ingot": 9, "short haft": 1},
         "checks": 2,
         "dc": 13,
         "rarity": "Common",
@@ -111,8 +100,7 @@
     },
     "greatsword": {
         "name": "Greatsword",
-        "materials": ["ingot"],
-        "quantities": [10],
+        "materials": {"ingot": 10},
         "checks": 2,
         "dc": 15,
         "rarity": "Common",
@@ -121,8 +109,7 @@
     },
     "halberd": {
         "name": "Halbern",
-        "materials": ["ingot", "long haft"],
-        "quantities": [8, 1],
+        "materials": {"ingot": 8, "long haft": 1},
         "checks": 2,
         "dc": 14,
         "rarity": "Common",
@@ -131,8 +118,7 @@
     },
     "longsword": {
         "name": "Longsword",
-        "materials": ["ingot"],
-        "quantities": [4],
+        "materials": {"ingot": 4},
         "checks": 2,
         "dc": 14,
         "rarity": "Common",
@@ -141,8 +127,7 @@
     },
     "maul": {
         "name": "Maul",
-        "materials": ["ingot", "short haft"],
-        "quantities": [9, 1],
+        "materials": {"ingot": 9, "short haft": 1},
         "checks": 2,
         "dc": 14,
         "rarity": "Common",
@@ -151,8 +136,7 @@
     },
     "morning star": {
         "name": "Morning Star",
-        "materials": ["ingot", "short haft"],
-        "quantities": [4, 1],
+        "materials": {"ingot": 4, "short haft": 1},
         "checks": 2,
         "dc": 14,
         "rarity": "Common",
@@ -161,8 +145,7 @@
     },
     "pike": {
         "name": "Pike",
-        "materials": ["ingot", "long haft"],
-        "quantities": [6, 1],
+        "materials": {"ingot": 6, "long haft": 1},
         "checks": 2,
         "dc": 14,
         "rarity": "Common",
@@ -171,8 +154,7 @@
     },
     "rapier": {
         "name": "Rapier",
-        "materials": ["ingot"],
-        "quantities": [2],
+        "materials": {"ingot": 2},
         "checks": 2,
         "dc": 15,
         "rarity": "Common",
@@ -181,8 +163,7 @@
     },
     "scimitar": {
         "name": "Rapier",
-        "materials": ["ingot"],
-        "quantities": [2],
+        "materials": {"ingot": 2},
         "checks": 2,
         "dc": 15,
         "rarity": "Common",
@@ -191,8 +172,7 @@
     },
     "shortsword": {
         "name": "Shortsword",
-        "materials": ["ingot"],
-        "quantities": [2],
+        "materials": {"ingot": 2},
         "checks": 2,
         "dc": 15,
         "rarity": "Common",
@@ -201,8 +181,7 @@
     },
     "war pick": {
         "name": "War Pick",
-        "materials": ["ingot", "short half"],
-        "quantities": [4, 1],
+        "materials": {"ingot": 4, "short half": 1},
         "checks": 2,
         "dc": 13,
         "rarity": "Common",
@@ -211,8 +190,7 @@
     },
     "war hammer": {
         "name": "Rapier",
-        "materials": ["ingot", "short half"],
-        "quantities": [4, 1],
+        "materials": {"ingot": 4, "short half": 1},
         "checks": 2,
         "dc": 13,
         "rarity": "Common",
@@ -221,8 +199,7 @@
     },
     "blacksmithing tools": {
         "name": "Blacksmithing Tools",
-        "materials": ["ingot", "part"],
-        "quantities": [4, 4],
+        "materials": {"ingot": 4, "part": 4},
         "checks": 4,
         "dc": 12,
         "rarity": "Common",
@@ -231,8 +208,7 @@
     },
     "carpenter's tools": {
         "name": "Carpenter's Tools",
-        "materials": ["ingot", "part"],
-        "quantities": [2, 1],
+        "materials": {"ingot": 2, "part": 1},
         "checks": 3,
         "dc": 12,
         "rarity": "Common",
@@ -241,8 +217,7 @@
     },
     "chain shirt": {
         "name": "Chain Shirt",
-        "materials": ["ingot"],
-        "quantities": [5],
+        "materials": {"ingot": 5},
         "checks": 6,
         "dc": 13,
         "rarity": "Common",
@@ -251,8 +226,7 @@
     },
     "scale mail": {
         "name": "Scale Mail",
-        "materials": ["ingot", "armor padding"],
-        "quantities": [6, 1],
+        "materials": {"ingot": 6, "armor padding": 1},
         "checks": 6,
         "dc": 12,
         "rarity": "Common",
@@ -261,8 +235,7 @@
     },
     "breastplate": {
         "name": "Breastplate",
-        "materials": ["ingot"],
-        "quantities": [8],
+        "materials": {"ingot": 8},
         "checks": 8,
         "dc": 14,
         "rarity": "Common",
@@ -271,8 +244,7 @@
     },
     "half plate": {
         "name": "Half Plate",
-        "materials": ["ingot", "armor padding"],
-        "quantities": [12, 1],
+        "materials": {"ingot": 12, "armor padding": 1},
         "checks": 12,
         "dc": 15,
         "rarity": "Common",
@@ -281,8 +253,7 @@
     },
     "ring mail": {
         "name": "Ring Mail",
-        "materials": ["ingot", "armor padding"],
-        "quantities": [6, 1],
+        "materials": {"ingot": 6, "armor padding": 1},
         "checks": 6,
         "dc": 13,
         "rarity": "Common",
@@ -291,8 +262,7 @@
     },
     "chain mail": {
         "name": "Chain Mail",
-        "materials": ["ingot", "armor padding"],
-        "quantities": [7, 1],
+        "materials": {"ingot": 7, "armor padding": 1},
         "checks": 6,
         "dc": 13,
         "rarity": "Common",
@@ -301,8 +271,7 @@
     },
     "splint": {
         "name": "Splint",
-        "materials": ["ingot", "armor padding"],
-        "quantities": [10, 1],
+        "materials": {"ingot": 10, "armor padding": 1},
         "checks": 8,
         "dc": 14,
         "rarity": "Common",
@@ -311,8 +280,7 @@
     },
     "plate": {
         "name": "Plate",
-        "materials": ["ingot", "armor padding"],
-        "quantities": [20, 1],
+        "materials": {"ingot": 20, "armor padding": 1},
         "checks": 16,
         "dc": 15,
         "rarity": "Common",
@@ -321,8 +289,7 @@
     },
     "shield": {
         "name": "Shield",
-        "materials": ["ingot"],
-        "quantities": [5],
+        "materials": {"ingot": 5},
         "checks": 2,
         "dc": 12,
         "rarity": "Common",
@@ -331,8 +298,7 @@
     },
     "tower shield": {
         "name": "Tower Shield",
-        "materials": ["ingot"],
-        "quantities": [10],
+        "materials": {"ingot": 10},
         "checks": 4,
         "dc": 14,
         "rarity": "Common",
@@ -341,8 +307,7 @@
     },
     "bracers": {
         "name": "Bracers",
-        "materials": ["ingot"],
-        "quantities": [2],
+        "materials": {"ingot": 2},
         "checks": 2,
         "dc": 14,
         "rarity": "Common",
@@ -351,8 +316,7 @@
     },
     "ring": {
         "name": "ring",
-        "materials": ["ingot"],
-        "quantities": [1],
+        "materials": {"ingot": 1},
         "checks": 1,
         "dc": 12,
         "rarity": "Common",
@@ -361,8 +325,7 @@
     },
     "horseshoes": {
         "name": "Horseshoe (4)",
-        "materials": ["ingot"],
-        "quantities": [2],
+        "materials": {"ingot": 2},
         "checks": 2,
         "dc": 10,
         "rarity": "Common",
@@ -371,8 +334,7 @@
     },
     "chain (5 feet)": {
         "name": "Chain (5 feet)",
-        "materials": ["ingot"],
-        "quantities": [1],
+        "materials": {"ingot": 1},
         "checks": 2,
         "dc": 12,
         "rarity": "Common",
@@ -381,8 +343,7 @@
     },
     "caltrops": {
         "name": "Caltrops",
-        "materials": ["ingot"],
-        "quantities": [1],
+        "materials": {"ingot": 1},
         "checks": 2,
         "dc": 12,
         "rarity": "Common",
@@ -391,8 +352,7 @@
     },
     "ball bearings": {
         "name": "Ball Bearings",
-        "materials": ["ingot"],
-        "quantities": [1],
+        "materials": {"ingot": 1},
         "checks": 2,
         "dc": 12,
         "rarity": "Common",
@@ -401,8 +361,7 @@
     },
     "metal scraps": {
         "name": "20x Metal Scraps",
-        "materials": ["ingot"],
-        "quantities": [1],
+        "materials": {"ingot": 1},
         "checks": 1,
         "dc": 5,
         "rarity": "Common",
@@ -411,8 +370,7 @@
     },
     "miscellaneous parts": {
         "name": "Miscellaneous Parts",
-        "materials": ["metal scrap"],
-        "quantities": [5],
+        "materials": {"metal scrap": 5},
         "checks": 2,
         "dc": 12,
         "rarity": "Common",
@@ -421,8 +379,7 @@
     },
     "buckle": {
         "name": "5x Buckle",
-        "materials": ["metal scrap"],
-        "quantities": [5],
+        "materials": {"metal scrap": 5},
         "checks": 1,
         "dc": 10,
         "rarity": "Common",
