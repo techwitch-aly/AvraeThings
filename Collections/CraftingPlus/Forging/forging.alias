@@ -69,7 +69,20 @@ craftItRoll = vroll(rollString)
 
 if craftItRoll.total < itemToCraft.dc:
     # Failure!
-    return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; Failure!" -f "Unfortunately you couldn't forge the {itemToCraft.name}." """
+    lostMaterials = ""
+    if craftItRoll.result.crit == 2:
+        if hasBags:
+            # We need to remove the materials from the bags
+            for material, amount in itemToCraft.materials.items():
+                baglib.modify_item(bags, material, -amount, "Mining")
+                lostMaterials += f"\n- {amount} {material.title()} removed from bags."
+
+            # We need to save the bags
+            lostMaterials = f"""-f "Bags Updated|{lostMaterials}" """
+            baglib.save_bags(bags)
+        return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; Critical Failure!" -f "Unfortunately you couldn't forge the {itemToCraft.name} and the materials were lost." {lostMaterials} """
+    else:
+        return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; Failure!" -f "Unfortunately you couldn't forge the {itemToCraft.name}." """
 else:
     # Success!
     # If the character has Bags setup...
