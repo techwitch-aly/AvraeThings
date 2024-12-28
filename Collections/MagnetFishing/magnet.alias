@@ -1,11 +1,36 @@
 embed
 <drac2>
+args = argparse(&ARGS&)
 loot = load_json(get_gvar("edbe2efc-7420-47b1-a9b6-74a02505eb1a"))
 ch = character()
+extraFields = ""
 skillOptions = [("Investigation", ch.skills.investigation), ("Survival", ch.skills.survival), ("Sleight of Hand", ch.skills.sleightOfHand)]
 skillToUse = max(skillOptions, key=lambda x: x[1].value)
 
-rollString = skillToUse[1].d20()
+# Determine advantage from args
+adv = True if "adv" in args else None
+
+# Collect manual roll bonuses
+bonus = args.join("b", "+")
+
+# Check for guidance
+guidance = "+1d4[guidance]" if args.last("guidance") else ""
+
+pastLife = "+1d6[knowledge from past life]" if args.last("kpl") else ""
+
+rollString = skillToUse[1].d20(adv)
+
+if bonus:
+    rollString += f"+{bonus}"
+
+if guidance != "":
+    rollString += guidance
+    extraFields += f"""-f "Guidance|Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends." """
+
+if pastLife != "":
+    rollString += pastLife
+    extraFields += f"""-f "Knowledge from Past Life|You temporarily remember glimpses of the past, perhaps faded memories from ages ago or a previous life. When you make an ability check that uses a skill, you can roll a d6 immediately after seeing the number on the d20 and add the number on the d6 to the check." """
+
 fishingResult = vroll(rollString)
 
 success = fishingResult.total >= 10  # did we succeed?
@@ -27,6 +52,7 @@ else:
     out = find[0]
 meta = f"""**Meta**\nDC: 10\n{skillToUse[0]} Check\n\n**Check**\n{fishingResult}; {result}\n\n**Loot Found**:\n{out}{extra}"""
 
+return extraFields
 </drac2>
 -title "{{name}} goes magnet fishing!"
 -desc "{{meta}}"
