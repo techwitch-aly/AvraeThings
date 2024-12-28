@@ -1,0 +1,6 @@
+{{cc="Knowledge from a Past Life"}}
+{{v=character().cc_exists(cc) and character().get_cc(cc) > 0}}
+-f "{{cc}} | {{"You do not have this ability." if not character().cc_exists(cc) else "You must take a long rest to regain your expended uses." if not v else "You temporarily remember glimpses of the past, perhaps faded memories from ages ago or a previous life. When you make an ability check that uses a skill, you can roll a d6 immediately after seeing the number on the d20 and add the number on the d6 to the check."}}"
+{{character().mod_cc(cc, -1) if v else ""}}
+-f "{{cc}}|{{character().cc_str(cc) if character().cc_exists(cc) else "*None*"}}"
+{{'-b 1d6[Knowledge from a Past Life]' if v else ''}}
