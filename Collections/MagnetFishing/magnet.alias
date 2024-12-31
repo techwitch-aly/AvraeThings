@@ -3,7 +3,7 @@ embed
 args = argparse(&ARGS&)
 loot = load_json(get_gvar("edbe2efc-7420-47b1-a9b6-74a02505eb1a"))
 ch = character()
-cc = "Knowledge from a Past Life"
+kpl_cc = "Knowledge from a Past Life"
 extraFields = ""
 skillOptions = [("Investigation", ch.skills.investigation), ("Survival", ch.skills.survival), ("Sleight of Hand", ch.skills.sleightOfHand)]
 skillToUse = max(skillOptions, key=lambda x: x[1].value)
@@ -19,23 +19,26 @@ guidance = "+1d4[guidance]" if args.last("guidance") else ""
 
 rollString = skillToUse[1].d20(adv)
 
+# Add manual bonuses
 if bonus:
     rollString += f"+{bonus}"
 
+# Add guidance
 if guidance != "":
     rollString += guidance
     extraFields += f"""-f "Guidance|Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends." """
 
-if args.last("kpl") and ch.cc_exists(cc) and character().get_cc(cc) > 0:
+# Add Knowledge from a Past Life and update Counter
+if args.last("kpl") and ch.cc_exists(kpl_cc) and character().get_cc(kpl_cc) > 0:
     rollString += "+1d6[kpl]"
-    extraFields += f"""-f "{cc}|You temporarily remember glimpses of the past, perhaps faded memories from ages ago or a previous life. When you make an ability check that uses a skill, you can roll a d6 immediately after seeing the number on the d20 and add the number on the d6 to the check." """
-    ch.mod_cc(cc, -1)
-    extraFields += f"""-f "{ch.cc_str(cc)}" """
-elif args.last("kpl") and ch.cc_exists(cc) and character().get_cc(cc) == 0:
-    extraFields += f"""-f "{cc}|You must take a long rest to regain your expended uses." """
-    extraFields += f"""-f "{ch.cc_str(cc)}" """
-elif args.last("kpl") and not ch.cc_exists(cc):
-    extraFields += f"""-f "{cc}|You do not have this ability." """
+    extraFields += f"""-f "{kpl_cc}|You temporarily remember glimpses of the past, perhaps faded memories from ages ago or a previous life. When you make an ability check that uses a skill, you can roll a d6 immediately after seeing the number on the d20 and add the number on the d6 to the check." """
+    ch.mod_cc(kpl_cc, -1)
+    extraFields += f"""-f "{ch.cc_str(kpl_cc)}" """
+elif args.last("kpl") and ch.cc_exists(kpl_cc) and character().get_cc(kpl_cc) == 0:
+    extraFields += f"""-f "{kpl_cc}|You must take a long rest to regain your expended uses." """
+    extraFields += f"""-f "{ch.cc_str(kpl_cc)}" """
+elif args.last("kpl") and not ch.cc_exists(kpl_cc):
+    extraFields += f"""-f "{kpl_cc}|You do not have this ability." """
 
 fishingResult = vroll(rollString)
 
