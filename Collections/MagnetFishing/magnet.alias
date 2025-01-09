@@ -32,24 +32,20 @@ if guidance != "":
 # Add Knowledge from a Past Life and update Counter
 if args.last("kpl") and ch.cc_exists(kpl_cc) and character().get_cc(kpl_cc) > 0:
     rollString += "+1d6[kpl]"
-    extraFields += f"""-f "{kpl_cc}|You temporarily remember glimpses of the past, perhaps faded memories from ages ago or a previous life. When you make an ability check that uses a skill, you can roll a d6 immediately after seeing the number on the d20 and add the number on the d6 to the check." """
     ch.mod_cc(kpl_cc, -1)
-    extraFields += f"""-f "{ch.cc_str(kpl_cc)}" """
+    extraFields += f"""-f "{kpl_cc}|You temporarily remember glimpses of the past, perhaps faded memories from ages ago or a previous life. When you make an ability check that uses a skill, you can roll a d6 immediately after seeing the number on the d20 and add the number on the d6 to the check.\n{ch.cc_str(kpl_cc)}" """
 elif args.last("kpl") and ch.cc_exists(kpl_cc) and character().get_cc(kpl_cc) == 0:
-    extraFields += f"""-f "{kpl_cc}|You must take a long rest to regain your expended uses." """
-    extraFields += f"""-f "{ch.cc_str(kpl_cc)}" """
+    extraFields += f"""-f "{kpl_cc}|You must take a long rest to regain your expended uses.\n{ch.cc_str(kpl_cc)}" """
 elif args.last("kpl") and not ch.cc_exists(kpl_cc):
     extraFields += f"""-f "{kpl_cc}|You do not have this ability." """
 
 # Add Flash of Genius and update Counter
 if args.last("fog") and ch.cc_exists(fog_cc) and character().get_cc(fog_cc) > 0:
     rollString += f"+{intelligenceMod}"
-    extraFields += f"""-f "{fog_cc}|You gain the ability to come up with solutions under pressure. When you or another creature you can see within 30 feet of you makes an ability check or a saving throw, you can use your reaction to add your Intelligence modifier (**+{intelligenceMod}**) to the roll." """
     ch.mod_cc(fog_cc, -1)
-    extraFields += f"""-f "{ch.cc_str(fog_cc)}" """
+    extraFields += f"""-f "{fog_cc}|You gain the ability to come up with solutions under pressure. When you or another creature you can see within 30 feet of you makes an ability check or a saving throw, you can use your reaction to add your Intelligence modifier (**+{intelligenceMod}**) to the roll.\n{ch.cc_str(fog_cc)}" """
 elif args.last("fog") and ch.cc_exists(fog_cc) and character().get_cc(fog_cc) == 0:
-    extraFields += f"""-f "{fog_cc}|You must take a long rest to regain your expended uses." """
-    extraFields += f"""-f "{ch.cc_str(fog_cc)}" """
+    extraFields += f"""-f "{fog_cc}|You must take a long rest to regain your expended uses.\n{ch.cc_str(fog_cc)}" """
 elif args.last("fog") and not ch.cc_exists(fog_cc):
     extraFields += f"""-f "{fog_cc}|You do not have this ability." """
 
