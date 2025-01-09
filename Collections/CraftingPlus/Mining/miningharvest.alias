@@ -84,7 +84,13 @@ if harvestItRoll.total < dc:
 else:
     # We found something AND we could extract!
     # How much did we get?
-    amount = vroll("1d5")
+    harvestRollString = "2d4"
+
+    # Add an extra 1d4 on a crit harvest roll
+    if harvestItRoll.result.crit == 1:
+        harvestRollString += "+1d4"
+
+    amount = vroll(harvestRollString)
 
     # See if the user has Bags configured
     hasBags = ch.get_cvar("bags")
