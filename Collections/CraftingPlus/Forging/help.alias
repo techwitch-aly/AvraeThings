@@ -1,0 +1,17 @@
+embed
+<drac2>
+craftingOptions = load_json(get_gvar("a7b9d388-764c-4b45-aa73-ce878b9d74e4"))
+options = "\n```"
+for key in craftingOptions:
+    value = craftingOptions[key]
+    options += f"{value.name} (DC{value.dc} check)\nRequires:"
+    for material in value.materials:
+        options += f"\n\t{value.materials[material]} {material.title()}"
+    options += "\n\n"
+options += "```"
+</drac2>
+-title "{{name}} needs help working the forge!"
+-desc "Forging is the process of turning raw ore into ingots for crafting. It requires Smith's Tools proficiencies and is aided by your Intelligence modifier."
+-f "Begin forging by using `!forge <item>` like `!forge iron`."
+-f "Options for forging: {{options}}"
+-footer "CraftingPlus | !forge help"
