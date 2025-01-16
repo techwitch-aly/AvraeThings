@@ -91,7 +91,8 @@ elif args.last("fog") and not ch.cc_exists(fog_cc):
 
 craftItRoll = vroll(rollString)
 
-if craftItRoll.total < itemToCraft.dc:
+# Crit Type == 2 means a Critical failure
+if craftItRoll.total < itemToCraft.dc or raftItRoll.result.crit == 2:
     # Failure!
     lostMaterials = ""
     if craftItRoll.result.crit == 2:
