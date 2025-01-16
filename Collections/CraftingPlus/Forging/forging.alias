@@ -105,9 +105,9 @@ if craftItRoll.total < itemToCraft.dc or raftItRoll.result.crit == 2:
             # We need to save the bags
             lostMaterials = f"""-f "Bags Updated|{lostMaterials}" """
             baglib.save_bags(bags)
-        return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; Critical Failure!" -f "Unfortunately you couldn't forge the {itemToCraft.name} and the materials were lost." {lostMaterials} {extraFields} """
+        return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; **Critical Failure**!" -f "Unfortunately you couldn't forge the {itemToCraft.name} and the materials were lost." {lostMaterials} {extraFields} """
     else:
-        return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; Failure!" -f "Unfortunately you couldn't forge the {itemToCraft.name}." {extraFields} """
+        return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; **Failure**!" -f "Unfortunately you couldn't forge the {itemToCraft.name}." {extraFields} """
 else:
     # Success!
     # If the character has Bags setup...
@@ -126,7 +126,7 @@ else:
         bagMessage = f"""-f "Bags Updated|{bagMessage}" """
         baglib.save_bags(bags)
     
-    return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; Success!" -f "**Crafted**: {itemToCraft.name} x1" {bagMessage} {extraFields} """
+    return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; **Success**!" -f "**Crafted**: {itemToCraft.name} x1" {bagMessage} {extraFields} """
 
 </drac2>
 -title "{{name}} works the forge!"
