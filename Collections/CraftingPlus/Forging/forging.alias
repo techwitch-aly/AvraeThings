@@ -92,7 +92,7 @@ elif args.last("fog") and not ch.cc_exists(fog_cc):
 craftItRoll = vroll(rollString)
 
 # Crit Type == 2 means a Critical failure
-if craftItRoll.total < itemToCraft.dc or raftItRoll.result.crit == 2:
+if craftItRoll.total < itemToCraft.dc or craftItRoll.result.crit == 2:
     # Failure!
     lostMaterials = ""
     if craftItRoll.result.crit == 2:
@@ -113,6 +113,7 @@ else:
     # If the character has Bags setup...
     bagMessage = ""
     if hasBags:
+        bags = baglib.load_bags()
         # We need to remove the materials from the bags
         for material, amount in itemToCraft.materials.items():
             baglib.modify_item(bags, material, -amount, "Mining")
@@ -127,7 +128,6 @@ else:
         baglib.save_bags(bags)
     
     return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; **Success**!" -f "**Crafted**: {itemToCraft.name} x1" {bagMessage} {extraFields} """
-
 </drac2>
 -title "{{name}} works the forge!"
 -footer "CraftingPlus | !forge"
