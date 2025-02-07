@@ -18,7 +18,7 @@ segment = list(craftingOptions.items())[start:end]
 options = "\n```"
 for option in segment:
     value = option[1]
-    options += f"{value.name} (DC {value.dc} check) [x{value.checks}]\nRequires:"
+    options += f"{value.name} (DC {value.dc} check [x{value.checks}])\nRequires:"
     for material in value.materials:
         if material == "ingot":
             options += f"\n\t{value.materials[material]} {material.title()} (Iron or Steel only)"
