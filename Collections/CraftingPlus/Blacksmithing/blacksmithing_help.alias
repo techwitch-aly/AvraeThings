@@ -1,0 +1,35 @@
+embed
+<drac2>
+args = &ARGS&
+craftingOptions = load_json(get_gvar("97b494ed-7729-4a6f-ae95-8bcc31f65062"))
+totalOptions = len(craftingOptions.items())
+pageSize = 10
+totalPages = totalOptions // pageSize + 1
+if args and int(args[0]) <= totalPages:
+    start = (pageSize * int(args[0] or 1)) - pageSize
+    end = pageSize * int(args[0] or 1)
+    page = int(args[0])
+else:
+    start = 0
+    end = pageSize
+    page = 1
+segment = list(craftingOptions.items())[start:end]
+
+options = "\n```"
+for option in segment:
+    value = option[1]
+    options += f"{value.name} (DC {value.dc} check) [x{value.checks}]\nRequires:"
+    for material in value.materials:
+        options += f"\n\t{value.materials[material]} {material.title()}"
+    options += "\n\n"
+options += "```"
+
+helpInstructions = f"""- Begin blacksmithing by using `!blacksmith <item>` like `!blacksmith longsword`.\n- Continue a multistep project with `!blacksmith continue`.\n- Cancel a multistep project with `!blacksmith cancel`. """
+
+</drac2>
+-title "{{name}} needs help working the anvil!"
+-desc "Blacksmithing is the process of turning raw materials into weapons, armor, and other items. It requires Smith's Tools proficiencies and is aided by your Strength modifier."
+-f "{{helpInstructions}}"
+-f "Options for blacksmithing (Page 1 of {{totalPages}}): {{options}}"
+-f "Page {{page}} of {{totalPages}}, use `!blacksmith help #` to see the next page."
+-footer "CraftingPlus | !blacksmith help"
