@@ -23,7 +23,7 @@
         "checks": 1,
         "dc": 11,
         "rarity": "Common",
-        "value": 3,
+        "value": 0.5,
         "quantity": 1
     },
     "light hammer": {
@@ -32,7 +32,7 @@
         "checks": 1,
         "dc": 10,
         "rarity": "Common",
-        "value": 3,
+        "value": 2,
         "quantity": 1
     },
     "mace": {
@@ -50,7 +50,7 @@
         "checks": 1,
         "dc": 12,
         "rarity": "Common",
-        "value": 3,
+        "value": 1,
         "quantity": 1
     },
     "spear": {
@@ -59,7 +59,7 @@
         "checks": 1,
         "dc": 10,
         "rarity": "Common",
-        "value": 3,
+        "value": 1,
         "quantity": 1
     },
     "battleaxe": {
@@ -68,7 +68,7 @@
         "checks": 2,
         "dc": 13,
         "rarity": "Common",
-        "value": 10,
+        "value": 25,
         "quantity": 1
     },
     "flail": {
@@ -95,7 +95,7 @@
         "checks": 2,
         "dc": 13,
         "rarity": "Common",
-        "value": 25,
+        "value": 30,
         "quantity": 1
     },
     "greatsword": {
@@ -104,7 +104,7 @@
         "checks": 2,
         "dc": 15,
         "rarity": "Common",
-        "value": 35,
+        "value": 50,
         "quantity": 1
     },
     "halberd": {
@@ -131,7 +131,7 @@
         "checks": 2,
         "dc": 14,
         "rarity": "Common",
-        "value": 25,
+        "value": 10,
         "quantity": 1
     },
     "morning star": {
@@ -149,7 +149,7 @@
         "checks": 2,
         "dc": 14,
         "rarity": "Common",
-        "value": 15,
+        "value": 5,
         "quantity": 1
     },
     "rapier": {
@@ -158,7 +158,7 @@
         "checks": 2,
         "dc": 15,
         "rarity": "Common",
-        "value": 15,
+        "value": 25,
         "quantity": 1
     },
     "scimitar": {
@@ -167,7 +167,7 @@
         "checks": 2,
         "dc": 15,
         "rarity": "Common",
-        "value": 15,
+        "value": 25,
         "quantity": 1
     },
     "shortsword": {
@@ -176,7 +176,7 @@
         "checks": 2,
         "dc": 15,
         "rarity": "Common",
-        "value": 15,
+        "value": 10,
         "quantity": 1
     },
     "war pick": {
@@ -185,20 +185,20 @@
         "checks": 2,
         "dc": 13,
         "rarity": "Common",
-        "value": 10,
+        "value": 5,
         "quantity": 1
     },
-    "war hammer": {
-        "name": "Rapier",
+    "warhammer": {
+        "name": "Warhammer",
         "materials": {"ingot": 4, "short half": 1},
         "checks": 2,
         "dc": 13,
         "rarity": "Common",
-        "value": 10,
+        "value": 15,
         "quantity": 1
     },
-    "blacksmithing tools": {
-        "name": "Blacksmithing Tools",
+    "smith's tools": {
+        "name": "Smith's Tools",
         "materials": {"ingot": 4, "part": 4},
         "checks": 4,
         "dc": 12,
@@ -350,17 +350,17 @@
         "value": 2,
         "quantity": 1
     },
-    "ball bearings": {
-        "name": "Ball Bearings",
+    "ball bearing": {
+        "name": "Ball Bearing",
         "materials": {"ingot": 1},
         "checks": 2,
         "dc": 12,
         "rarity": "Common",
         "value": 2,
-        "quantity": 1
+        "quantity": 100
     },
     "metal scraps": {
-        "name": "20x Metal Scraps",
+        "name": "Metal Scraps",
         "materials": {"ingot": 1},
         "checks": 1,
         "dc": 5,
@@ -378,7 +378,7 @@
         "quantity": 1
     },
     "buckle": {
-        "name": "5x Buckle",
+        "name": "Buckle",
         "materials": {"metal scrap": 5},
         "checks": 1,
         "dc": 10,
