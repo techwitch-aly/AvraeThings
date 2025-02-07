@@ -80,7 +80,7 @@ if craftItRoll.total >= pendingCraft.dc and craftItRoll.result.crit != 2:
         pendingCraft.checksRemaining -= 1
         pendingCraft.checksDone += 1
         ch.set_cvar(craftCvar, dump_json(pendingCraft))
-        return f""" -title "{ch.name} successfully continues crafting {pendingCraft.name}!" -desc "**Meta**:\nDC {pendingCraft.dc} Woodcarver's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafting**: {pendingCraft.name}\n**Progress**: {pendingCraft.checksDone}/{pendingCraft.checksTotal} Checks\n**Rarity**: {pendingCraft.rarity}\n**Value**: {pendingCraft.value}gp" {extraFields} """
+        return f""" -title "{ch.name} successfully continues crafting {pendingCraft.name}!" -desc "**Woodcarving is detailed work! You work for 2 IRL hours!**\n**Meta**:\nDC {pendingCraft.dc} Woodcarver's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafting**: {pendingCraft.name}\n**Progress**: {pendingCraft.checksDone}/{pendingCraft.checksTotal} Checks ({pendingCraft.checksDone * 2} of {pendingCraft.checksTotal * 2} hours.)\n**Rarity**: {pendingCraft.rarity}\n**Value**: {pendingCraft.value}gp" {extraFields} """
     else:
         # Otherwise, we have successfully crafted the item, update bags if necessary and show value and success message
         # Remove the pending craft since it's complete
@@ -94,7 +94,7 @@ if craftItRoll.total >= pendingCraft.dc and craftItRoll.result.crit != 2:
             bagMessage += f"""-f "Bags Updated|\n- {pendingCraft.quantity} {pendingCraft.name} added to bags." """
             baglib.save_bags(bags)
         
-        return f"""-title "{ch.name} successfully crafts {pendingCraft.name}!" -desc "**Meta**:\nDC {pendingCraft.dc} Woodcarver's Tools Check\n{craftItRoll}; Success!" -f "**Crafted**: {pendingCraft.name}\n**Rarity**: {pendingCraft.rarity}\n**Value**: {pendingCraft.value}gp" {bagMessage} {extraFields} """
+        return f"""-title "{ch.name} successfully crafts {pendingCraft.name}!" -desc "**Woodcarving is detailed work! You work for 2 IRL hours!**\n**Meta**:\nDC {pendingCraft.dc} Woodcarver's Tools Check\n{craftItRoll}; Success!" -f "**Crafted**: {pendingCraft.name}\n**Rarity**: {pendingCraft.rarity}\n**Value**: {pendingCraft.value}gp" {bagMessage} {extraFields} """
 else:
     return f"""-title "{ch.name} failed to make progress on their {pendingCraft.name}!" -desc "**Meta**:\nDC {pendingCraft.dc} Woodcarver's Tools Check\n{craftItRoll}; Failure!" {extraFields} """
 </drac2>
