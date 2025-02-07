@@ -3,7 +3,8 @@ embed
 using(baglib="4119d62e-6a98-4153-bea9-0a99bb36da2c")
 a = &ARGS&
 args = argparse(&ARGS&)
-blacksmithCvar = "craftingplus_blacksmith"
+craftCvar = "craftingplus_blacksmith"
+craftFailureCvar = "craftingplus_blacksmith_failurecount"
 ch = character()
 extraFields = ""
 
@@ -20,7 +21,7 @@ toolProficiencies = load_yaml(toolProVar)
 if "smithstools" not in toolProficiencies:
     return f"""-title "{ch.name} attempts to smith! But doesn't have Smith's Tool Proficiency." -desc "Blacksmithing requires Smith's Tool proficiency, please see `!tool help` for help adding proficiencies." """
 
-pendingCraft = ch.get_cvar(blacksmithCvar)
+pendingCraft = ch.get_cvar(craftCvar)
 if not pendingCraft:
     return f"""-title "{ch.name} has no in-progress blacksmithing projects." -desc "Since nothing is in progress, you have nothing to cancel! Try starting a new project with `!blacksmithing`!" """
 
@@ -81,12 +82,12 @@ if craftItRoll.total >= pendingCraft.dc and craftItRoll.result.crit != 2:
     if pendingCraft.checksRemaining > 1:
         pendingCraft.checksRemaining -= 1
         pendingCraft.checksDone += 1
-        ch.set_cvar(blacksmithCvar, dump_json(pendingCraft))
+        ch.set_cvar(craftCvar, dump_json(pendingCraft))
         return f""" -title "{ch.name} successfully continues crafting {pendingCraft.name}!" -desc "**Smithing is hard work! You work for 2 IRL hours!**\n**Meta**:\nDC {pendingCraft.dc} Smith's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafting**: {pendingCraft.name}\n**Progress**: {pendingCraft.checksDone}/{pendingCraft.checksTotal} Checks ({pendingCraft.checksDone * 2} of {pendingCraft.checksTotal * 2} hours.)\n**Rarity**: {pendingCraft.rarity}\n**Value**: {pendingCraft.value}gp" {extraFields} """
     else:
         # Otherwise, we have successfully crafted the item, update bags if necessary and show value and success message
         # Remove the pending craft since it's complete
-        ch.delete_cvar(blacksmithCvar)
+        ch.delete_cvar(craftCvar)
 
         # See if the user has Bags configured and update them
         hasBags = ch.get_cvar("bags")

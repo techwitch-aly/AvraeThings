@@ -2,7 +2,8 @@ embed
 <drac2>
 using(baglib="4119d62e-6a98-4153-bea9-0a99bb36da2c")
 # Basics
-woodcarverCvar = "craftingplus_woodcarving"
+craftCvar = "craftingplus_woodcarving"
+craftFailureCvar = "craftingplus_woodcarving_failurecount"
 a = &ARGS&
 args = argparse(&ARGS&)
 ch = character()
@@ -23,7 +24,7 @@ if "woodcarverstools" not in toolProficiencies:
     return f"""-title "{ch.name} attempts to do woodcarving! But doesn't have Woodcarver's Tool Proficiency." -desc "Woodcarving requires Woodcarver's Tool proficiency, please see `!tool help` for help adding proficiencies." """
 
 # Before we go further, check if there is a DIFFERENT pending item being crafted
-pending = ch.get_cvar(woodcarverCvar)
+pending = ch.get_cvar(craftCvar)
 if pending:
     craft = load_json(pending)
     return f"""-title "{ch.name} has an in progress carving project!" -desc "Your in-progress project is {craft.name}. You have {craft.checksRemaining} sessions remaining to finish!" -f "To continue your project use: `!woodcarving continue`.\nOr to cancel that project use: `!woodcarving cancel`." """
@@ -126,7 +127,7 @@ if craftItRoll.total >= itemToCraft.dc and craftItRoll.result.crit != 2:
     if itemToCraft.checks > 1:
         # If the item takes multiple checks to craft, we need to setup progression tracking in the cvar
         progression = {"name": itemToCraft.name, "checksDone": 1, "checksTotal": itemToCraft.checks, "checksRemaining": itemToCraft.checks - 1, "dc": itemToCraft.dc, "rarity": itemToCraft.rarity, "value": itemToCraft.value, "quantity": itemToCraft.quantity}
-        ch.set_cvar(woodcarverCvar, dump_json(progression))
+        ch.set_cvar(craftCvar, dump_json(progression))
         return f"""-title "{ch.name} successfully begins crafting {itemToCraft.name}!" -desc "**Woodcarving is detailed work! You work for 2 IRL hours!**\n**Meta**:\nDC {itemToCraft.dc} Woodcarver's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafting**: {itemToCraft.name}\n**Progress**: 1/{itemToCraft.checks} Checks (2 of {itemToCraft.checks * 2} hours.)\n**Rarity**: {itemToCraft.rarity}\n**Value**: {itemToCraft.value}gp" {bagMessage} {extraFields} """
     return f"""-title "{ch.name} successfully crafts {itemToCraft.name}!" -desc "**Woodcarving is detailed work! You work for 2 IRL hours!**\n**Meta**:\nDC {itemToCraft.dc} Woodcarver's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafted**: {itemToCraft.name}\n**Rarity**: {itemToCraft.rarity}\n**Value**: {itemToCraft.value}gp" {bagMessage} {extraFields} """
 else:
