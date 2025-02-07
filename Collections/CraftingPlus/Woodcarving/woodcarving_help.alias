@@ -24,7 +24,7 @@ for option in segment:
     options += "\n\n"
 options += "```"
 
-helpInstructions = f"""- Begin woodcarving by using `!woodcarving <item>` like `!woodcarving fishing`.\n- Continue a multistep project with `!woodcarving continue`.\n- Cancel a multistep project with `!woodcarving cancel`. """
+helpInstructions = f"""- Begin woodcarving by using `!woodcarving <item>` like `!woodcarving fishing`.\n- Remember, crafting takes time! Each crafting check requires two IRL hours to pass.\n- Continue a multistep project with `!woodcarving continue`.\n- Cancel a multistep project with `!woodcarving cancel`. """
 
 </drac2>
 -title "{{name}} needs help carving wood!"
