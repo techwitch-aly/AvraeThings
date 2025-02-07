@@ -1,0 +1,135 @@
+embed
+<drac2>
+using(baglib="4119d62e-6a98-4153-bea9-0a99bb36da2c")
+# Basics
+woodcarverCvar = "craftingplus_woodcarving"
+a = &ARGS&
+args = argparse(&ARGS&)
+ch = character()
+craftingOptions = load_json(get_gvar("79f5f16d-dec2-4767-8526-1f53ebd9b472"))
+kpl_cc = "Knowledge from a Past Life"
+fog_cc = "Flash of Genius"
+extraFields = ""
+
+# We need some kind of proficiency to craft
+toolProVar = ch.get_cvar("toolProficiencies")
+if not toolProVar:
+    return f"""-title "{ch.name} attempts to smith! But has no Tool Proficiencies Learned." -desc "Crafting requires tool proficiencies, please see `!tool help` for help adding proficiencies." """
+
+toolProficiencies = load_yaml(toolProVar)
+
+# Validate that we have Woodcarver's Tools proficiency or expertise
+if "woodcarverstools" not in toolProficiencies:
+    return f"""-title "{ch.name} attempts to do woodcarving! But doesn't have Woodcarver's Tool Proficiency." -desc "Woodcarving requires Woodcarver's Tool proficiency, please see `!tool help` for help adding proficiencies." """
+
+# Before we go further, check if there is a DIFFERENT pending item being crafted
+pending = ch.get_cvar(woodcarverCvar)
+if pending:
+    craft = load_json(pending)
+    return f"""-title "{ch.name} has an in progress carving project!" -desc "Your in-progress project is {craft.name}. You have {craft.checksRemaining} sessions remaining to finish!" -f "To continue your project use: `!woodcarving continue`.\nOr to cancel that project use: `!woodcarving cancel`." """
+
+# Validate that what they want to craft is something we allow
+itemSearch = ([k for k in craftingOptions if a[0].lower() == k] if a else []) or [k for k in craftingOptions if a[0].lower() in k] if a else []
+
+if len(itemSearch) == 0:
+    return f"""-title "Woodcarving - Couldn't Find Item" -desc "Search was: `{a[0]}`" """
+
+if len(itemSearch) > 1:
+    return f"""-title "The woodcarver is confused." -desc "There are many items that match that description: `{'`, `'.join(itemSearch)}`. Could you be more specific?" """
+
+# We found a single thing to craft, let's make it!
+itemToCraft = craftingOptions[itemSearch[0]]
+
+# If the character has bags setup, try to find the raw materials that are required.
+# If bags are setup and no materials are found, abort crafting
+hasBags = ch.get_cvar("bags")
+if hasBags:
+    bags = baglib.load_bags()
+    for material, quantity in itemToCraft.materials.items():
+        if baglib.find_bag_with_item(bags, material) is None:
+            return f"""-title "{ch.name} doesn't have enough materials to start crafting a {itemToCraft.name}!" -desc "Missing Materials" -f "You are missing the required materials ({material.title()}) to craft {itemToCraft.name}." """
+        else:
+            bag = baglib.find_bag_with_item(bags, material)
+            for itemName, itemQuantity in bag[1].items():
+                if itemName.lower() == material.lower():
+                    if itemQuantity < quantity:
+                        return f"""-title "{ch.name} doesn't have enough materials to start crafting a {itemToCraft.name}!" -desc "Missing Materials" -f "You don't have enough of the required materials ({material.title()}) to craft {itemToCraft.name}. You have {itemQuantity} but need {quantity}." """
+
+# BONUS SETUP
+# Determine advantage from args
+adv = True if "adv" in args else None
+
+# Collect manual roll bonuses
+bonus = args.join("b", "+")
+
+# Check for guidance
+guidance = "+1d4[guidance]" if args.last("guidance") else ""
+
+# Setup the roll
+rollString = ch.skills.dexterity.d20(adv)
+
+# Add proficiency or expertise
+rollString += f"+{ch.stats.prof_bonus}" if toolProficiencies.woodcarverstools == 1 else f"+{ch.stats.prof_bonus * 2}"
+
+# Add any manual bonuses
+if bonus:
+    rollString += f"+{bonus}"
+
+# Add guidance if supplied
+if guidance != "":
+    rollString += guidance
+    extraFields += f"""-f "Guidance|Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends." """
+
+# Add Knowledge from a Past Life and update Counter
+if args.last("kpl") and ch.cc_exists(kpl_cc) and character().get_cc(kpl_cc) > 0:
+    rollString += "+1d6[kpl]"
+    ch.mod_cc(kpl_cc, -1)
+    extraFields += f"""-f "{kpl_cc}|You temporarily remember glimpses of the past, perhaps faded memories from ages ago or a previous life. When you make an ability check that uses a skill, you can roll a d6 immediately after seeing the number on the d20 and add the number on the d6 to the check.\n{ch.cc_str(kpl_cc)}" """
+elif args.last("kpl") and ch.cc_exists(kpl_cc) and character().get_cc(kpl_cc) == 0:
+    extraFields += f"""-f "{kpl_cc}|You must take a long rest to regain your expended uses.\n{ch.cc_str(kpl_cc)}" """
+elif args.last("kpl") and not ch.cc_exists(kpl_cc):
+    extraFields += f"""-f "{kpl_cc}|You do not have this ability." """
+
+# Add Flash of Genius and update Counter
+if args.last("fog") and ch.cc_exists(fog_cc) and character().get_cc(fog_cc) > 0:
+    rollString += f"+{intelligenceMod}"
+    ch.mod_cc(fog_cc, -1)
+    extraFields += f"""-f "{fog_cc}|You gain the ability to come up with solutions under pressure. When you or another creature you can see within 30 feet of you makes an ability check or a saving throw, you can use your reaction to add your Intelligence modifier (**+{intelligenceMod}**) to the roll.\n{ch.cc_str(fog_cc)}" """
+elif args.last("fog") and ch.cc_exists(fog_cc) and character().get_cc(fog_cc) == 0:
+    extraFields += f"""-f "{fog_cc}|You must take a long rest to regain your expended uses.\n{ch.cc_str(fog_cc)}" """
+elif args.last("fog") and not ch.cc_exists(fog_cc):
+    extraFields += f"""-f "{fog_cc}|You do not have this ability." """
+
+craftItRoll = vroll(rollString)
+
+# Did we pass the DC to craft and we didn't crit fail?
+if craftItRoll.total >= itemToCraft.dc and craftItRoll.result.crit != 2:
+    # Success!
+    # If the character has Bags setup
+    bagMessage = ""
+    if hasBags:
+        bags = baglib.load_bags()
+        # Remove the materials from the bags
+        for material, amount in itemToCraft.materials.items():
+            bag = baglib.find_bag_with_item(bags, material)
+            baglib.modify_item(bags, material, -amount, bag[0])
+            bagMessage += f"\n- {amount} {material.title()} removed from bags."
+        
+        if itemToCraft.checks == 1:
+            # If the item only takes one check to craft, we can add it to the bags now
+            baglib.modify_item(bags, itemToCraft.name, itemToCraft.quantity, "Crafts", True)
+            bagMessage += f"\n- {itemToCraft.quantity} {itemToCraft.name} added to bags."
+        
+        bagMessage = f"""-f "Bags Updated|{bagMessage}" """
+        baglib.save_bags(bags)
+
+    if itemToCraft.checks > 1:
+        # If the item takes multiple checks to craft, we need to setup progression tracking in the cvar
+        progression = {"name": itemToCraft.name, "checksDone": 1, "checksTotal": itemToCraft.checks, "checksRemaining": itemToCraft.checks - 1, "dc": itemToCraft.dc, "rarity": itemToCraft.rarity, "value": itemToCraft.value, "quantity": itemToCraft.quantity}
+        ch.set_cvar(woodcarverCvar, dump_json(progression))
+        return f"""-title "{ch.name} successfully begins crafting {itemToCraft.name}!" -desc "**Meta**:\nDC {itemToCraft.dc} Woodcarver's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafting**: {itemToCraft.name}\n**Progress**: 1/{itemToCraft.checks} Checks\n**Rarity**: {itemToCraft.rarity}\n**Value**: {itemToCraft.value}gp" {bagMessage} {extraFields} """
+    return f"""-title "{ch.name} successfully crafts {itemToCraft.name}!" -desc "**Meta**:\nDC {itemToCraft.dc} Woodcarver's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafted**: {itemToCraft.name}\n**Rarity**: {itemToCraft.rarity}\n**Value**: {itemToCraft.value}gp" {bagMessage} {extraFields} """
+else:
+    return f"""-title "{ch.name} failed to craft {itemToCraft.name}!" -desc "**Meta**:\nDC {itemToCraft.dc} Woodcarver's Tools Check\n**Check**:\n{craftItRoll}; Failure!" {extraFields} """
+</drac2>
+-footer "CraftingPlus | !woodcarving"

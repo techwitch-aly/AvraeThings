@@ -1,0 +1,101 @@
+embed
+<drac2>
+using(baglib="4119d62e-6a98-4153-bea9-0a99bb36da2c")
+a = &ARGS&
+args = argparse(&ARGS&)
+craftCvar = "craftingplus_woodcarving"
+ch = character()
+extraFields = ""
+
+pendingCraft = ch.get_cvar(craftCvar)
+if not pendingCraft:
+    return f"""-title "{ch.name} has no in-progress woodcarving projects." -desc "Since nothing is in progress, you have nothing to cancel! Try starting a new project with `!woodcarving`!" """
+
+# We need some kind of proficiency to craft
+toolProVar = ch.get_cvar("toolProficiencies")
+if not toolProVar:
+    return f"""-title "{ch.name} attempts to smith! But has no Tool Proficiencies Learned." -desc "Crafting requires tool proficiencies, please see `!tool help` for help adding proficiencies." """
+
+toolProficiencies = load_yaml(toolProVar)
+
+# Validate that we have Woodcarver's Tools proficiency or expertise
+if "woodcarverstools" not in toolProficiencies:
+    return f"""-title "{ch.name} attempts to do woodcarving! But doesn't have Woodcarver's Tool Proficiency." -desc "Woodcarving requires Woodcarver's Tool proficiency, please see `!tool help` for help adding proficiencies." """
+
+pendingCraft = load_json(pendingCraft)
+
+# Determine advantage from args
+adv = True if "adv" in args else None
+
+# Collect manual roll bonuses
+bonus = args.join("b", "+")
+
+# Check for guidance
+guidance = "+1d4[guidance]" if args.last("guidance") else ""
+
+# Setup the roll
+rollString = ch.skills.dexterity.d20(adv)
+
+# Add proficiency or expertise
+rollString += f"+{ch.stats.prof_bonus}" if toolProficiencies.woodcarverstools == 1 else f"+{ch.stats.prof_bonus * 2}"
+
+# Add any manual bonuses
+if bonus:
+    rollString += f"+{bonus}"
+
+# Add guidance if supplied
+if guidance != "":
+    rollString += guidance
+    extraFields += f"""-f "Guidance|Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends." """
+
+# Add Knowledge from a Past Life and update Counter
+if args.last("kpl") and ch.cc_exists(kpl_cc) and character().get_cc(kpl_cc) > 0:
+    rollString += "+1d6[kpl]"
+    ch.mod_cc(kpl_cc, -1)
+    extraFields += f"""-f "{kpl_cc}|You temporarily remember glimpses of the past, perhaps faded memories from ages ago or a previous life. When you make an ability check that uses a skill, you can roll a d6 immediately after seeing the number on the d20 and add the number on the d6 to the check.\n{ch.cc_str(kpl_cc)}" """
+elif args.last("kpl") and ch.cc_exists(kpl_cc) and character().get_cc(kpl_cc) == 0:
+    extraFields += f"""-f "{kpl_cc}|You must take a long rest to regain your expended uses.\n{ch.cc_str(kpl_cc)}" """
+elif args.last("kpl") and not ch.cc_exists(kpl_cc):
+    extraFields += f"""-f "{kpl_cc}|You do not have this ability." """
+
+# Add Flash of Genius and update Counter
+if args.last("fog") and ch.cc_exists(fog_cc) and character().get_cc(fog_cc) > 0:
+    rollString += f"+{intelligenceMod}"
+    ch.mod_cc(fog_cc, -1)
+    extraFields += f"""-f "{fog_cc}|You gain the ability to come up with solutions under pressure. When you or another creature you can see within 30 feet of you makes an ability check or a saving throw, you can use your reaction to add your Intelligence modifier (**+{intelligenceMod}**) to the roll.\n{ch.cc_str(fog_cc)}" """
+elif args.last("fog") and ch.cc_exists(fog_cc) and character().get_cc(fog_cc) == 0:
+    extraFields += f"""-f "{fog_cc}|You must take a long rest to regain your expended uses.\n{ch.cc_str(fog_cc)}" """
+elif args.last("fog") and not ch.cc_exists(fog_cc):
+    extraFields += f"""-f "{fog_cc}|You do not have this ability." """
+
+craftItRoll = vroll(rollString)
+
+# Did we pass the DC to craft and we didn't crit fail?
+if craftItRoll.total >= pendingCraft.dc and craftItRoll.result.crit != 2:
+    # Success!
+    bagMessage = ""
+
+    # If there is more than one check remaining, we don't touch the bags, just update the pending craft
+    if pendingCraft.checksRemaining > 1:
+        pendingCraft.checksRemaining -= 1
+        pendingCraft.checksDone += 1
+        ch.set_cvar(craftCvar, dump_json(pendingCraft))
+        return f""" -title "{ch.name} successfully continues crafting {pendingCraft.name}!" -desc "**Meta**:\nDC {pendingCraft.dc} Woodcarver's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafting**: {pendingCraft.name}\n**Progress**: {pendingCraft.checksDone}/{pendingCraft.checksTotal} Checks\n**Rarity**: {pendingCraft.rarity}\n**Value**: {pendingCraft.value}gp" {extraFields} """
+    else:
+        # Otherwise, we have successfully crafted the item, update bags if necessary and show value and success message
+        # Remove the pending craft since it's complete
+        ch.delete_cvar(craftCvar)
+
+        # See if the user has Bags configured and update them
+        hasBags = ch.get_cvar("bags")
+        if hasBags:
+            bags = baglib.load_bags()
+            baglib.modify_item(bags, pendingCraft.name, pendingCraft.quantity, "Crafts", True)
+            bagMessage += f"""-f "Bags Updated|\n- {pendingCraft.quantity} {pendingCraft.name} added to bags." """
+            baglib.save_bags(bags)
+        
+        return f"""-title "{ch.name} successfully crafts {pendingCraft.name}!" -desc "**Meta**:\nDC {pendingCraft.dc} Woodcarver's Tools Check\n{craftItRoll}; Success!" -f "**Crafted**: {pendingCraft.name}\n**Rarity**: {pendingCraft.rarity}\n**Value**: {pendingCraft.value}gp" {bagMessage} {extraFields} """
+else:
+    return f"""-title "{ch.name} failed to make progress on their {pendingCraft.name}!" -desc "**Meta**:\nDC {pendingCraft.dc} Woodcarver's Tools Check\n{craftItRoll}; Failure!" {extraFields} """
+</drac2>
+-footer "CraftingPlus | !woodcarving continue"
