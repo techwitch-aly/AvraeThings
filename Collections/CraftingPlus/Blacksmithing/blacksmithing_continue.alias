@@ -4,7 +4,6 @@ using(baglib="4119d62e-6a98-4153-bea9-0a99bb36da2c")
 a = &ARGS&
 args = argparse(&ARGS&)
 craftCvar = "craftingplus_blacksmith"
-craftFailureCvar = "craftingplus_blacksmith_failurecount"
 ch = character()
 extraFields = ""
 
@@ -23,7 +22,7 @@ if "smithstools" not in toolProficiencies:
 
 pendingCraft = ch.get_cvar(craftCvar)
 if not pendingCraft:
-    return f"""-title "{ch.name} has no in-progress blacksmithing projects." -desc "Since nothing is in progress, you have nothing to cancel! Try starting a new project with `!blacksmithing`!" """
+    return f"""-title "{ch.name} has no in-progress blacksmithing projects." -desc "Since nothing is in progress, you have nothing to continue! Try starting a new project with `!blacksmithing`!" """
 
 pendingCraft = load_json(pendingCraft)
 
@@ -82,6 +81,7 @@ if craftItRoll.total >= pendingCraft.dc and craftItRoll.result.crit != 2:
     if pendingCraft.checksRemaining > 1:
         pendingCraft.checksRemaining -= 1
         pendingCraft.checksDone += 1
+        pendingCraft.failures = 0
         ch.set_cvar(craftCvar, dump_json(pendingCraft))
         return f""" -title "{ch.name} successfully continues crafting {pendingCraft.name}!" -desc "**Smithing is hard work! You work for 2 IRL hours!**\n**Meta**:\nDC {pendingCraft.dc} Smith's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafting**: {pendingCraft.name}\n**Progress**: {pendingCraft.checksDone}/{pendingCraft.checksTotal} Checks ({pendingCraft.checksDone * 2} of {pendingCraft.checksTotal * 2} hours.)\n**Rarity**: {pendingCraft.rarity}\n**Value**: {pendingCraft.value}gp" {extraFields} """
     else:
@@ -99,6 +99,14 @@ if craftItRoll.total >= pendingCraft.dc and craftItRoll.result.crit != 2:
         
         return f"""-title "{ch.name} successfully crafts {pendingCraft.name}!" -desc "**Smithing is hard work! You work for 2 IRL hours!**\n**Meta**:\nDC {pendingCraft.dc} Smith's Tools Check\n{craftItRoll}; Success!" -f "**Crafted**: {pendingCraft.name}\n**Rarity**: {pendingCraft.rarity}\n**Value**: {pendingCraft.value}gp" {bagMessage} {extraFields} """
 else:
-    return f"""-title "{ch.name} failed to make progress on their {pendingCraft.name}!" -desc "**Meta**:\nDC {pendingCraft.dc} Smith's Tools Check\n{craftItRoll}; Failure!" {extraFields} """
+    pendingCraft.failures += 1
+
+    if pendingCraft.failures >= 3:
+        # If we have failed 3 times, we have failed to craft the item, note that materials have been lost
+        ch.delete_cvar(craftCvar)
+        return f"""-title "{ch.name} failed to craft {pendingCraft.name}!" -desc "**Smithing is hard work! You work for 2 IRL hours!**\n**Meta**:\nDC {pendingCraft.dc} Smith's Tools Check\n{craftItRoll}; Failure!" -f "Materials lost!|Unfortunately, you failed to make progress three attempts in a row and the craft is lost!" {extraFields} """
+    else:
+        ch.set_cvar(craftCvar, dump_json(pendingCraft))
+        return f"""-title "{ch.name} failed to make progress on their {pendingCraft.name}!" -desc "**Smithing is hard work! You work for 2 IRL hours!**\n**Meta**:\nDC {pendingCraft.dc} Smith's Tools Check\n{craftItRoll}; Failure!" -f "Failures|Materials can only last so long, you have failed to craft {pendingCraft.failure} of 3 times in a row. At three failures, the materials are lost." {extraFields} """
 </drac2>
 -footer "CraftingPlus | !blacksmithing continue"
