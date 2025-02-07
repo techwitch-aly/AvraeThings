@@ -1,6 +1,6 @@
 {
-    "daggers": {
-        "name": "2x Daggers",
+    "dagger": {
+        "name": "Dagger",
         "materials": {"ingot": 1},
         "checks": 1,
         "dc": 12,
