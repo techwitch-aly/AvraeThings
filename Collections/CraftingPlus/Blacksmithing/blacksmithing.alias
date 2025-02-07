@@ -26,8 +26,7 @@ if "smithstools" not in toolProficiencies:
 pending = ch.get_cvar(blacksmithCvar)
 if pending:
     craft = load_json(pending)
-    if craft.name != itemToCraft.name:
-        return f"""-title "{ch.name} has an in progress smithing project!" -desc "Your in-progress project is {craft.name}. You have {itemToCraft.checks - craft.checksRemaining} sessions remaining to finish!" -f "To continue your project use: `!blacksmithing continue`.\nOr to cancel that project use: `!blacksmithing cancel`." """
+    return f"""-title "{ch.name} has an in progress smithing project!" -desc "Your in-progress project is {craft.name}. You have {craft.checksRemaining} sessions remaining to finish!" -f "To continue your project use: `!blacksmithing continue`.\nOr to cancel that project use: `!blacksmithing cancel`." """
 
 # Validate that what they want to craft is something we allow
 itemSearch = ([k for k in craftingOptions if a[0].lower() == k] if a else []) or [k for k in craftingOptions if a[0].lower() in k] if a else []
@@ -120,7 +119,7 @@ if craftItRoll.total >= itemToCraft.dc and craftItRoll.result.crit != 2:
 
     if itemToCraft.checks > 1:
         # If the item takes multiple checks to craft, we need to setup progression tracking in the cvar
-        progression = {"name": itemToCraft.name, "checksDone": 1, "checksTotal": itemToCraft.checks, "checksRemaining": itemToCraft.checks - 1, "itemToCraft": itemToCraft}
+        progression = {"name": itemToCraft.name, "checksDone": 1, "checksTotal": itemToCraft.checks, "checksRemaining": itemToCraft.checks - 1, "dc": itemToCraft.dc, "rarity": itemToCraft.rarity, "value": itemToCraft.value, "quantity": itemToCraft.quantity}
         ch.set_cvar(blacksmithCvar, dump_json(progression))
         return f"""-title "{ch.name} successfully begins crafting {itemToCraft.name}!" -desc "**Meta**:\nDC {itemToCraft.dc} Smith's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafting**: {itemToCraft.name}\n**Progress**: 1/{itemToCraft.checks} Checks\n**Rarity**: {itemToCraft.rarity}\n**Value**: {itemToCraft.value}gp" {bagMessage} {extraFields} """
     return f"""-title "{ch.name} successfully crafts {itemToCraft.name}!" -desc "**Meta**:\nDC {itemToCraft.dc} Smith's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafted**: {itemToCraft.name}\n**Rarity**: {itemToCraft.rarity}\n**Value**: {itemToCraft.value}gp" {bagMessage} {extraFields} """
