@@ -31,7 +31,7 @@ if len(gameSelection) > 1:
 
 # We have one and only one game from the list, let's play it!
 # Start by taking a ticket punch
-ch.modify_cc(cc, -1)
+ch.mod_cc(cc, -1)
 
 # Now find the check for the game and roll it!
 game = gameOptions[gameSelection[0]]
@@ -45,7 +45,7 @@ if rollResult.total >= game.dc:
     # The roll was higher than the game DC! Pick a random prize!
     randomPrize = vroll(f"1d{len(prizeOptions)}")
     prize = prizeOptions[randomPrize.total - 1]
-    prizeOut = f"""-f "\n\n**Prize**: {prize}" """
+    prizeOut = f"""-f "**Random Prize**: {prize}!" """
 
     # If bags are configured, add the prize to the character's inventory
     hasBags = ch.get_cvar("bags")
@@ -53,8 +53,10 @@ if rollResult.total >= game.dc:
         bags = baglib.load_bags()
         baglib.modify_item(bags, prize, 1, "Festival Prizes", True)
         baglib.save_bags(bags)
+        prizeOut = f"""-f "**Random Prize**: {prize}!\n\nYour prize has been added to your Festival Prizes bag!" """
 
 # Finally output the results of trying to play the game!
-return f"""-title "{name} attempts the {game.name}!" -desc "{game.description}" -f "**Meta**\nDC: {game.dc} {game.check.title()} Check\n\n{game.check.title()}: {rollResult}; {state}" {prizeOut} """
+return f"""-title "{name} attempts the {game.name}!" -desc "**Meta**\nDC {game.dc} {game.check.title()} Check\n\n{game.check.title()}: {rollResult}; {state}" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
 </drac2>
+-thumb {{ch.image}}
 -footer "Festival Games | !festival"
