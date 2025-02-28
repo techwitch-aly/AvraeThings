@@ -1,0 +1,60 @@
+embed
+<drac2>
+using(baglib="4119d62e-6a98-4153-bea9-0a99bb36da2c")
+a = &ARGS&
+args = argparse(&ARGS&)
+ch = character()
+cc = "Festival Ticket Punches"
+prizeOptions = load_json(get_gvar("461a83c0-d051-420f-a18a-3b058bafa696"))
+gameOptions = load_json(get_gvar("fc331e8d-6904-49a5-8d66-93fb5d42771d"))
+
+# Make sure we have a custom counter for our ticket punches
+ch.create_cc_nx(cc, 0, 10, 'none', 'bubble', reset_to=0)
+
+# Refill the ticket punches if they visit the ticket booth
+if a[0].lower() == "ticket":
+    ch.set_cc(cc, 10)
+    return f"""-title "{name} purchases a festival ticket!" -desc "You've purchased a ticket for this festival! Go have fun!" -f "{cc}|{ch.cc_str(cc)}" """
+
+# If they aren't buying a ticket, make sure they have enough punches to play games!
+if ch.get_cc(cc) == 0:
+    return f"""-title "{name} tries to play a game!" -desc "You don't have any tickets to play games! You can purchase a ticket with `!festival ticket`." -f "{cc}|{ch.cc_str(cc)}" """
+
+# Let's find the game they want to play
+gameSelection = ([g for g in gameOptions if a[0].lower() == g.lower()] if a else []) or [g for g in gameOptions if a[0].lower() in g.lower()] if a else []
+
+if len(gameSelection) == 0:
+    err(f"_ _\nI'm sorry, I don't know of any games by that name.  Please try again.")
+
+if len(gameSelection) > 1:
+    err(f"_ _\nThere are many games that match that description: `{'`, `'.join(gameSelection)}`.  Could you be more specific?")
+
+# We have one and only one game from the list, let's play it!
+# Start by taking a ticket punch
+ch.modify_cc(cc, -1)
+
+# Now find the check for the game and roll it!
+game = gameOptions[gameSelection[0]]
+rollString = ch.skills[game['check']].d20()
+rollResult = vroll(rollString)
+
+prizeOut = ""
+state = "Failure!"
+if rollResult.total >= game.dc:
+    state = "Success!"
+    # The roll was higher than the game DC! Pick a random prize!
+    randomPrize = vroll(f"1d{len(prizeOptions)}")
+    prize = prizeOptions[randomPrize.total - 1]
+    prizeOut = f"""-f "\n\n**Prize**: {prize}" """
+
+    # If bags are configured, add the prize to the character's inventory
+    hasBags = ch.get_cvar("bags")
+    if hasBags:
+        bags = baglib.load_bags()
+        baglib.modify_item(bags, prize, 1, "Festival Prizes", True)
+        baglib.save_bags(bags)
+
+# Finally output the results of trying to play the game!
+return f"""-title "{name} attempts the {game.name}!" -desc "{game.description}" -f "**Meta**\nDC: {game.dc} {game.check.title()} Check\n\n{game.check.title()}: {rollResult}; {state}" {prizeOut} """
+</drac2>
+-footer "Festival Games | !festival"

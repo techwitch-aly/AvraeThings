@@ -1,0 +1,26 @@
+{
+    "Wizard's Tower Climb": {
+        "name": "Wizard's Tower Climb",
+        "description": "Ring the bell at the top of the tower!",
+        "check": "strength",
+        "dc": 18
+    },
+    "Mighty Gourd Lift": {
+        "name": "Mighty Gourd Lift",
+        "description": "Lift the gourd!",
+        "check": "strength",
+        "dc": 18
+    },
+    "Apple Bobbing": {
+        "name": "Apple Bobbing",
+        "description": "Bob for apples!",
+        "check": "dexterity",
+        "dc": 18
+    },
+    "Rogue's Ring Toss": {
+        "name": "Rogue's Ring Toss",
+        "description": "Toss the ring!",
+        "check": "dexterity",
+        "dc": 18
+    }
+}
