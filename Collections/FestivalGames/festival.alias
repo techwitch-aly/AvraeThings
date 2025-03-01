@@ -92,7 +92,7 @@ if game.numberOfChecks > 1:
             prizeOut = f"""-f "**Random Prize**: {prize}!\n\nYour prize has been added to your Festival Prizes bag!" """
         
     # Finally output the results of trying to play the game!
-    return f"""-title "{name} attempts the {game.name}!" -desc "**Meta**\nDC {metaDCs} {game.check.title()} Check\n\n{metaRolls}" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
+    return f"""-title "{name} attempts the {game.name}!" -desc "**Meta**\nDC {metaDCs} {game.check.title()} Check\n\n{metaRolls}\n**{state}**" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
 else:
     rollResult = vroll(rollString)
 
@@ -111,7 +111,7 @@ else:
             prizeOut = f"""-f "**Random Prize**: {prize}!\n\nYour prize has been added to your Festival Prizes bag!" """
 
     # Finally output the results of trying to play the game!
-    return f"""-title "{name} attempts the {game.name}!" -desc "**Meta**\nDC {game.dc} {game.check.title()} Check\n\n{game.check.title()}: {rollResult}; {state}" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
+    return f"""-title "{name} attempts the {game.name}!" -desc "**Meta**\nDC {game.dc} {game.check.title()} Check\n\n{game.check.title()}: {rollResult}; **{state}**" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
 </drac2>
 -thumb {{ch.image}}
 -footer "Festival Games | !festival"
