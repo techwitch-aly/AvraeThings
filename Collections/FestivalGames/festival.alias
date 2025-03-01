@@ -47,29 +47,71 @@ if len(gameSelection) > 1:
 # Start by taking a ticket punch
 ch.mod_cc(cc, -1)
 
+prizeOut = ""
+state = "Failure!"
 # Now find the check for the game and roll it!
 game = gameOptions[gameSelection[0]]
 rollString = ch.skills[game['check']].d20()
-rollResult = vroll(rollString)
 
-prizeOut = ""
-state = "Failure!"
-if rollResult.total >= game.dc:
-    state = "Success!"
-    # The roll was higher than the game DC! Pick a random prize!
-    randomPrize = vroll(f"1d{len(prizeOptions)}")
-    prize = prizeOptions[randomPrize.total - 1]
-    prizeOut = f"""-f "**Random Prize**: {prize}!" """
+if game.numberOfChecks > 1:
+    metaDCs = ", ".join([str(dc) for dc in game.dcList])
+    # Collect the rollTotals up to the number of checks specified for the game
+    rollTotals = []
+    rolls = []
+    for i in range(0, game.numberOfChecks):
+        rollResult = vroll(rollString)
+        rollTotals.append(rollResult.total)
+        rolls.append(rollResult)
+    
+    # Collect the roll outputs
+    metaRolls = "\n".join([str(r) for r in rolls])
 
-    # If bags are configured, add the prize to the character's inventory
-    if hasBags:
-        bags = baglib.load_bags()
-        baglib.modify_item(bags, prize, 1, "Festival Prizes", True)
-        baglib.save_bags(bags)
-        prizeOut = f"""-f "**Random Prize**: {prize}!\n\nYour prize has been added to your Festival Prizes bag!" """
+    # Now check that we have passed the DCs
+    rollTotals.sort()
+    game.dcList.sort()
 
-# Finally output the results of trying to play the game!
-return f"""-title "{name} attempts the {game.name}!" -desc "**Meta**\nDC {game.dc} {game.check.title()} Check\n\n{game.check.title()}: {rollResult}; {state}" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
+    i, j, count = 0, 0, 0
+    while i < len(rollTotals) and j < len(game.dcList):
+        if rollTotals[i] >= game.dcList[j]:
+            count += 1
+            j += 1
+        i += 1
+    
+    if count >= len(game.dcList):
+        state = "Success!"
+        # The roll was higher than the game DC! Pick a random prize!
+        randomPrize = vroll(f"1d{len(prizeOptions)}")
+        prize = prizeOptions[randomPrize.total - 1]
+        prizeOut = f"""-f "**Random Prize**: {prize}!" """
+
+        # If bags are configured, add the prize to the character's inventory
+        if hasBags:
+            bags = baglib.load_bags()
+            baglib.modify_item(bags, prize, 1, "Festival Prizes", True)
+            baglib.save_bags(bags)
+            prizeOut = f"""-f "**Random Prize**: {prize}!\n\nYour prize has been added to your Festival Prizes bag!" """
+        
+    # Finally output the results of trying to play the game!
+    return f"""-title "{name} attempts the {game.name}!" -desc "**Meta**\nDC {metaDCs} {game.check.title()} Check\n\n{metaRolls}" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
+else:
+    rollResult = vroll(rollString)
+
+    if rollResult.total >= game.dc:
+        state = "Success!"
+        # The roll was higher than the game DC! Pick a random prize!
+        randomPrize = vroll(f"1d{len(prizeOptions)}")
+        prize = prizeOptions[randomPrize.total - 1]
+        prizeOut = f"""-f "**Random Prize**: {prize}!" """
+
+        # If bags are configured, add the prize to the character's inventory
+        if hasBags:
+            bags = baglib.load_bags()
+            baglib.modify_item(bags, prize, 1, "Festival Prizes", True)
+            baglib.save_bags(bags)
+            prizeOut = f"""-f "**Random Prize**: {prize}!\n\nYour prize has been added to your Festival Prizes bag!" """
+
+    # Finally output the results of trying to play the game!
+    return f"""-title "{name} attempts the {game.name}!" -desc "**Meta**\nDC {game.dc} {game.check.title()} Check\n\n{game.check.title()}: {rollResult}; {state}" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
 </drac2>
 -thumb {{ch.image}}
 -footer "Festival Games | !festival"
