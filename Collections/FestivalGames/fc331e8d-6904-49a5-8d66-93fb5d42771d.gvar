@@ -1,26 +1,31 @@
 {
-    "Wizard's Tower Climb": {
-        "name": "Wizard's Tower Climb",
+    "High Tide Heights": {
+        "name": "High Tide Heights",
         "description": "Ring the bell at the top of the tower!",
         "check": "strength",
+        "numberOfChecks": 1,
         "dc": 18
     },
-    "Mighty Gourd Lift": {
-        "name": "Mighty Gourd Lift",
-        "description": "Lift the gourd!",
-        "check": "strength",
-        "dc": 18
-    },
-    "Apple Bobbing": {
-        "name": "Apple Bobbing",
-        "description": "Bob for apples!",
-        "check": "dexterity",
-        "dc": 18
-    },
-    "Rogue's Ring Toss": {
-        "name": "Rogue's Ring Toss",
+    "Deep Sea Ring Toss": {
+        "name": "Deep Sea Ring Toss",
         "description": "Toss the ring!",
         "check": "dexterity",
+        "numberOfChecks": 3,
+        "dcList": [15, 17],
+        "dc": 18
+    },
+    "Tidepool Tally": {
+        "name": "Tidepool Tally",
+        "description": "Guess the number of marbels in the jar!",
+        "check": "intelligence",
+        "numberOfChecks": 1,
+        "dc": 18
+    },
+    "Seafarer's Lost Treasure": {
+        "name": "Seafarer's Lost Treasure",
+        "description": "Find the golden shell in the sand!",
+        "check": "wisdom",
+        "numberOfChecks": 1,
         "dc": 18
     }
 }
