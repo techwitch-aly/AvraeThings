@@ -1,0 +1,26 @@
+embed
+<drac2>
+args = argparse(&ARGS&)
+ch = character()
+minDC = 10
+languages = load_json(get_gvar("c730dca5-d1f6-4ce9-bbbc-6bb7ac32dde5"))
+
+# Determine advantage from args
+adv = True if "adv" in args else None
+
+rollString = ch.skills.investigation.d20(adv)
+findItRoll = vroll(rollString)
+if findItRoll.total >= minDC:
+    foundLanguages = ""
+    for i in range(minDC, findItRoll.total + 1):
+        n = "dc" + str(i)
+        if n in languages:
+            for j in languages[n]:
+                foundLanguages += f"* {j}\n"
+    return f"""-desc "**Meta**: DC {minDC} Investigation Check\n\nInvestigation: {findItRoll}; Success!" -f "Language Tomes Found|{foundLanguages}" """
+else:
+    return f"""-desc "**Meta**: DC {minDC} Investigation Check\n\nInvestigation: {findItRoll}; Failure!" -f "Language Tomes Found|* None" """
+</drac2>
+-title "{{name}} is searching for language books!"
+-thumb "{{ch.image}}"
+-footer "Librarian | !librarian"

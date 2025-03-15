@@ -1,0 +1,19 @@
+{
+  "dc10": ["Common"],
+  "dc11": ["Elvish"],
+  "dc12": ["Sylvan"],
+  "dc13": ["Dwarvish"],
+  "dc14": ["Orc"],
+  "dc15": ["Halfling"],
+  "dc16": ["Gnomish", "Kenderspeak"],
+  "dc17": ["Infernal"],
+  "dc18": ["Goblin"],
+  "dc19": ["Giant"],
+  "dc20": ["Leonin", "Draconic"],
+  "dc21": ["Braille", "Aetherion Sign Language"],
+  "dc22": ["Undercommon"],
+  "dc23": ["Abyssal"],
+  "dc24": ["Celestial"],
+  "dc25": ["Deep Speech"],
+  "dc26": ["Primordial"]
+}
