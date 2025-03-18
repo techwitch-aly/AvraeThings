@@ -17,9 +17,9 @@ if findItRoll.total >= minDC:
         if n in languages:
             for j in languages[n]:
                 foundLanguages += f"* {j}\n"
-    return f"""-desc "**Meta**: DC {minDC} Investigation Check\n\nInvestigation: {findItRoll}; Success!" -f "Language Tomes Found|{foundLanguages}" """
+    return f"""-desc "**Meta**: DC {minDC} Investigation Check\n\nInvestigation: {findItRoll}; Success!" -f "Language Tomes Potentially Found|{foundLanguages}" -f "You can choose one of the options listed as your found book, or try your search again tomorrow!" """
 else:
-    return f"""-desc "**Meta**: DC {minDC} Investigation Check\n\nInvestigation: {findItRoll}; Failure!" -f "Language Tomes Found|* None" """
+    return f"""-desc "**Meta**: DC {minDC} Investigation Check\n\nInvestigation: {findItRoll}; Failure!" -f "Language Tomes Potentially Found|* None" """
 </drac2>
 -title "{{name}} is searching for language books!"
 -thumb "{{ch.image}}"
