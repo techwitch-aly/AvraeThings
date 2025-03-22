@@ -3,36 +3,35 @@
         "name": "Mighty Gourd Lift",
         "description": "Carry the giant pumpkin across the finish line!",
         "check": "strength",
-        "numberOfChecks": 1,
+        "style": "single",
         "dc": 18
     },
     "Specter's Apple Plunge": {
         "name": "Specter's Apple Plunge",
         "description": "Dunk your head in and find the golden apple!",
         "check": "dexterity",
-        "numberOfChecks": 1,
+        "style": "single",
         "dc": 18
     },
     "The Hag's Omen": {
         "name": "The Hag's Omen",
         "description": "Find the glowing shard amidst the rock pile!",
         "check": "wisdom",
-        "numberOfChecks": 1,
+        "style": "single",
         "dc": 18
     },
     "Mummy's Mystery Number": {
         "name": "Mummy's Mystery Number",
         "description": "Guess the mummy's chosen, secret number!",
         "check": "intelligence",
-        "numberOfChecks": 1,
+        "style": "single",
         "dc": 18
     },
     "The Witch's Brew": {
         "name": "The Witch's Brew",
         "description": "Can you keep all three of the witch's brews down?",
         "check": "constitution",
-        "numberOfChecks": 3,
-        "dcList": [14, 16, 18],
-        "dc": 18
+        "style": "progressive",
+        "dcList": [14, 16, 18]
     }
 }
