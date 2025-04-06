@@ -8,8 +8,6 @@ a = &ARGS&
 args = argparse(&ARGS&)
 ch = character()
 craftingOptions = load_json(get_gvar("79f5f16d-dec2-4767-8526-1f53ebd9b472"))
-kpl_cc = "Knowledge from a Past Life"
-fog_cc = "Flash of Genius"
 extraFields = ""
 
 # We need some kind of proficiency to craft
