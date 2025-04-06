@@ -11,7 +11,7 @@ for key in craftingOptions:
 options += "```"
 </drac2>
 -title "{{name}} needs help working the forge!"
--desc "Forging is the process of turning raw ore into ingots for crafting. It requires Smith's Tools proficiencies and is aided by your Intelligence modifier."
--f "Begin forging by using `!forge <item>` like `!forge iron`."
--f "Options for forging: {{options}}"
--footer "CraftingPlus | !forge help"
+-desc "Smelting is the process of turning raw ore into ingots for crafting. It requires Smith's Tools proficiencies and is aided by your Intelligence modifier."
+-f "Begin smelting by using `!smelting <item>` like `!forge iron`."
+-f "Options for smelting: {{options}}"
+-footer "CraftingPlus | !smelting help"

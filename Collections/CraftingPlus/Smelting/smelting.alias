@@ -15,20 +15,20 @@ extraFields = ""
 # We need some kind of proficiency to craft
 toolProVar = ch.get_cvar("toolProficiencies")
 if not toolProVar:
-    return f"""-title "{ch.name} attempts to forge ingots! But has no Tool Proficiencies Learned." -desc "Crafting requires tool proficiencies, please see `!tool help` for help adding proficiencies." """
+    return f"""-title "{ch.name} attempts to smelt ingots! But has no Tool Proficiencies Learned." -desc "Crafting requires tool proficiencies, please see `!tool help` for help adding proficiencies." """
 
 toolProficiencies = load_yaml(toolProVar)
 
 # Validate that we have Smith's Tools proficiency or expertise
 if "smithstools" not in toolProficiencies:
-    return f"""-desc "{ch.name} attempts to forge ingots! But doesn't have Smith's Tool Proficiency." -f "Forging requires Smith's Tool proficiency, please see `!tool help` for help adding proficiencies." """
+    return f"""-desc "{ch.name} attempts to smelt ingots! But doesn't have Smith's Tool Proficiency." -f "Smelting requires Smith's Tool proficiency, please see `!tool help` for help adding proficiencies." """
 
 # What kind of ingot are we making?
 # Validate that what they want to craft is something we allow
 itemSearch = ([k for k in craftingOptions if a[0].lower() == k] if a else []) or [k for k in craftingOptions if a[0].lower() in k] if a else []
 
 if len(itemSearch) == 0:
-    return f"""-desc "Forging - Couldn't Find Item" -f "Search was: `{a[0]}`" """
+    return f"""-desc "Smelting - Couldn't Find Item" -f "Search was: `{a[0]}`" """
 
 if len(itemSearch) > 1:
     return f"""-desc "The blacksmith is confused." -f "There are many items that match that description: `{'`, `'.join(itemSearch)}`. Could you be more specific?" """
@@ -100,5 +100,5 @@ else:
     
     return f"""-desc "**Meta:**\nDC {itemToCraft.dc} Smithing (Intelligence) Check\nSmithing (Intelligence): {craftItRoll}; **Success**!" -f "**Crafted**: {itemToCraft.name} x1" {bagMessage} {extraFields} """
 </drac2>
--title "{{name}} works the forge!"
--footer "CraftingPlus | !forge"
+-title "{{name}} smelts some ore!"
+-footer "CraftingPlus | !smelting"
