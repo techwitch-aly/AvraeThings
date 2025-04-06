@@ -5,8 +5,6 @@ using(craftingutils="aefb7981-b14b-4a31-aa5e-d66ad6437677")
 a = &ARGS&
 args = argparse(&ARGS&)
 ch = character()
-kpl_cc = "Knowledge from a Past Life"
-fog_cc = "Flash of Genius"
 extraFields = ""
 bagMessage = ""
 

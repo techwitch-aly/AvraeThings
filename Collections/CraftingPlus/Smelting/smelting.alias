@@ -7,8 +7,6 @@ a = &ARGS&
 args = argparse(&ARGS&)
 ch = character()
 craftingOptions = load_json(get_gvar("a7b9d388-764c-4b45-aa73-ce878b9d74e4"))
-kpl_cc = "Knowledge from a Past Life"
-fog_cc = "Flash of Genius"
 extraFields = ""
 
 # VALIDATE!
