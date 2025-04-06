@@ -17,6 +17,7 @@ adv = True if "adv" in args else None
 # Roll a survival check
 rollString = ch.skills.survival.d20(adv)
 
+# Add commonly supported roll modifiers
 rollMods = craftingutils.extract_roll_bonuses(args, ch)
 rollString += rollMods[0]
 extraFields += rollMods[1]
