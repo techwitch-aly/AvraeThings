@@ -2,8 +2,8 @@ embed
 <drac2>
 using(baglib="4119d62e-6a98-4153-bea9-0a99bb36da2c")
 using(craftingutils="aefb7981-b14b-4a31-aa5e-d66ad6437677")
-args = &ARGS&
-a = argparse(&ARGS&)
+a = &ARGS&
+args = argparse(&ARGS&)
 action = "tries to harvest"
 ch = character()
 harvestables = load_json(get_gvar("97458d50-2bde-4751-9af1-952208b92f2e"))
@@ -11,11 +11,12 @@ extraFields = ""
 bagMessage = ""
 
 # Make sure we have something to harvest
-if not args[0]:
+if not a or (len(a) == 0):
+    target = "Something That Doesn't Exist"
     return f"""-desc "Make sure you try to harvest something! Please pass in the ore or gem you want to extract!" -f "Example: `!mining harvest copper`" """
 
-target = args[0].title()
-targetSearch = args[0].lower()
+target = a[0].title()
+targetSearch = a[0].lower()
 # Make sure it's something we can harvest
 if not targetSearch in harvestables["dcLookup"]:
     return f"""-desc "Couldn't find `{targetSearch}` as something to harvest, double check your spelling and the list of found ore or gems!" """
@@ -34,7 +35,7 @@ else:
     target = matchedMaterial[0].title()
 
 # Determine advantage from args
-adv = True if "adv" in a else None
+adv = True if "adv" in args else None
 
 # Setup up the athletics check
 rollString = ch.skills.athletics.d20(adv)
@@ -45,7 +46,7 @@ rollString += rollMods[0]
 extraFields += rollMods[1]
 
 harvestItRoll = vroll(rollString)
-dc = harvestables["dcLookup"][args[0].lower()]
+dc = harvestables["dcLookup"][a[0].lower()]
 
 if harvestItRoll.total < dc:
     action = "fails to harvest"
