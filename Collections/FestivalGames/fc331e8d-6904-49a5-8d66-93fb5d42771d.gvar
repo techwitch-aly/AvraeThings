@@ -1,36 +1,36 @@
 {
-    "Mighty Gourd Lift": {
-        "name": "Mighty Gourd Lift",
-        "description": "Carry the giant pumpkin across the finish line!",
-        "check": "strength",
-        "style": "single",
-        "dc": 18
-    },
-    "Specter's Apple Plunge": {
-        "name": "Specter's Apple Plunge",
-        "description": "Dunk your head in and find the golden apple!",
-        "check": "dexterity",
-        "style": "single",
-        "dc": 18
-    },
-    "The Hag's Omen": {
-        "name": "The Hag's Omen",
-        "description": "Find the glowing shard amidst the rock pile!",
+    "Seafarer's Lost Treasure": {
+        "name": "Seafarer's Lost Treasure",
+        "description": "Can you find the treasure hidden in the seashells?",
         "check": "wisdom",
         "style": "single",
         "dc": 18
     },
-    "Mummy's Mystery Number": {
-        "name": "Mummy's Mystery Number",
-        "description": "Guess the mummy's chosen, secret number!",
+    "Tidepool Tally": {
+        "name": "Tidepool Tally",
+        "description": "Can you count the number of shells in the jar?",
         "check": "intelligence",
         "style": "single",
         "dc": 18
     },
-    "The Witch's Brew": {
-        "name": "The Witch's Brew",
-        "description": "Can you keep all three of the witch's brews down?",
-        "check": "constitution",
+    "High Tide Heights": {
+        "name": "High Tide Height",
+        "description": "Can you climb the giant palm tree?",
+        "check": "strength",
+        "style": "single",
+        "dc": 18
+    },
+    "Deep Sea Ring Toss": {
+        "name": "Deep Sea Ring Toss",
+        "description": "Can you get two of your three rings on the mini anchors?",
+        "check": "dexterity",
+        "style": "twoOfThree",
+        "dcList": [15,17]
+    },
+    "Flumph Hunt": {
+        "name": "Flumph Hunt",
+        "description": "Can you hit all the moving flumph shaped targets?",
+        "check": "dexterity",
         "style": "progressive",
         "dcList": [14, 16, 18]
     }
