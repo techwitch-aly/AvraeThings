@@ -95,6 +95,9 @@ rollString = ch.skills[game['check']].d20()
 # The fallback game type is "Single", which is just a single roll of an ability check against a static DC
 if game.style == "twoOfThree":
     metaDCs = ", ".join([str(dc) for dc in game.dcList])
+    dcLength = len(game.dcList)
+    numChecks = dcLength + 1
+
     # Collect the rollTotals up to the number of checks specified for the game
     rollTotals = []
     rolls = []
@@ -132,9 +135,10 @@ if game.style == "twoOfThree":
             prizeOut = f"""-f "**Random Prize**: {prize}!\n\nYour prize has been added to your Festival Prizes bag!" """
         
     # Finally output the results of trying to play the game!
-    return f"""-title "{name} attempts the {game.name}!" -desc "**Meta**\nDC {metaDCs} {game.check.title()} Checks\n\n{metaRolls}\n**{state}**" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
+    return f"""-title "{name} attempts the {game.name}!" -desc "Roll {numChecks} checks and meet at least {dcLength} DCs.\n\n**Meta**\nDC {metaDCs} {game.check.title()} Checks\n\n{metaRolls}\n**{state}**" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
 elif game.style == "progressive":
-    metaDCs = ", ".join([str(dc) for dc in game.dcList])
+    metaDCs = ", then ".join([str(dc) for dc in game.dcList])
+    numChecks = len(game.dcList)
     progressiveSuccess = True
     rolls = []
 
@@ -162,9 +166,9 @@ elif game.style == "progressive":
             baglib.modify_item(bags, prize, 1, "Festival Prizes", True)
             baglib.save_bags(bags)
             prizeOut = f"""-f "**Random Prize**: {prize}!\n\nYour prize has been added to your Festival Prizes bag!" """
-        return f"""-title "{name} attempts the {game.name}!" -desc "**Meta**\nDC {metaDCs} {game.check.title()} Checks\n\n{metaRolls}\n**Success!**" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
+        return f"""-title "{name} attempts the {game.name}!" -desc "Roll {numChecks} checks and match DCs in order.\n\n**Meta**\nDC {metaDCs} {game.check.title()} Checks\n\n{metaRolls}\n**Success!**" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
     else:
-        return f"""-title "{name} attempts the {game.name}!" -desc "**Meta**\nDC {metaDCs} {game.check.title()} Checks\n\n{metaRolls}\n**Failure!**" -f "{cc}|{ch.cc_str(cc)} (-1)" """
+        return f"""-title "{name} attempts the {game.name}!" -desc "Roll {numChecks} checks and match DCs in order.\n\n**Meta**\nDC {metaDCs} {game.check.title()} Checks\n\n{metaRolls}\n**Failure!**" -f "{cc}|{ch.cc_str(cc)} (-1)" """
 else:
     rollResult = vroll(rollString)
 
