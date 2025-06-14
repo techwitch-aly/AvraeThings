@@ -1,0 +1,53 @@
+embed
+<drac2>
+a = &ARGS&
+args = argparse(&ARGS&)
+ch = character()
+#hasBags = ch.get_cvar("bags")
+dcList = [16, 18, 20]
+
+wine1 = f"""-f "Red Hot Revelry, Gargoyle's Glee Vineyards|*DC 16* - Sauvignon Blanc, infused with Poltergeist Peppers\nThis one really sneaks up on you; fresh, peppery and a little savory, it's well known in the world of wines as a "safe" introduction to the concept of spicy wines." """
+wine2 = f"""-f "Feverous Fire Ant, Abyssal Alchemy|*DC 18* - Grenache, infused with Sweltering Scorpion Peppers\n Distinctively sweet, this wine also packs a fiery punch sure to clear up those pesky sinuses." """
+wine3 = f"""-f "Incandescent Immolith, White Unicorn Wines|*DC 20* - Merlot, infused with Redspawn Firebelchers\n Aromatic, though test this as your own risk, as many have sworn this wine singes nose hairs..." """
+wineList = [wine1, wine2, wine3]
+
+rollString = ch.skills["constitution"].d20()
+metaDCs = ", then ".join([str(dc) for dc in dcList])
+numChecks = len(dcList)
+progressiveSuccess = True
+rolls = []
+wineResults = []
+
+# Roll for each DC in the list
+for i in range(0, len(dcList)):
+    rollResult = vroll(rollString)
+    rolls.append(rollResult)
+    wineResults.append(wineList[i])
+
+    # If we fail a roll, we stop rolling
+    if rollResult.total < dcList[i]:
+        progressiveSuccess = False
+        break
+
+# Collect the roll outputs
+metaRolls = "\n".join([str(r) for r in rolls])
+metaWineResults = " ".join([str(w) for w in wineResults])
+
+# If we've met or exceeded all the DCs, we win a prize!
+if progressiveSuccess:
+    #randomPrize = vroll(f"1d{len(prizeOptions)}")
+    #prize = prizeOptions[randomPrize.total - 1]
+    #prizeOut = f"""-f "**Random Prize**: {prize}!" """
+    prizeOut = ""
+
+    #if hasBags:
+        #bags = baglib.load_bags()
+        #baglib.modify_item(bags, prize, 1, "Festival Prizes", True)
+        #baglib.save_bags(bags)
+        #prizeOut = f"""-f "**Random Prize**: {prize}!\n\nYour prize has been added to your Festival Prizes bag!" """
+    return f"""-title "{name} attempts the Spicy Wine Flights!" -desc "Roll {numChecks} checks and match DCs in order.\n\n**Meta**\nDC {metaDCs} Constitution Checks\n\n{metaRolls}\n**Success!**" {prizeOut} {metaWineResults} """
+else:
+    return f"""-title "{name} attempts the Spicy Wine Flights!" -desc "Roll {numChecks} checks and match DCs in order.\n\n**Meta**\nDC {metaDCs} Constitution Checks\n\n{metaRolls}\n**Failure!**" {metaWineResults} """
+</drac2>
+-thumb {{ch.image}}
+-footer "Festival Games | !wineflights"
