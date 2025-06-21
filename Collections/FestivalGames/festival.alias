@@ -141,11 +141,13 @@ elif game.style == "progressive":
     numChecks = len(game.dcList)
     progressiveSuccess = True
     rolls = []
+    descriptions = []
 
     # Roll for each DC in the list
     for i in range(0, len(game.dcList)):
         rollResult = vroll(rollString)
         rolls.append(rollResult)
+        descriptions.append(f"""-f "{game.descriptions[i]}" """)
 
         # If we fail a roll, we stop rolling
         if rollResult.total < game.dcList[i]:
@@ -154,6 +156,7 @@ elif game.style == "progressive":
     
     # Collect the roll outputs
     metaRolls = "\n".join([str(r) for r in rolls])
+    metaDescriptions = " ".join([str(d) for d in descriptions])
 
     # If we've met or exceeded all the DCs, we win a prize!
     if progressiveSuccess:
@@ -166,9 +169,9 @@ elif game.style == "progressive":
             baglib.modify_item(bags, prize, 1, "Festival Prizes", True)
             baglib.save_bags(bags)
             prizeOut = f"""-f "**Random Prize**: {prize}!\n\nYour prize has been added to your Festival Prizes bag!" """
-        return f"""-title "{name} attempts the {game.name}!" -desc "Roll {numChecks} checks and match DCs in order.\n\n**Meta**\nDC {metaDCs} {game.check.title()} Checks\n\n{metaRolls}\n**Success!**" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
+        return f"""-title "{name} attempts the {game.name}!" -desc "Roll {numChecks} checks and match DCs in order.\n\n**Meta**\nDC {metaDCs} {game.check.title()} Checks\n\n{metaRolls}\n**Success!**" {prizeOut} {metaDescriptions} -f "{cc}|{ch.cc_str(cc)} (-1)" """
     else:
-        return f"""-title "{name} attempts the {game.name}!" -desc "Roll {numChecks} checks and match DCs in order.\n\n**Meta**\nDC {metaDCs} {game.check.title()} Checks\n\n{metaRolls}\n**Failure!**" -f "{cc}|{ch.cc_str(cc)} (-1)" """
+        return f"""-title "{name} attempts the {game.name}!" -desc "Roll {numChecks} checks and match DCs in order.\n\n**Meta**\nDC {metaDCs} {game.check.title()} Checks\n\n{metaRolls}\n**Failure!**" {metaDescriptions} -f "{cc}|{ch.cc_str(cc)} (-1)" """
 else:
     rollResult = vroll(rollString)
 
