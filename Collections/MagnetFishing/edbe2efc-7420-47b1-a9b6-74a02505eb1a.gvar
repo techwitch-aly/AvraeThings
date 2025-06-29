@@ -8,35 +8,192 @@
   "7": ["Nothing but murky water and rust flakes."],
   "8": ["Nothing but murky water and rust flakes."],
   "9": ["Nothing but murky water and rust flakes."],
-  "10": ["A bundle of rusty nails—perfect for crafting basic traps or patching up wooden objects.", "A handful of old screws and nails, not worth much."],
-  "11": ["A corroded iron key. The teeth of the key are strangely jagged, hinting at a hidden lock.", "A rusted, unrecognizable piece of machinery. (Worth 2 gold at the junkyard.)"],
-  "12": ["A broken gear with faint dwarven runes etched along the edges.", "A cracked data chip that can be repaired at an electronics shop."],
-  "13": ["A dented lantern frame. It glows faintly when brought near magic."],
-  "14": ["A magnetic core, the size of a fist, that hums softly when touched."],
-  "15": ["A steel helm, rusted but sturdy, inscribed with faded sigils of protection.", "A rusted, jammed firearm with a broken trigger."],
-  "16": ["A jagged iron dagger. The blade gives off a subtle heat when held.", "A broken drone propeller made of a strange, lightweight metal."],
-  "17": ["A chain with an odd purple patina that resists rust and sparks when struck.", "An old dog tag with a faded QR code"],
-  "18": ["A metallic claw attached to a severed gauntlet; it clenches and releases on its own.", "A small, rusted metal box with a hidden compartment."],
-  "19": ["A strange metallic egg covered in intricate etchings that resemble constellations."],
-  "20": ["A flawless ingot of mithral, cool to the touch, humming faintly with latent power.", "A small tread assembly from an old Ionis-military robot."],
-  "21": ["A brass orb that flickers with arcane light when exposed to air.", "Parts of a broken and smashed hoverboard."],
-  "22": ["A partially assembled automaton hand, still twitching faintly.", "A large wheel assembly from a motorized mountain bike."],
-  "23": ["A magnetic compass whose needle spins wildly when near fiends or undead.", "A slightly rusted bracelet with a hidden compartment.", "A small, rusted metal box with a hidden compartment."],
-  "24": ["A shard of blackened steel. When thrown, it magnetically snaps to metal surfaces nearby."],
-  "25": ["A silvered chain adorned with dangling iron feathers. Grants resistance to lightning.", "A low-tier magnetic grapple hook"],
-  "26": ["A shattered longsword with an unbroken ruby set in the hilt.", "A low-level corporate ID badge"],
-  "27": ["A sealed iron canister that emanates a high-pitched whine when unsealed."],
-  "28": ["A rusted metallic crest of a long-lost knightly order. It grants +1 to Persuasion checks."],
-  "29": ["A clockwork rod with four protrusions. It fires off harmless sparks when shaken."],
-  "30": ["A mirror-polished plate that shows strange symbols when viewed under moonlight."],
-  "31": ["A silver gear connected to an arcane core, usable as a magical energy source (1 charge)."],
-  "32": ["A magnetized metal rod that can disarm traps when touched to their mechanism."],
-  "33": ["A sentient, rusted chain that softly whispers warnings when danger is nearby."],
-  "34": ["A fragment of an adamantine shield, immune to rust and highly durable."],
-  "35": ["A glowing rod of magnetic force that can temporarily suspend objects in midair."],
-  "36": ["A forgotten fragment of a warforged—a headpiece still able to store old battlefield logs.", "A waterlogged, but otherwise intact hoverboard. It just seems to be missing a power core."],
-  "37": ["A helm of magnetized plating that grants +1 AC and attracts projectiles (flavor only)."],
-  "38": ["A forgotten cog that hovers when dropped, seemingly anti-gravitational.", "A mysterious keycard with a blinking LED"],
-  "39": ["A glowing chain with runes of protection, usable to ward off undead for 1 hour per day.", "A rare, intact experimental drone core (worth 200 gold or more to researchers)."],
-  "40": ["A flawless piece of enchanted orichalcum, radiating immense power (DM discretion).", "A legendary 'NanoNet Magnet' prototype (usable to increase magnet fishing rolls by +5)."]
+  "10": [
+    "A bundle of rusty nails—perfect for crafting basic traps or patching up wooden objects.",
+    "A handful of old screws and nails, not worth much.",
+    "A tangled ball of copper wire—useless to most, but prized by tinkerers."
+  ],
+  "11": [
+    "A corroded iron key. The teeth of the key are strangely jagged, hinting at a hidden lock.",
+    "A rusted, unrecognizable piece of machinery. (Worth 2 gold at the junkyard.)",
+    "An old padlock, keyhole still intact but badly corroded."
+  ],
+  "12": [
+    "A broken gear with faint dwarven runes etched along the edges.",
+    "A cracked data chip that can be repaired at an electronics shop.",
+    "A broken sensor eye from an old security drone. Its red light flickers occasionally."
+  ],
+  "13": [
+    "A dented lantern frame. It glows faintly when brought near magic.",
+    "A cogwheel etched with a repeating hexagon pattern—possibly religious or symbolic.",
+    "A small magnetic badge shaped like a grinning skull. Glows faintly when submerged."
+  ],
+  "14": [
+    "A magnetic core, the size of a fist, that hums softly when touched.",
+    "A drill bit the size of a dagger. Still sharp.",
+    "A magnetic music chip. Plays glitchy jazz when held close to a speaker."
+  ],
+  "15": [
+    "A steel helm, rusted but sturdy, inscribed with faded sigils of protection.",
+    "A rusted, jammed firearm with a broken trigger.",
+    "A folding utility knife stuck in its housing.",
+    "A rusted scalpel and a surgeon's ID patch from a defunct biotech firm."
+  ],
+  "16": [
+    "A jagged iron dagger. The blade gives off a subtle heat when held.",
+    "A broken drone propeller made of a strange, lightweight metal.",
+    "A small copper beetle, mechanical but long-dead. Its eyes glow when magic is near.",
+    "A coin-shaped component marked 'FAILSAFE'. Emits occasional static."
+  ],
+  "17": [
+    "A chain with an odd purple patina that resists rust and sparks when struck.",
+    "An old dog tag with a faded QR code",
+    "An oddly flexible length of magnetic tubing. Smells faintly of ozone.",
+    "A scrap of synthetic fabric with anti-magnetic properties. Useless unless crafted."
+  ],
+  "18": [
+    "A metallic claw attached to a severed gauntlet; it clenches and releases on its own.",
+    "A small, rusted metal box with a hidden compartment.",
+    "A chunk of ferrous slag fused with half a gear and a melted coin.",
+    "A bronze token stamped with a laughing sun, used for free drinks… somewhere."
+  ],
+  "19": [
+    "A strange metallic egg covered in intricate etchings that resemble constellations.",
+    "A heavily corroded jaw implant—part cybernetic, part organic.",
+    "A set of tiny keys chained together. None match any known lock."
+  ],
+  "20": [
+    "A flawless ingot of mithral, cool to the touch, humming faintly with latent power.",
+    "A small tread assembly from an old Ionis-military robot."
+  ],
+  "21": [
+    "A brass orb that flickers with arcane light when exposed to air.",
+    "Parts of a broken and smashed hoverboard."
+  ],
+  "22": [
+    "A partially assembled automaton hand, still twitching faintly.",
+    "A large wheel assembly from a motorized mountain bike."
+  ],
+  "23": [
+    "A magnetic compass whose needle spins wildly when near fiends or undead.",
+    "A slightly rusted bracelet with a hidden compartment.",
+    "A small, rusted metal box with a hidden compartment."
+  ],
+  "24": [
+    "A shard of blackened steel. When thrown, it magnetically snaps to metal surfaces nearby."
+  ],
+  "25": [
+    "A silvered chain adorned with dangling iron feathers. Grants resistance to lightning.",
+    "A low-tier magnetic grapple hook.",
+    "A retractable cable dart—usable to snag a metal object within 15 feet."
+  ],
+  "26": [
+    "A shattered longsword with an unbroken ruby set in the hilt.",
+    "A low-level corporate ID badge.",
+    "A locker key tagged 'Bay 9 - DO NOT OPEN'."
+  ],
+  "27": [
+    "A sealed iron canister that emanates a high-pitched whine when unsealed.",
+    "A coil of steel cable wrapped around a faded warning label.",
+    "A rustproof thermos full of ancient, curdled nutrient sludge."
+  ],
+  "28": [
+    "A rusted metallic crest of a long-lost knightly order. It grants +1 to Persuasion checks.",
+    "An ancient coin with binary etched along the edges. When flipped, it never lands the same way twice.",
+    "A broken servo-leg from a military exosuit. Too bulky to carry easily, but valuable to engineers."
+  ],
+  "29": [
+    "A clockwork rod with four protrusions. It fires off harmless sparks when shaken.",
+    "A jar of magnetic sand that shifts and reforms symbols on its own.",
+    "A mysterious clock gear that always spins counter to nearby mechanical movement."
+  ],
+  "30": [
+    "A mirror-polished plate that shows strange symbols when viewed under moonlight.",
+    "A crystal shard fused with circuitry—emits calming pulses in 10-foot radius when attuned.",
+    "An industrial battery that glows faintly and has 1d4 charges remaining (can power small tech)."
+  ],
+  "31": [
+    "A silver gear connected to an arcane core, usable as a magical energy source (1 charge).",
+    "A miniature rail system on a stick—used to launch small objects with force.",
+    "A set of magnetized clamps that automatically lock when near moving machinery."
+  ],
+  "32": [
+    "A magnetized metal rod that can disarm traps when touched to their mechanism.",
+    "A disassembled lockpick set wrapped in oiled cloth—missing one key piece.",
+    "A floating magnetic plate that can carry up to 5 pounds when activated."
+  ],
+  "33": [
+    "A sentient, rusted chain that softly whispers warnings when danger is nearby.",
+    "A harmonica with a resonance chip. When played, it calms beasts within 30 feet.",
+    "A magnetic pendant that points toward lost items belonging to the wearer."
+  ],
+  "34": [
+    "A fragment of an adamantine shield, immune to rust and highly durable.",
+    "A data crystal that plays a looping dream of a city that doesn't exist.",
+    "An ancient metal key with a blinking light and no apparent lock."
+  ],
+  "35": [
+    "A glowing rod of magnetic force that can temporarily suspend objects in midair.",
+    "A magnetic clamp with a teleportation glyph—blinks an attached item 10 feet randomly when struck.",
+    "A rune-inscribed lens that grants darkvision when slotted into a helmet or goggles (1 hour/day)."
+  ],
+  "36": [
+    "A forgotten fragment of a warforged—a headpiece still able to store old battlefield logs.",
+    "A waterlogged, but otherwise intact hoverboard. It just seems to be missing a power core."
+  ],
+  "37": [
+    "A helm of magnetized plating that grants +1 AC and attracts projectiles (flavor only)."
+  ],
+  "38": [
+    "A forgotten cog that hovers when dropped, seemingly anti-gravitational.",
+    "A mysterious keycard with a blinking LED"
+  ],
+  "39": [
+    "A glowing chain with runes of protection, usable to ward off undead for 1 hour per day.",
+    "A rare, intact experimental drone core (worth 200 gold or more to researchers)."
+  ],
+  "40": [
+    "A flawless piece of enchanted orichalcum, radiating immense power (DM discretion).",
+    "A legendary 'NanoNet Magnet' prototype (usable to increase magnet fishing rolls by +5)."
+  ],
+  "41": [
+    "A retractable cable gauntlet. Grants 15 ft reach for grappling once per day.",
+    "A reinforced mag-coil casing. Can shield one magical or electric projectile."
+  ],
+  "42": [
+    "A floating orb that hums near leyline-rich areas. Sells for 150g to scholars.",
+    "An encrypted data shard containing a forgotten government kill list."
+  ],
+  "43": [
+    "A holographic map projector. Currently displays fragments and data corruption an unknown region labeled '#-#-#- Sector'.",
+    "A chain inscribed with an anti-magic sigil. Nullifies cantrips within 5 ft when wrapped around an object."
+  ],
+  "44": [
+    "A pocket-sized forge crystal. Once per day, heats metal to forging temp in 30 seconds.",
+    "An adamantine magnet shaped like a tooth. Whispers old prayers in Dwarvish."
+  ],
+  "45": [
+    "A rust-colored circuit mask. Grants resistance to poison and air toxins.",
+    "A sealed cyber-vial labeled 'Project Lazarus: Subject 6'. It pulses faintly."
+  ],
+  "46": [
+    "A glowing grav-rune. Embedding it in armor lets you hover 1 foot above the ground.",
+    "An old corporate security badge… that still works."
+  ],
+  "47": [
+    "A cybernetic bird skull fused with a processor chip. Still emits audio feedback.",
+    "An old tuning fork that resonates near teleportation magic."
+  ],
+  "48": [
+    "A blade magnet that can be used to retrieve a thrown weapon once per short rest.",
+    "A locked capsule labeled 'Phasewalker Beacon'. No obvious way to open it."
+  ],
+  "49": [
+    "A forgotten relic of pre-Fall tech: a portable field disruptor (creates 10-ft anti-magic field for 1 minute).",
+    "A glowing rod that pulses with directional energy—points toward lost tech."
+  ],
+  "50": [
+    "A fragment of a sentient AI core—sleeps until slotted into the right housing.",
+    "A magnetized relic containing a sliver of divine energy. Once per long rest, can negate a critical hit."
+  ]
 }
