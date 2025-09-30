@@ -22,6 +22,8 @@ if a[0].lower() == "ticket":
 if ch.get_cc(cc) == 0:
     return f"""-title "{name} tries to play a game!" -desc "You don't have any tickets to play games! You can purchase a ticket with `!festival ticket`." -f "{cc}|{ch.cc_str(cc)}" """
 
+# Trahas' Trinket booth. This is at every festival, so it gets special handling
+# Roll a d20 and randomly pick from the trinket list
 if a[0].lower() == "trinket" or a[0].lower() == "trinkets":
     ch.mod_cc(cc, -1)
     randomTrinket = vroll("1d20")
@@ -32,8 +34,12 @@ if a[0].lower() == "trinket" or a[0].lower() == "trinkets":
         baglib.modify_item(bags, trinket, 1, "Festival Prizes", True)
         baglib.save_bags(bags)
     
-    return f"""-title "{name} picks a random tinket from Trahas' Marsh Trinkets!" -desc "**Meta**\nRandom Roll!\n\n{randomTrinket}" -f "You won: {trinket}!\n\nYour prize has been added to your Festival Prizes bag!" -f "{cc}|{ch.cc_str(cc)} (-1)" """
+    return f"""-title "{name} picks a random tinket from Trahas' Frost-veiled Trinkets!" -desc "**Meta**\nRandom Roll!\n\n{randomTrinket}" -f "You won: {trinket}!\n\nYour prize has been added to your Festival Prizes bag!" -f "{cc}|{ch.cc_str(cc)} (-1)" """
 
+# Dunk a Dwarf/Concilor booth. This is at every festival, so it gets special handling
+# Roll a dex check to see if they hit the target, DC 15
+# If they hit, roll a str check to see if they have enough force to trigger, DC 15
+# If both are successful, they win a prize!
 if a[0].lower() == "dunk" or a[0].lower() == "dunk a councilor" or a[0].lower() == "councilor" or a[0].lower() == "council":
     ch.mod_cc(cc, -1)
 

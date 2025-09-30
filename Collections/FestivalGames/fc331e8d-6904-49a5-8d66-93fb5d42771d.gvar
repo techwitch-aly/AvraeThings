@@ -1,37 +1,20 @@
 {
-    "Dance of Wisps": {
-        "name": "Dance of Wisps",
-        "check": "dexterity",
+    "Frost Giant's Rage": {
+        "name": "Frost Giant's Rage",
+        "check": "strength",
         "style": "single",
         "dc": 18
     },
-    "Test of Marsh-Mettle": {
-        "name": "Test of Marsh-Mettle",
-        "check": "strength",
-        "style": "single", 
-        "dc": 18
+    "Snowball Showdown": {
+        "name": "Snowball Showdown",
+        "check": "dexterity",
+        "style": "twoOfThree", 
+        "dcList": [15, 17]
     },
-    "Riddle of the Remembered": {
-        "name": "Riddle of the Remembered",
+    "Cookie Conundrum": {
+        "name": "Cookie Conundrum",
         "check": "intelligence",
         "style": "single", 
         "dc": 18
-    },
-    "Spirit's Choice": {
-        "name": "Spirit's Choice",
-        "check": "wisdom",
-        "style": "single", 
-        "dc": 18
-    },
-    "Three Cups to the Other Side": {
-        "name": "Three Cups to the Other Side",
-        "check": "constitution",
-        "style": "progressive",
-        "dcList": [14, 16, 18],
-        "descriptions": [
-            "Reedrunner's Gold|Light and crisp with a citrusy snap — meant to awaken the senses and honor the first breath of life.",
-            "Mistwalker's Pour|Smooth, herbal, and cool on the tongue, like a midnight stroll through lantern-lit fog. Said to sharpen dreams.",
-            "The Laughing Lantern|Bold, warming, and cheerfully spicy — a toast to joy shared between worlds. If you're giggling by the end, you're doing it right."
-        ]
     }
 }
