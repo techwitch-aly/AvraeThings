@@ -16,5 +16,14 @@
         "check": "intelligence",
         "style": "single", 
         "dc": 18
+    },
+    "Tracks in the Snow": {
+        "name": "Tracks in the Snow",
+        "check": "wisdom",
+        "style": "progressive", 
+        "dcList": [14, 16],
+        "failMessage": "You failed to detect the illusion in the tracks! Better luck next time.",
+        "partialSuccessMessage": "You found the illusion in the tracks but couldn't find the Guardian's tracks in time! Better luck next time.",
+        "successMessage": "You successfully found the Guardian's tracks!"
     }
 }
