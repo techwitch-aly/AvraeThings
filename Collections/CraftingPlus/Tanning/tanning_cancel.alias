@@ -1,0 +1,14 @@
+embed
+<drac2>
+tanningCvar = "craftingplus_tanning"
+ch = character()
+
+pendingCraft = ch.get_cvar(tanningCvar)
+if not pendingCraft:
+    return f"""-title "{ch.name} has no in-progress tanning projects." -desc "Since nothing is in progress, you have nothing to cancel! Try starting a new project with `!tanning`!" """
+else:
+    craft = load_json(pendingCraft)
+    ch.delete_cvar(tanningCvar)
+    return f"""-title "{ch.name} stops working on {craft.name}" -desc "Canceling the work-in-progress {craft.name}. Materials taken to make this project have been lost." """
+</drac2>
+-footer "CraftingPlus | !tanning cancel"
