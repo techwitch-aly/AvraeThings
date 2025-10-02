@@ -1,0 +1,20 @@
+{
+    "rawhide": {
+        "name": "Rawhide",
+        "materials": {"hide": 1},
+        "checks": 4,
+        "dc": 6,
+        "rarity": "common",
+        "value": 2,
+        "quantity": 1
+    },
+    "tanned leather": {
+        "name": "Tanned Leather",
+        "materials": {"rawhide": 1},
+        "checks": 4,
+        "dc": 6,
+        "rarity": "common",
+        "value": 3,
+        "quantity": 10
+    }
+}

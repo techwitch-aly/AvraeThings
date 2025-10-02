@@ -6,7 +6,7 @@ a = &ARGS&
 args = argparse(&ARGS&)
 craftCvar = "craftingplus_tanning"
 ch = character()
-craftingOptions = load_json(get_gvar(""))
+craftingOptions = load_json(get_gvar("5f35f597-c8e6-4460-a914-16b5df148f37"))
 extraFields = ""
 
 # We need some kind of proficiency to craft
