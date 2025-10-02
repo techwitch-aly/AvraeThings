@@ -1,0 +1,65 @@
+embed
+<drac2>
+using(baglib="4119d62e-6a98-4153-bea9-0a99bb36da2c")
+using(craftingutils="aefb7981-b14b-4a31-aa5e-d66ad6437677")
+a = &ARGS&
+args = argparse(&ARGS&)
+ch = character()
+extraFields = ""
+bagMessage = ""
+minDC = 12
+validSizes = ["small", "large"]
+
+if not a or (len(a) == 0):
+    return f"""-title "{ch.name} attempts to harvest hides! But doesn't specify what kind of animal they are trying to skin." -desc "Make sure you try to harvest something! Please pass in the type of animal you are trying to skin!" -f "Example: `!tanning harvest large`" """
+
+animalSize = a[0].lower()
+if animalSize not in validSizes:
+    return f"""-title "{ch.name} attempts to harvest hides! But the size '{animalSize}' is not valid." -desc "Valid sizes are: {', '.join(validSizes)}" -f "Example: `!tanning harvest large`" """
+
+# Determine advantage from args
+adv = True if "adv" in args else None
+
+# We need to try to skin the animal to harvest hides
+rollString = ch.skills.sleightOfHand.d20(adv)
+
+# Add commonly supported roll modifiers
+rollMods = craftingutils.extract_roll_bonuses(args, ch)
+rollString += rollMods[0]
+extraFields += rollMods[1]
+
+harvestItRoll = vroll(rollString)
+
+# If the roll is below the minimum DC, we can only harvest scraps
+# If the roll is a critical failure, we fail to harvest anything
+# Otherwise we harvest normal hides and roll dice based on the size of the animal passed to the command
+resultsRollString = ""
+if harvestItRoll.result.crit == 2:
+    # Crit fail, we get nothing
+    return f"""-title "{ch.name} fails to harvest hides!" -desc "**Meta:**\nDC {minDC} Sleight of Hand Check\nSleight of Hand: {harvestItRoll}; **Critical Failure**!" -f "Unfortunately you couldn't harvest any hides from the animal." {extraFields}"""
+elif harvestItRoll.total < minDC:
+    # Below minimum DC, we get scraps
+    harvestResult = "hide scraps"
+    resultsRollString = "1d4"
+else:
+    # Success, we get normal hides
+    harvestResult = "hide pieces"
+    resultsRollString = "1d6" if animalSize == "small" else "2d6"
+
+if harvestItRoll.result.crit == 1:
+    # On a crit success, we get a bonus 1d4 of results
+    resultsRollString += "+1d4"
+
+# Roll for how many hides we get
+resultsRoll = vroll(resultsRollString)
+
+hasBags = ch.get_cvar("bags")
+if hasBags:
+    bags = baglib.load_bags()
+    baglib.modify_item(bags, harvestResult.title(), resultsRoll.total, "Tanning", True)
+    baglib.save_bags(bags)
+    bagMessage = f"""-f "Bags Updated|{resultsRoll.total} {harvestResult.title()} added to your bags!" """
+
+return f"""-title "{ch.name} successfully skins the {animalSize} animal!" -desc "**Meta:**\nDC {minDC} Sleight of Hand Check\nSleight of Hand: {harvestItRoll}; **Success**!\n\n**Meta:**\n{resultsRoll}\nHarvested {resultsRoll.total} {harvestResult}!" {bagMessage} {extraFields} """
+</drac2>
+-footer "CraftingPlus | !tanning harvest"
