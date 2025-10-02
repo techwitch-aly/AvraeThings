@@ -5,7 +5,6 @@ using(craftingutils="aefb7981-b14b-4a31-aa5e-d66ad6437677")
 a = &ARGS&
 args = argparse(&ARGS&)
 craftCvar = "craftingplus_woodcarving"
-craftFailureCvar = "craftingplus_woodcarving_failurecount"
 ch = character()
 extraFields = ""
 
