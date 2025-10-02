@@ -1,0 +1,35 @@
+embed
+<drac2>
+args = &ARGS&
+craftingOptions = load_json(get_gvar("5f35f597-c8e6-4460-a914-16b5df148f37"))
+totalOptions = len(craftingOptions.items())
+pageSize = 10
+totalPages = totalOptions // pageSize + 1
+if args and int(args[0]) <= totalPages:
+    start = (pageSize * int(args[0] or 1)) - pageSize
+    end = pageSize * int(args[0] or 1)
+    page = int(args[0])
+else:
+    start = 0
+    end = pageSize
+    page = 1
+segment = list(craftingOptions.items())[start:end]
+
+options = "\n```"
+for option in segment:
+    value = option[1]
+    options += f"{value.name} (DC {value.dc} check [x{value.checks}])\nRequires:"
+    for material in value.materials:
+            options += f"\n\t{value.materials[material]} {material.title()}"
+    options += "\n\n"
+options += "```"
+
+helpInstructions = f"""- Begin tanning by using `!tanning <item>` like `!tanning rawhide`.\n- Remember, crafting takes time! Each crafting check requires two IRL hours to pass.\n- Continue a multistep project with `!tanning continue`.\n- Cancel a multistep project with `!tanning cancel`.\n- Hides can be gathered after successfully hunting animals.\n- Use the `!tanning harvest` command with the same animal size as your hunt! """
+
+</drac2>
+-title "{{name}} needs help on the tanning frame!"
+-desc "Tanning is the process of turning raw hides into leather. It requires Leatherworker's Tools proficiencies and is aided by your intelligence modifier."
+-f "{{helpInstructions}}"
+-f "Options for tanning (Page 1 of {{totalPages}}): {{options}}"
+-f "Page {{page}} of {{totalPages}}, use `!tanning help #` to see the next page."
+-footer "CraftingPlus | !tanning help"
