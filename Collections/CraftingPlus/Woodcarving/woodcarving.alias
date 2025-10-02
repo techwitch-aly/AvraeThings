@@ -99,7 +99,7 @@ if craftItRoll.total >= itemToCraft.dc and craftItRoll.result.crit != 2:
         return f"""-title "{ch.name} successfully begins crafting {itemToCraft.name}!" -desc "**Woodcarving is detailed work! You work for 2 IRL hours!**\n**Meta**:\nDC {itemToCraft.dc} Woodcarver's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafting**: {itemToCraft.name}\n**Progress**: 1/{itemToCraft.checks} Checks (2 of {itemToCraft.checks * 2} hours.)\n**Rarity**: {itemToCraft.rarity}\n**Value**: {itemToCraft.value}gp" {bagMessage} {extraFields} """
     return f"""-title "{ch.name} successfully crafts {itemToCraft.name}!" -desc "**Woodcarving is detailed work! You work for 2 IRL hours!**\n**Meta**:\nDC {itemToCraft.dc} Woodcarver's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafted**: {itemToCraft.name}\n**Rarity**: {itemToCraft.rarity}\n**Value**: {itemToCraft.value}gp" {bagMessage} {extraFields} """
 else:
-    progression = {"name": itemToCraft.name, "checksDone": 1, "checksTotal": itemToCraft.checks, "checksRemaining": itemToCraft.checks - 1, "dc": itemToCraft.dc, "rarity": itemToCraft.rarity, "value": itemToCraft.value, "quantity": itemToCraft.quantity, "failures": 1}
+    progression = {"name": itemToCraft.name, "checksDone": 0, "checksTotal": itemToCraft.checks, "checksRemaining": itemToCraft.checks, "dc": itemToCraft.dc, "rarity": itemToCraft.rarity, "value": itemToCraft.value, "quantity": itemToCraft.quantity, "failures": 1}
     ch.set_cvar(craftCvar, dump_json(progression))
     return f"""-title "{ch.name} failed to craft {itemToCraft.name}!" -desc "**Meta**:\nDC {itemToCraft.dc} Woodcarver's Tools Check\n**Check**:\n{craftItRoll}; Failure!" {extraFields} """
 </drac2>
