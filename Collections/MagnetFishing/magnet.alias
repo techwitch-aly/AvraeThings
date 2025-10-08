@@ -51,9 +51,10 @@ elif args.last("fog") and not ch.cc_exists(fog_cc):
 
 fishingResult = vroll(rollString)
 
-success = fishingResult.total >= 10  # did we succeed?
+success = fishingResult.total >= 10 and fishingResult.result.crit != 2  # did we succeed?
+indexer = fishingResult.total if success else 1  # if we succeeded, use the total, otherwise use 1
 result = ['Success!', 'Failure!'][success-1]  # grab our result text
-find = loot[str(fishingResult.total)]
+find = loot[str(indexer)]
 extra = ""
 if success:
     extraResult = vroll("1d20")
