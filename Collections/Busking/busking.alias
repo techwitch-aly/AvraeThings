@@ -48,7 +48,7 @@ elif args.last("fog") and not ch.cc_exists(fog_cc):
 
 buskingRoll = vroll(rollString)
 
-if buskingRoll.total >= 15:
+if buskingRoll.total >= 15 and buskingRoll.result.crit != 2:
     # Success!
     # Double the potential earnings on a crit
     goldString = "2d10" if buskingRoll.result.crit == 1 else "1d10"
