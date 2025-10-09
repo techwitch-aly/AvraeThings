@@ -1,7 +1,16 @@
 {
+    "hide piece": {
+        "name": "Hide Piece",
+        "materials": {"hide scrap": 4},
+        "checks": 1,
+        "dc": 6,
+        "rarity": "common",
+        "value": 1,
+        "quantity": 1
+    },
     "rawhide": {
         "name": "Rawhide",
-        "materials": {"hide": 1},
+        "materials": {"hide piece": 1},
         "checks": 4,
         "dc": 6,
         "rarity": "common",
