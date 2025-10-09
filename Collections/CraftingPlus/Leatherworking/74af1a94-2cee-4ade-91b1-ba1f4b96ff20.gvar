@@ -1,1 +1,47 @@
-{}
+{
+    "leather armor": {
+        "name": "Leather Armor",
+        "materials": {"tanned leather": 3, "buckle": 2},
+        "checks": 2,
+        "dc": 12,
+        "rarity": "common",
+        "value": 10,
+        "quantity": 1
+    },
+    "studded leather armor": {
+        "name": "Studded Leather Armor",
+        "materials": {"tanned leather": 3, "buckle": 2, "metal scrap": 6},
+        "checks": 3,
+        "dc": 16,
+        "rarity": "common",
+        "value": 45,
+        "quantity": 1
+    },
+    "hide armor": {
+        "name": "Hide Armor",
+        "materials": {"tanned leather": 2, "rawhide": 1, "buckle": 2},
+        "checks": 2,
+        "dc": 10,
+        "rarity": "common",
+        "value": 10,
+        "quantity": 1
+    },
+    "whip": {
+        "name": "Whip",
+        "materials": {"tanned leather": 1},
+        "checks": 2,
+        "dc": 14,
+        "rarity": "common",
+        "value": 4,
+        "quantity": 1
+    },
+    "armor padding": {
+        "name": "Armor Padding",
+        "materials": {"tanned leather": 1, "buckle": 2},
+        "checks": 1,
+        "dc": 12,
+        "rarity": "common",
+        "value": 5,
+        "quantity": 1
+    }
+}
