@@ -1,0 +1,8 @@
+embed
+<drac2>
+helpInstructions = f"""- Begin mining by using `!mining`. This command will search for ore using a Survival check.\n- If ore is found, run `!mining harvest <ore name>` to see if you successfully mine the ore.\n- Example: `!mining harvest iron`\n- Successfully mined ore can be used in crafting recipes."""
+</drac2>
+-title "{{name}} needs help swinging their pick!"
+-desc "Mining is the process of finding and then harvesting raw ores. It requires a Survival check to find ore veins and an Athletics check to get the ore out of the ground."
+-f "{{helpInstructions}}"
+-footer "CraftingPlus | !mining help"
