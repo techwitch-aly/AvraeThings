@@ -53,3 +53,20 @@ def extract_roll_bonuses(args, ch):
     
     # Finally, return the rollString and extraFields
     return (rollString, extraFields)
+
+def pluralize_str(str):
+    """
+    Pluralizes the given string.
+
+    Args:
+        str: The string to pluralize.
+
+    Returns:
+        The pluralized string.
+    """
+    if str.endswith("s") or str.endswith("x") or str.endswith("z") or str.endswith("ch") or str.endswith("sh"):
+        return f"{str}es"
+    elif str.endswith("y") and str[-2] not in "aeiou":
+        return f"{str[:-1]}ies"
+    else:
+        return f"{str}s"
