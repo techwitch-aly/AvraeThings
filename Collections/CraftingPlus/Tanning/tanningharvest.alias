@@ -39,11 +39,11 @@ if harvestItRoll.result.crit == 2:
     return f"""-title "{ch.name} fails to harvest hides!" -desc "**Meta:**\nDC {minDC} Sleight of Hand Check\nSleight of Hand: {harvestItRoll}; **Critical Failure**!" -f "Unfortunately you couldn't harvest any hides from the animal." {extraFields}"""
 elif harvestItRoll.total < minDC:
     # Below minimum DC, we get scraps
-    harvestResult = "hide scraps"
+    harvestResult = "hide scrap"
     resultsRollString = "1d4"
 else:
     # Success, we get normal hides
-    harvestResult = "hide pieces"
+    harvestResult = "hide piece"
     resultsRollString = "1d6" if animalSize == "small" else "2d6"
 
 if harvestItRoll.result.crit == 1:
