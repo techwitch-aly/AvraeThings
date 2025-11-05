@@ -6,6 +6,8 @@ ch = character()
 kpl_cc = "Knowledge from a Past Life"
 fog_cc = "Flash of Genius"
 
+scaleWithCharisma = get_svar("BuskingScaleWithCharisma", "false").lower() == "true"
+
 # Setup the roll
 adv = True if "adv" in args else None
 rollString = ch.skills.performance.d20(adv)
@@ -52,6 +54,11 @@ if buskingRoll.total >= 15 and buskingRoll.result.crit != 2:
     # Success!
     # Double the potential earnings on a crit
     goldString = "2d10" if buskingRoll.result.crit == 1 else "1d10"
+
+    if scaleWithCharisma:
+        charismaMod = ch.stats.get_mod('charisma')
+        goldString = f"{charismaMod*2 if buskingRoll.result.crit == 1 else charismaMod}d10"
+
     goldRoll = vroll(goldString)
     goldEarned = goldRoll.total
     ch.coinpurse.modify_coins(0, goldEarned)
