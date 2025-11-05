@@ -48,7 +48,7 @@ if a[0].lower() == "dunk" or a[0].lower() == "dunk a councilor" or a[0].lower() 
     accuracyRoll = vroll(accuracyRollStr)
 
     # If they miss, don't try to roll strength, they've failed
-    if accuracyRoll.total < 15:
+    if accuracyRoll.total < 15 and accuracyRoll.result.crit != 2:
         return f"""-title "{name} attempts to Dunk the Councilor!" -desc "**Meta**\nDC 15 Dexterity Check\n\nDexterity: {accuracyRoll}; **Failure!**" -f "{cc}|{ch.cc_str(cc)} (-1)" """
     
     # Roll a str check to see if they have enough force to trigger, DC 15
@@ -56,7 +56,7 @@ if a[0].lower() == "dunk" or a[0].lower() == "dunk a councilor" or a[0].lower() 
     forceRoll = vroll(forceRollStr)
 
     # If both are successful, they win a prize!
-    if forceRoll.total >= 15:
+    if forceRoll.total >= 15 and forceRoll.result.crit != 2:
         randomPrize = vroll(f"1d{len(prizeOptions)}")
         prize = prizeOptions[randomPrize.total - 1]
         prizeOut = f"""-f "**Random Prize**: {prize}!" """
@@ -121,7 +121,7 @@ if game.style == "twoOfThree":
 
     i, j, count = 0, 0, 0
     while i < len(rollTotals) and j < len(game.dcList):
-        if rollTotals[i] >= game.dcList[j]:
+        if rollTotals[i] >= game.dcList[j] and rolls[i].result.crit != 2:
             count += 1
             j += 1
         i += 1
@@ -160,7 +160,7 @@ elif game.style == "progressive":
             descriptions.append(f"""-f "{game.descriptions[i]}" """)
 
         # If we fail a roll, we stop rolling
-        if rollResult.total < game.dcList[i]:
+        if rollResult.total < game.dcList[i] or rollResult.result.crit == 2:
             progressiveSuccess = False
             if i > 0:
                 failMessage = f"""-f "{game.partialSuccessMessage}" """ if "partialSuccessMessage" in game else failMessage
@@ -189,7 +189,7 @@ elif game.style == "progressive":
 else:
     rollResult = vroll(rollString)
 
-    if rollResult.total >= game.dc:
+    if rollResult.total >= game.dc and rollResult.result.crit != 2:
         state = "Success!"
         # The roll was higher than the game DC! Pick a random prize!
         randomPrize = vroll(f"1d{len(prizeOptions)}")
