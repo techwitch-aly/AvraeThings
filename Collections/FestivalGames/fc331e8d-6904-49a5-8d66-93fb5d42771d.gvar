@@ -1,29 +1,37 @@
 {
-    "Frost Giant's Rage": {
-        "name": "Frost Giant's Rage",
+    "Seafarer's Lost Treasure": {
+        "name": "Seafarer's Lost Treasure",
+        "description": "Can you find the treasure hidden in the seashells?",
+        "check": "wisdom",
+        "style": "single",
+        "dc": 18
+    },
+    "Tidepool Tally": {
+        "name": "Tidepool Tally",
+        "description": "Can you count the number of shells in the jar?",
+        "check": "intelligence",
+        "style": "single",
+        "dc": 18
+    },
+    "Splashtide Smash": {
+        "name": "Splashtide Smash",
+        "description": "Can you crack the watermelon open in a single swing?",
         "check": "strength",
         "style": "single",
         "dc": 18
     },
-    "Snowball Showdown": {
-        "name": "Snowball Showdown",
+    "Deep Sea Ring Toss": {
+        "name": "Deep Sea Ring Toss",
+        "description": "Can you get two of your three rings on the mini anchors?",
         "check": "dexterity",
-        "style": "twoOfThree", 
-        "dcList": [15, 17]
+        "style": "twoOfThree",
+        "dcList": [15,17]
     },
-    "Cookie Conundrum": {
-        "name": "Cookie Conundrum",
-        "check": "intelligence",
-        "style": "single", 
-        "dc": 18
-    },
-    "Tracks in the Snow": {
-        "name": "Tracks in the Snow",
-        "check": "wisdom",
-        "style": "progressive", 
-        "dcList": [14, 16],
-        "failMessage": "You failed to detect the illusion in the tracks! Better luck next time.",
-        "partialSuccessMessage": "You found the illusion in the tracks but couldn't find the Guardian's tracks in time! Better luck next time.",
-        "successMessage": "You successfully found the Guardian's tracks!"
+    "Go Fish": {
+        "name": "Go Fish!",
+        "description": "Can you catch the rainbow fish?",
+        "check": "dexterity",
+        "style": "single",
+        "dcList": 18
     }
 }
