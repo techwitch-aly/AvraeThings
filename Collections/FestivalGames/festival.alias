@@ -34,7 +34,7 @@ if a[0].lower() == "trinket" or a[0].lower() == "trinkets":
         baglib.modify_item(bags, trinket, 1, "Festival Prizes", True)
         baglib.save_bags(bags)
     
-    return f"""-title "{name} picks a random tinket from Trahas' Island Trinkets!" -desc "**Meta**\nRandom Roll!\n\n{randomTrinket}" -f "You won: {trinket}!\n\nYour prize has been added to your Festival Prizes bag!" -f "{cc}|{ch.cc_str(cc)} (-1)" """
+    return f"""-title "{name} picks a random tinket from Trahas' Ocean Trinkets!" -desc "**Meta**\nRandom Roll!\n\n{randomTrinket}" -f "You won: {trinket}!\n\nYour prize has been added to your Festival Prizes bag!" -f "{cc}|{ch.cc_str(cc)} (-1)" """
 
 # Dunk a Dwarf/Concilor booth. This is at every festival, so it gets special handling
 # Roll a dex check to see if they hit the target, DC 15
