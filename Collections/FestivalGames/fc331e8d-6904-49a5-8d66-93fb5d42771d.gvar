@@ -32,6 +32,6 @@
         "description": "Can you catch the rainbow fish?",
         "check": "dexterity",
         "style": "single",
-        "dcList": 18
+        "dc": 18
     }
 }
