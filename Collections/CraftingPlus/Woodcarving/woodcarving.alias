@@ -13,7 +13,7 @@ extraFields = ""
 # We need some kind of proficiency to craft
 toolProVar = ch.get_cvar("toolProficiencies")
 if not toolProVar:
-    return f"""-title "{ch.name} attempts to smith! But has no Tool Proficiencies Learned." -desc "Crafting requires tool proficiencies, please see `!tool help` for help adding proficiencies." """
+    return f"""-title "{ch.name} attempts to do woodcarving! But has no Tool Proficiencies Learned." -desc "Crafting requires tool proficiencies, please see `!tool help` for help adding proficiencies." """
 
 toolProficiencies = load_yaml(toolProVar)
 
