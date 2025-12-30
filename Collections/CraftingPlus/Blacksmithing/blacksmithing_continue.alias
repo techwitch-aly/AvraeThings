@@ -30,12 +30,6 @@ pendingCraft = load_json(pendingCraft)
 # Determine advantage from args
 adv = True if "adv" in args else None
 
-# Collect manual roll bonuses
-bonus = args.join("b", "+")
-
-# Check for guidance
-guidance = "+1d4[guidance]" if args.last("guidance") else ""
-
 # Setup the roll
 rollString = ch.skills.strength.d20(adv)
 
