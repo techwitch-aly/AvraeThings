@@ -1,0 +1,148 @@
+{
+    "dcLookup": {
+        "azurite": 12,
+        "bloodstone": 12,
+        "carnelian": 12,
+        "chrysoprase": 12,
+        "citrine": 12,
+        "jasper": 12,
+        "lapis_lazuli": 12,
+        "malachite": 12,
+        "moonstone": 12,
+        "quartz": 12,
+        "rhodochrosite": 12,
+        "sardonyx": 12,
+        "tiger eye": 12,
+        "turquoise": 12,
+        "zircon": 12,
+        "agate": 15,
+        "alexandrite": 15,
+        "amethyst": 15,
+        "aquamarine": 15,
+        "chrysoberyl": 15,
+        "garnet": 15,
+        "jade": 15,
+        "peridot": 15,
+        "spinel": 15,
+        "topaz": 15,
+        "tourmaline": 15,
+        "jacinth": 17,
+        "opal": 17,
+        "sapphire": 17,
+        "star sapphire": 17,
+        "star ruby": 17,
+        "diamond": 20,
+        "emerald": 20,
+        "ruby": 20
+    },
+    "dc12": {
+        "azurite": {
+            "name": "Azurite"
+        },
+        "bloodstone": {
+            "name": "Bloodstone"
+        },
+        "carnelian": {
+            "name": "Carnelian"
+        },
+        "chrysoprase": {
+            "name": "Chrysoprase"
+        },
+        "citrine": {
+            "name": "Citrine"
+        },
+        "jasper": {
+            "name": "Jasper"
+        },
+        "lapis_lazuli": {
+            "name": "Lapis Lazuli"
+        },
+        "malachite": {
+            "name": "Malachite"
+        },
+        "moonstone": {
+            "name": "Moonstone"
+        },
+        "quartz": {
+            "name": "Quartz"
+        },
+        "rhodochrosite": {
+            "name": "Rhodochrosite"
+        },
+        "sardonyx": {
+            "name": "Sardonyx"
+        },
+        "tiger eye": {
+            "name": "Tiger Eye"
+        },
+        "turquoise": {
+            "name": "Turquoise"
+        },
+        "zircon": {
+            "name": "Zircon"
+        }
+    },
+    "dc15": {
+        "agate": {
+            "name": "Agate"
+        },
+        "alexandrite": {
+            "name": "Alexandrite"
+        },
+        "amethyst": {
+            "name": "Amethyst"
+        },
+        "aquamarine": {
+            "name": "Aquamarine"
+        },
+        "chrysoberyl": {
+            "name": "Chrysoberyl"
+        },
+        "garnet": {
+            "name": "Garnet"
+        },
+        "jade": {
+            "name": "Jade"
+        },
+        "peridot": {
+            "name": "Peridot"
+        },
+        "spinel": {
+            "name": "Spinel"
+        },
+        "topaz": {
+            "name": "Topaz"
+        },
+        "tourmaline": {
+            "name": "Tourmaline"
+        }
+    },
+    "dc17": {
+        "jacinth": {
+            "name": "Jacinth"
+        },
+        "opal": {
+            "name": "Opal"
+        },
+        "sapphire": {
+            "name": "Sapphire"
+        },
+        "star sapphire": {
+            "name": "Star Sapphire"
+        },
+        "star ruby": {
+            "name": "Star Ruby"
+        }
+    },
+    "dc20": {
+        "diamond": {
+            "name": "Diamond"
+        },
+        "emerald": {
+            "name": "Emerald"
+        },
+        "ruby": {
+            "name": "Ruby"
+        }
+    }
+}

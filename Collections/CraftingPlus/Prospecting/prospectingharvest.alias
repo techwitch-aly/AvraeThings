@@ -1,0 +1,12 @@
+embed
+<drac2>
+using(craftingutils="aefb7981-b14b-4a31-aa5e-d66ad6437677")
+args = argparse(&ARGS&)
+ch = character()
+harvestables = load_json(get_gvar("95e5729d-b684-412c-bd8d-27d4bfeb03f3"))
+extraFields = ""
+minDC = 12
+
+
+</drac2>
+-footer "CraftingPlus | !prospecting harvest"
