@@ -201,3 +201,10 @@ Requires:
 Buckle | DC 10 check x1 | 2 hours
 Requires:
 * 5 Metal Scrap
+
+**__Blacksmithing Commands__**
+
+* `!blacksmithing <item>` like `!blacksmithing rapier` will start the crafting process
+* `!blacksmithing continue` will continue a multistep (multiple checks) project
+* `!blacksmithing cancel` will cancel a multistep (multiple checks) project, losing the materials in the process
+* `!blacksmithing help` will give a listing of what can be crafted and the required materials.
