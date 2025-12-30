@@ -1,0 +1,14 @@
+embed
+<drac2>
+tinkeringCvar = "craftingplus_tinkering"
+ch = character()
+
+pendingCraft = ch.get_cvar(tinkeringCvar)
+if not pendingCraft:
+    return f"""-title "{ch.name} has no in-progress tinkering projects." -desc "Since nothing is in progress, you have nothing to cancel! Try starting a new project with `!tinkering`!" """
+else:
+    craft = load_json(pendingCraft)
+    ch.delete_cvar(tinkeringCvar)
+    return f"""-title "{ch.name} stops working on" -desc "Canceling the work-in-progress {craft.name}. Materials taken to make this project have been lost." """
+</drac2>
+-footer "CraftingPlus | !tinkering cancel"

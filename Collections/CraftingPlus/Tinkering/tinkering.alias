@@ -1,0 +1,121 @@
+embed
+<drac2>
+using(baglib="4119d62e-6a98-4153-bea9-0a99bb36da2c")
+using(craftingutils="aefb7981-b14b-4a31-aa5e-d66ad6437677")
+# Basics
+craftCvar = "craftingplus_tinkering"
+a = &ARGS&
+args = argparse(&ARGS&)
+ingotArg = args.last("ingot")
+ch = character()
+craftingOptions = load_json(get_gvar("b0a8afd5-8856-4080-9e2f-f021758c8cc5"))
+extraFields = ""
+
+# We need some kind of proficiency to craft
+toolProVar = ch.get_cvar("toolProficiencies")
+if not toolProVar:
+    return f"""-title "{ch.name} attempts to tinker! But has no Tool Proficiencies Learned." -desc "Crafting requires tool proficiencies, please see `!tool help` for help adding proficiencies." """
+
+toolProficiencies = load_yaml(toolProVar)
+
+# Validate that we have Tinker's Tools proficiency or expertise
+if "tinkerstools" not in toolProficiencies:
+    return f"""-title "{ch.name} attempts to tinker! But doesn't have Tinker's Tool Proficiency." -desc "Tinkering requires Tinker's Tool proficiency, please see `!tool help` for help adding proficiencies." """
+
+# Before we go further, check if there is a DIFFERENT pending item being crafted
+pending = ch.get_cvar(craftCvar)
+if pending:
+    craft = load_json(pending)
+    return f"""-title "{ch.name} has an in progress tinkering project!" -desc "Your in-progress project is {craft.name}. You have {craft.checksRemaining} sessions remaining to finish!" -f "To continue your project use: `!tinkering continue`.\nOr to cancel that project use: `!tinkering cancel`." """
+
+# Validate that what they want to craft is something we allow
+itemSearch = ([k for k in craftingOptions if a[0].lower() == k] if a else []) or [k for k in craftingOptions if a[0].lower() in k] if a else []
+
+if len(itemSearch) == 0:
+    return f"""-title "Tinkering - Couldn't Find Item" -desc "Search was: `{a[0]}`" """
+
+if len(itemSearch) > 1:
+    return f"""-title "The tinkerer is confused." -desc "There are many items that match that description: `{'`, `'.join(itemSearch)}`. Could you be more specific?" """
+
+# We found a single thing to craft, let's make it!
+itemToCraft = craftingOptions[itemSearch[0]]
+
+# If the character has bags setup, try to find the raw materials that are required.
+# If bags are setup and no materials are found, abort crafting
+hasBags = ch.get_cvar("bags")
+ingotChoice = ingotArg.title() if ingotArg else "Iron"
+if hasBags:
+    bags = baglib.load_bags()
+    for material, quantity in itemToCraft.materials.items():
+        if material == 'ingot':
+            if baglib.find_bag_with_item(bags, f"{ingotChoice} Ingot") is None:
+                return f"""-title "{ch.name} doesn't have enough materials to start crafting a {itemToCraft.name}!" -desc "Missing Materials" -f "You are missing the required materials ({ingotChoice} Ingot) to craft {itemToCraft.name}." """
+            else:
+                bag = baglib.find_bag_with_item(bags, f"{ingotChoice} Ingot")
+                for itemName, itemQuantity in bag[1].items():
+                    if itemName.lower() == f"{ingotChoice} Ingot".lower():
+                        if itemQuantity < quantity:
+                            return f"""-title "{ch.name} doesn't have enough materials to start crafting a {itemToCraft.name}!" -desc "Missing Materials" -f "You don't have enough of the required materials ({ingotChoice} Ingot) to craft {itemToCraft.name}. You have {itemQuantity} but need {quantity}." """
+        else:
+            if baglib.find_bag_with_item(bags, material) is None:
+                return f"""-title "{ch.name} doesn't have enough materials to start crafting a {itemToCraft.name}!" -desc "Missing Materials" -f "You are missing the required materials ({material}) to craft {itemToCraft.name}." """
+            else:
+                bag = baglib.find_bag_with_item(bags, material)
+                for itemName, itemQuantity in bag[1].items():
+                    if itemName.lower() == material.lower():
+                        if itemQuantity < quantity:
+                            return f"""-title "{ch.name} doesn't have enough materials to start crafting a {itemToCraft.name}!" -desc "Missing Materials" -f "You don't have enough of the required materials ({material}) to craft {itemToCraft.name}. You have {itemQuantity} but need {quantity}." """
+
+# All checks passed, begin the crafting process
+# BONUS SETUP
+# Determine advantage from args
+adv = True if "adv" in args else None
+
+# Setup the roll
+rollString = ch.skills.dexterity.d20(adv)
+
+# Add proficiency or expertise
+rollString += f"+{ch.stats.prof_bonus}" if toolProficiencies.smithstools == 1 else f"+{ch.stats.prof_bonus * 2}"
+
+# Add commonly supported roll modifiers
+rollMods = craftingutils.extract_roll_bonuses(args, ch)
+rollString += rollMods[0]
+extraFields += rollMods[1]
+
+craftItRoll = vroll(rollString)
+
+# Did we pass the DC to craft and we didn't crit fail?
+if craftItRoll.total >= itemToCraft.dc and craftItRoll.result.crit != 2:
+    # Success!
+    # If the character has Bags setup
+    bagMessage = ""
+    if hasBags:
+        bags = baglib.load_bags()
+        # Remove the materials from the bags
+        for material, amount in itemToCraft.materials.items():
+            if material == 'ingot':
+                material = f"{ingotChoice} Ingot"
+            bag = baglib.find_bag_with_item(bags, material)
+            baglib.modify_item(bags, material, -amount, bag[0])
+            bagMessage += f"\n- {amount} {material.title()} removed from bags."
+        
+        if itemToCraft.checks == 1:
+            # If the item only takes one check to craft, we can add it to the bags now
+            baglib.modify_item(bags, itemToCraft.name, itemToCraft.quantity, "Crafts", True)
+            bagMessage += f"\n- {itemToCraft.quantity} {itemToCraft.name} added to bags."
+        
+        bagMessage = f"""-f "Bags Updated|{bagMessage}" """
+        baglib.save_bags(bags)
+
+    if itemToCraft.checks > 1:
+        # If the item takes multiple checks to craft, we need to setup progression tracking in the cvar
+        progression = {"name": itemToCraft.name, "checksDone": 1, "checksTotal": itemToCraft.checks, "checksRemaining": itemToCraft.checks - 1, "dc": itemToCraft.dc, "rarity": itemToCraft.rarity, "value": itemToCraft.value, "quantity": itemToCraft.quantity, "failures": 0}
+        ch.set_cvar(craftCvar, dump_json(progression))
+        return f"""-title "{ch.name} successfully begins crafting {itemToCraft.name}!" -desc "**Tinkering is hard work! You work for 2 IRL hours!**\n**Meta**:\nDC {itemToCraft.dc} Tinker's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafting**: {itemToCraft.name}\n**Progress**: 1/{itemToCraft.checks} Checks (2 of {itemToCraft.checks * 2} hours.)\n**Rarity**: {itemToCraft.rarity}\n**Value**: {itemToCraft.value}gp" {bagMessage} {extraFields} """
+    return f"""-title "{ch.name} successfully crafts {itemToCraft.name}!" -desc "**Tinkering is hard work! You work for 2 IRL hours!**\n**Meta**:\nDC {itemToCraft.dc} Tinker's Tools Check\n**Check**:\n{craftItRoll}; Success!" -f "**Crafted**: {itemToCraft.name}\n**Rarity**: {itemToCraft.rarity}\n**Value**: {itemToCraft.value}gp" {bagMessage} {extraFields} """
+else:
+    progression = {"name": itemToCraft.name, "checksDone": 0, "checksTotal": itemToCraft.checks, "checksRemaining": itemToCraft.checks, "dc": itemToCraft.dc, "rarity": itemToCraft.rarity, "value": itemToCraft.value, "quantity": itemToCraft.quantity, "failures": 1}
+    ch.set_cvar(craftCvar, dump_json(progression))
+    return f"""-title "{ch.name} failed to craft {itemToCraft.name}!" -desc "**Meta**:\nDC {itemToCraft.dc} Tinker's Tools Check\n**Check**:\n{craftItRoll}; Failure!" {extraFields} """
+</drac2>
+-footer "CraftingPlus | !tinkering"

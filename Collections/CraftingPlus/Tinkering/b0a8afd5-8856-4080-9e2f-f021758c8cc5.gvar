@@ -1,0 +1,47 @@
+{
+    "homunculus servant": {
+        "name": "Homunculus Servant",
+        "materials": {"ingot": 3},
+        "checks": 3,
+        "dc": 12,
+        "rarity": "Uncommon",
+        "value": 100,
+        "quantity": 1
+    },
+    "small prosthetic limb": {
+        "name": "Small Prosthetic Limb",
+        "materials": {"ingot": 4},
+        "checks": 2,
+        "dc": 15,
+        "rarity": "Uncommon",
+        "value": 100,
+        "quantity": 1
+    },
+    "large prosthetic limb": {
+        "name": "Large Prosthetic Limb",
+        "materials": {"ingot": 6},
+        "checks": 4,
+        "dc": 17,
+        "rarity": "Rare",
+        "value": 500,
+        "quantity": 1
+    },
+    "lightning launcher": {
+        "name": "Lightning Launcher",
+        "materials": {"ingot": 5},
+        "checks": 2,
+        "dc": 15,
+        "rarity": "Uncommon",
+        "value": 250,
+        "quantity": 1
+    },
+    "thunder gaunlets": {
+        "name": "Thunder Gaunlets",
+        "materials": {"ingot": 5},
+        "checks": 2,
+        "dc": 15,
+        "rarity": "Uncommon",
+        "value": 250,
+        "quantity": 1
+    }
+}
