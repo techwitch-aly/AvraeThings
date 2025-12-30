@@ -203,8 +203,10 @@ Requires:
 * 5 Metal Scrap
 
 **__Blacksmithing Commands__**
+**NOTE**: By default the command assumes you are using iron ingots for crafting. See below for how to override this.
 
 * `!blacksmithing <item>` like `!blacksmithing rapier` will start the crafting process
+  * If you want to use steel ingots, add `-ingot steel` at the end of this starting command. Like `!blacksmithing rapier -ingot steel`
 * `!blacksmithing continue` will continue a multistep (multiple checks) project
 * `!blacksmithing cancel` will cancel a multistep (multiple checks) project, losing the materials in the process
 * `!blacksmithing help` will give a listing of what can be crafted and the required materials.
