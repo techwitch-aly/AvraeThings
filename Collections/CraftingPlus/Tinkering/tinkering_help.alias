@@ -28,7 +28,7 @@ helpInstructions = f"""- Begin tinkering by using `!tinkering <item>` like `!tin
 
 </drac2>
 -title "{{name}} needs help tinkering!"
--desc "Tinkering is the process of creating mechanical devices and gadgets. It requires Tinker's Tools proficiencies and is aided by your Dexterity modifier. Procure materials for tinkering with the `!mining` command!"
+-desc "Tinkering is the process of creating mechanical devices and gadgets. It requires Tinker's Tools proficiencies and is aided by your intelligence modifier. Procure materials for tinkering with the `!mining` command!"
 -f "{{helpInstructions}}"
 -f "Options for tinkering (Page 1 of {{totalPages}}): {{options}}"
 -f "Page {{page}} of {{totalPages}}, use `!tinkering help #` to see the next page."
