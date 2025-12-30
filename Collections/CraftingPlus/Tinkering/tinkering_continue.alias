@@ -30,7 +30,7 @@ pendingCraft = load_json(pendingCraft)
 adv = True if "adv" in args else None
 
 # Setup the roll
-rollString = ch.skills.dexterity.d20(adv)
+rollString = ch.skills.intelligence.d20(adv)
 
 # Add proficiency or expertise
 rollString += f"+{ch.stats.prof_bonus}" if toolProficiencies.tinkerstools == 1 else f"+{ch.stats.prof_bonus * 2}"
