@@ -162,7 +162,7 @@
         "quantity": 1
     },
     "scimitar": {
-        "name": "Rapier",
+        "name": "Scimitar",
         "materials": {"ingot": 2},
         "checks": 2,
         "dc": 15,
