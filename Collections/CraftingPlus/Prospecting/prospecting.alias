@@ -32,20 +32,48 @@ findItRoll = vroll(rollString)
 if findItRoll.total < minDC or findItRoll.result.crit == 2:
     return f"""-desc "**Meta:**\nDC {minDC} {skillToUse[0]} Check\n\n{skillToUse[0]}: {findItRoll}" -f "Unfortunately you didn't find anything on this prospecting trip." {extraFields} """
 else:
-    options = "```"
     foundMaterials = []
     # Roll total + 1 because range() is not inclusive of the end
     # build the list of options
+    # Start by making an array of all possible materials from the minDC to the roll total
     for i in range(minDC, findItRoll.total+1):
         n = "dc"+str(i)
         if n in harvestables:
             for j in harvestables[n]:
-                options += f"""{harvestables[n][j]["name"]}\n"""
                 foundMaterials.append(harvestables[n][j]["name"].lower())
+    
+    # Now determine how many random options to give the player
+    # The higher the findItRoll total, the more options they get
+    # With a minimum of 1 option to handle odd scenarios, however it should be a min of 4 in "real world" play
+    numOptions = 1
+    if findItRoll.total >= 20:
+        numOptions = 6
+    elif findItRoll.total >= 15:
+        numOptions = 5
+    elif findItRoll.total >= minDC:
+        numOptions = 4
+    
+    # We'll use the built-in Avrae rolling function numOption times to build the list
+    # Each time we take an option, we remove it from the foundMaterials list to avoid duplicates
+    selectedOptions = []
+    for _ in range(numOptions):
+        if len(foundMaterials) == 0:
+            break
+        rollIndex = vroll("1d"+str(len(foundMaterials))).total - 1
+        selectedOptions.append(foundMaterials[rollIndex].title())
+        foundMaterials.pop(rollIndex)
+
+    # Build the options string
+    selectedOptions.sort(key=str.lower)
+    options = "```\n"
+    options += "\n".join(selectedOptions)
     options += "```"
 
+    # Prepare the cvar save data
+    saveOptions = [s.lower() for s in selectedOptions]
+
     # Properly store the info we need in the cvar
-    ch.set_cvar("crafting_plus_prospecting", dump_json(foundMaterials))
+    ch.set_cvar("crafting_plus_prospecting", dump_json(saveOptions))
     return f"""-desc "**Meta:**\nDC 12 {skillToUse[0]} Check\n\n{skillToUse[0]}: {findItRoll}" -f "You found shiny rocks! Choose one of the following to try to prospect:\n{options}\nUse `!prospecting harvest` to gather your resources.\nExample: `!prospecting harvest garnet`" {extraFields} """
 </drac2>
 -title "{{name}} goes prospecting for shiny rocks!"
