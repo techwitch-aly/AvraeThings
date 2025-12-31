@@ -13,24 +13,24 @@ bagMessage = ""
 # Make sure we have something to harvest
 if not a or (len(a) == 0):
     target = "Something That Doesn't Exist"
-    return f"""-desc "Make sure you try to harvest something! Please pass in the ore or gem you want to extract!" -f "Example: `!mining harvest copper`" """
+    return f"""-desc "Make sure you try to harvest something! Please pass in the ore you want to extract!" -f "Example: `!mining harvest copper`" """
 
 target = a[0].title()
 targetSearch = a[0].lower()
 # Make sure it's something we can harvest
 if not targetSearch in harvestables["dcLookup"]:
-    return f"""-desc "Couldn't find `{targetSearch}` as something to harvest, double check your spelling and the list of found ore or gems!" """
+    return f"""-desc "Couldn't find `{targetSearch}` as something to harvest, double check your spelling and the list of found ore!" """
 
 # Make sure it's something the user actually found
 foundSavedVar = ch.get_cvar("crafting_plus_mining")
 if not foundSavedVar:
-    return f"""-desc "You didn't find any ore or gems to harvest! Use `!mining` to find something to mine!" """
+    return f"""-desc "You didn't find any ore to harvest! Use `!mining` to find something to mine!" """
 
 foundMaterials = load_json(foundSavedVar)
 matchedMaterial = ([a for a in foundMaterials if targetSearch == a]) or [a for a in foundMaterials if targetSearch in a]
 if len(matchedMaterial) == 0:
     options = "\n".join([s.title() for s in foundMaterials])
-    return f"""-desc "You didn't find any `{target}` to harvest! Double check the list of found ore or gems!" -f "\n\nYou might have found: ```{options}```\nUse `!mining harvest` to gather your resources.\nExample: `!mining harvest iron`" """
+    return f"""-desc "You didn't find any `{target}` to harvest! Double check the list of found ore!" -f "\n\nYou might have found: ```{options}```\nUse `!mining harvest` to gather your resources.\nExample: `!mining harvest iron`" """
 else:
     target = matchedMaterial[0].title()
 
@@ -48,7 +48,7 @@ extraFields += rollMods[1]
 harvestItRoll = vroll(rollString)
 dc = harvestables["dcLookup"][a[0].lower()]
 
-if harvestItRoll.total < dc:
+if harvestItRoll.total < dc or harvestItRoll.result.crit == 2:
     action = "fails to harvest"
     return f"""-desc "**Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}" -f "Unfortunately you couldn't extract anything on this trek into the mines." {extraFields} """
 else:
@@ -76,7 +76,7 @@ else:
 
     # Clean up the cvar
     ch.delete_cvar("crafting_plus_mining")
-    return f"""-desc "**Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}\n\n**Meta:**\n{amount}\n Found {amount.total} {target}!" {extraFields} {bagMessage} """
+    return f"""-desc "**Harvesting Meta:**\nDC {dc} Athletics Check\nAthletics: {harvestItRoll}\n\n**Amount Meta:**\n{amount}\n Found {amount.total} {target}!" {extraFields} {bagMessage} """
 </drac2>
 -title "{{name}} {{action}} {{target}}!"
 -footer "CraftingPlus | !mining harvest"
