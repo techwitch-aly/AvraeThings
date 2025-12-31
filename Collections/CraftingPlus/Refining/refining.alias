@@ -1,0 +1,25 @@
+embed
+<drac2>
+using(baglib="4119d62e-6a98-4153-bea9-0a99bb36da2c")
+using(craftingutils="aefb7981-b14b-4a31-aa5e-d66ad6437677")
+a = &ARGS&
+args = argparse(&ARGS&)
+craftCvar = "craftingplus_gem_refining"
+ch = character()
+craftables = load_json(get_gvar("95e5729d-b684-412c-bd8d-27d4bfeb03f3"))
+extraFields = ""
+
+# We need some kind of proficiency to refine
+toolProVar = ch.get_cvar("toolProficiencies")
+if not toolProVar:
+    return f"""-title "{ch.name} attempts to refine geodes! But has no Tool Proficiencies Learned." -desc "Crafting requires tool proficiencies, please see `!tool help` for help adding proficiencies." """
+
+toolProficiencies = load_yaml(toolProVar)
+
+# Validate that we have Jeweler's Tools proficiency or expertise
+if "jewelerstools" not in toolProficiencies:
+    return f"""-title "{ch.name} attempts to refine geodes! But doesn't have Jeweler's Tool Proficiency." -desc "Refining geodes requires Jeweler's Tool proficiency, please see `!tool help` for help adding proficiencies." """
+
+
+</drac2>
+-footer "CraftingPlus | !refining"

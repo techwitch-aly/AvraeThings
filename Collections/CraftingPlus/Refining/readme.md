@@ -1,0 +1,1 @@
+Refining is the process of cutting usable gems out of a geode.
