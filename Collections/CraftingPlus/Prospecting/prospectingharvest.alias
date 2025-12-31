@@ -84,13 +84,13 @@ else:
         bags = baglib.load_bags()
         baglib.modify_item(bags, target, amount.total, "Prospecting", True)
         baglib.save_bags(bags)
-        bagMessage = f"""-f "Bags Updated|{amount.total} {target} added to your bags!" """
+        bagMessage = f"""-f "Bags Updated|{amount.total} {craftingutils.pluralize_str(target)} added to your bags!" """
     
     # Update the action text and return the embed
     action = "successfully harvests"
 
     ch.delete_cvar("crafting_plus_prospecting")
-    return f"""-desc "**Harvesting Meta:**\nDC {dc} {skillToUse[0]} Check\n{skillToUse[0]}: {harvestItRoll}\n\n**Geode Size Meta:**\n{geodeChance}\nA {geodeSize} Geode Cluster!\n\n**Amount Meta:**\n{amount}\n Found {amount.total} {craftingutils.pluralize_str(target)}!" {extraFields} {bagMessage} """
+    return f"""-desc "**Harvesting Meta:**\nDC {dc} {skillToUse[0]} Check\n{skillToUse[0]}: {harvestItRoll}\n\n**Geode Size Meta:**\n{geodeChance}\nA cluster of {geodeSize} Geodes!\n\n**Amount Meta:**\n{amount}\n Found {amount.total} {craftingutils.pluralize_str(target)}!" {extraFields} {bagMessage} """
 </drac2>
 -title "{{name}} {{action}} {{craftingutils.pluralize_str(target)}}!"
 -footer "CraftingPlus | !prospecting harvest"
