@@ -1,0 +1,12 @@
+embed
+<drac2>
+using(craftingutils="aefb7981-b14b-4a31-aa5e-d66ad6437677")
+args = argparse(&ARGS&)
+ch = character()
+harvestables = load_json(get_gvar("c5e60e53-117d-48e2-b606-28d75422d52e"))
+extraFields = ""
+minDC = 12
+
+
+</drac2>
+-footer "CraftingPlus | !herbalism"
