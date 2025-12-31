@@ -1,12 +1,96 @@
 embed
 <drac2>
+using(baglib="4119d62e-6a98-4153-bea9-0a99bb36da2c")
 using(craftingutils="aefb7981-b14b-4a31-aa5e-d66ad6437677")
+a = &ARGS&
 args = argparse(&ARGS&)
+action = "tries to harvest"
 ch = character()
 harvestables = load_json(get_gvar("95e5729d-b684-412c-bd8d-27d4bfeb03f3"))
 extraFields = ""
-minDC = 12
+bagMessage = ""
 
+# Make sure we have something to harvest
+if not a or len(a) == 0:
+    target = "Something That Doesn't Exist"
+    return f"""-desc "Make sure you try to harvest something! Please pass in the mineral or gem you want to prospect!" -f "Example: `!prospecting harvest garnet`" """
 
+target = a[0].title()
+targetSearch = a[0].lower()
+
+# Make sure it's something we can harvest
+if not targetSearch in harvestables["dcLookup"]:
+    return f"""-desc "Couldn't find `{targetSearch}` as something to harvest, double check your spelling and the list of found minerals and gems!" """
+
+# Make sure it's something the user actually found
+foundSavedVar = ch.get_cvar("crafting_plus_prospecting")
+if not foundSavedVar:
+    return f"""-desc "You didn't find any minerals or gems to prospect! Use `!prospecting` to find something to harvest!" """
+
+foundMaterials = load_json(foundSavedVar)
+matchedMaterial = ([a for a in foundMaterials if targetSearch == a]) or [a for a in foundMaterials if targetSearch in a]
+if len(matchedMaterial) == 0:
+    options = "\n".join([s.title() for s in foundMaterials])
+    return f"""-desc "You didn't find any `{target}` to harvest! Double check the list of found minerals and gems!" -f "\n\nYou might have found: ```{options}```\nUse `!prospecting harvest` to gather your resources.\nExample: `!prospecting harvest garnet`" """
+else:
+    target = matchedMaterial[0].title()
+
+# Determine advantage from args
+adv = True if "adv" in args else None
+
+# Setup an athletics or sleight of hand check
+skillOptions = [("Athletics", ch.skills.athletics), ("Sleight of Hand", ch.skills.sleightOfHand)]
+skillToUse = max(skillOptions, key=lambda x: x[1].value)
+rollString = skillToUse[1].d20(adv)
+
+# Add commonly supported roll modifiers
+rollMods = craftingutils.extract_roll_bonuses(args, ch)
+rollString += rollMods[0]
+extraFields += rollMods[1]
+
+harvestItRoll = vroll(rollString)
+dc = harvestables["dcLookup"][a[0].lower()]
+
+if harvestItRoll.total < dc or harvestItRoll.result.crit == 2:
+    action = "fails to harvest"
+    return f"""-desc "**Meta:**\nDC {dc} {skillToUse[0]} Check\n{skillToUse[0]}: {harvestItRoll}" -f "Unfortunately you couldn't extract anything on this prospecting trip." {extraFields} """
+else:
+    # We found something AND we could extract!
+    # First, did we find a large, medium, or small geode with the gems inside?
+    geodeChance = vroll("1d20")
+    geodeSize = ""
+    if geodeChance.total >= 16:
+        target = f"Large {target} Geode"
+        geodeSize = "Large"
+    elif geodeChance.total >= 11:
+        target = f"Medium {target} Geode"
+        geodeSize = "Medium"
+    else:
+        target = f"Small {target} Geode"
+        geodeSize = "Small"
+    # Now, how much did we get?
+    harvestRollString = "2d4"
+
+    # Add an extra 1d4 on a crit harvest roll
+    if harvestItRoll.result.crit == 1:
+        harvestRollString += "+1d4"
+
+    amount = vroll(harvestRollString)
+
+    # See if the user has Bags configured
+    hasBags = ch.get_cvar("bags")
+    if hasBags:
+        # If they are, keep track of the Gems founds in the bags
+        bags = baglib.load_bags()
+        baglib.modify_item(bags, target, amount.total, "Prospecting", True)
+        baglib.save_bags(bags)
+        bagMessage = f"""-f "Bags Updated|{amount.total} {target} added to your bags!" """
+    
+    # Update the action text and return the embed
+    action = "successfully harvests"
+
+    ch.delete_cvar("crafting_plus_prospecting")
+    return f"""-desc "**Harvesting Meta:**\nDC {dc} {skillToUse[0]} Check\n{skillToUse[0]}: {harvestItRoll}\n\n**Geode Size Meta:**\n{geodeChance}\nA {geodeSize} Geode Cluster!\n\n**Amount Meta:**\n{amount}\n Found {amount.total} {craftingutils.pluralize_str(target)}!" {extraFields} {bagMessage} """
 </drac2>
+-title "{{name}} {{action}} {{craftingutils.pluralize_str(target)}}!"
 -footer "CraftingPlus | !prospecting harvest"
