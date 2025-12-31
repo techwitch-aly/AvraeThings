@@ -1,6 +1,6 @@
 __**PROSPECTING FOR GEMS**__
 
-Characters can alternatively use the mines in <#1158226879795441684> to prospect for gem geodes. These can be further refined to provide the raw gemstones required for creating jewelry with Jewelcrafters Tools.
+Characters can alternatively use the mines in <#1158226879795441684> to prospect for gem geodes. These can be further refined to provide the raw gemstones required for creating jewelry with Jewelers Tools.
 
 This process works similarly to mining. Once in the correct channel run `!prospecting` to search for collections of gem geodes. Once you've successfully found something, the command will list out the specific kind of gems you might have found. You can then choose from that list to harvest the geodes with `!prospecting harvest`. If you're successful at harvesting, the command will determine whether you found small, medium, or large geodes. This only affects the number of cut stones that can be prepared with the `!refining` command.
 
