@@ -31,7 +31,7 @@ findItRoll = vroll(rollString)
 if findItRoll.total < minDC:
     return f"""-desc "**Meta:**\nDC {minDC} Survival Check\n\nSurvival: {findItRoll}" -f "Unfortunately you didn't find anything on this trek into the mines." {extraFields} """
 else:
-    options = "```"
+    options = "```\n"
     foundMaterials = []
     # Roll total + 1 because range() is not inclusive of the end
     # build the list of options
