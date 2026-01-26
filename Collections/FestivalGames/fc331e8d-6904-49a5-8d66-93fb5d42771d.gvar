@@ -1,36 +1,36 @@
 {
-    "Seafarer's Lost Treasure": {
-        "name": "Seafarer's Lost Treasure",
-        "description": "Can you find the treasure hidden in the seashells?",
+    "Flumph Hunt": {
+        "name": "Flumph Hunt",
+        "description": "Can you hit all the flumphs as they pass by?",
+        "check": "wisdom",
+        "style": "progressive",
+        "dcList": [13, 15, 17]
+    },
+    "Cloudgazer's Lost Token": {
+        "name": "Cloudgazer's Lost Token",
+        "description": "Can you find the lost token?",
         "check": "wisdom",
         "style": "single",
         "dc": 18
     },
-    "Tidepool Tally": {
-        "name": "Tidepool Tally",
-        "description": "Can you count the number of shells in the jar?",
+    "Petal Prediction": {
+        "name": "Petal Prediction",
+        "description": "Can you predict the next petal to bloom?",
         "check": "intelligence",
         "style": "single",
         "dc": 18
     },
-    "Splashtide Smash": {
-        "name": "Splashtide Smash",
-        "description": "Can you crack the watermelon open in a single swing?",
-        "check": "strength",
-        "style": "single",
-        "dc": 18
-    },
-    "Deep Sea Ring Toss": {
-        "name": "Deep Sea Ring Toss",
+    "Rogue's Ring Toss": {
+        "name": "Rogue's Ring Toss",
         "description": "Can you get two of your three rings on the mini anchors?",
         "check": "dexterity",
         "style": "twoOfThree",
         "dcList": [15,17]
     },
-    "Go Fish": {
-        "name": "Go Fish!",
-        "description": "Can you catch the rainbow fish?",
-        "check": "dexterity",
+    "Dragon's Lair Climb": {
+        "name": "Dragon's Lair Climb",
+        "description": "Can you climb the dragon's lair?",
+        "check": "strength",
         "style": "single",
         "dc": 18
     }

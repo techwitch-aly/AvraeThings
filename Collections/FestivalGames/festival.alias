@@ -34,13 +34,13 @@ if a[0].lower() == "trinket" or a[0].lower() == "trinkets":
         baglib.modify_item(bags, trinket, 1, "Festival Prizes", True)
         baglib.save_bags(bags)
     
-    return f"""-title "{name} picks a random tinket from Trahas' Ocean Trinkets!" -desc "**Meta**\nRandom Roll!\n\n{randomTrinket}" -f "You won: {trinket}!\n\nYour prize has been added to your Festival Prizes bag!" -f "{cc}|{ch.cc_str(cc)} (-1)" """
+    return f"""-title "{name} picks a random tinket from Trahas' Solstice Trinkets!" -desc "**Meta**\nRandom Roll!\n\n{randomTrinket}" -f "You won: {trinket}!\n\nYour prize has been added to your Festival Prizes bag!" -f "{cc}|{ch.cc_str(cc)} (-1)" """
 
 # Dunk a Dwarf/Concilor booth. This is at every festival, so it gets special handling
 # Roll a dex check to see if they hit the target, DC 15
 # If they hit, roll a str check to see if they have enough force to trigger, DC 15
 # If both are successful, they win a prize!
-if a[0].lower() == "dunk" or a[0].lower() == "dunk a councilor" or a[0].lower() == "councilor" or a[0].lower() == "council":
+if a[0].lower() == "dunk" or a[0].lower() == "dunk a professor" or a[0].lower() == "professor":
     ch.mod_cc(cc, -1)
 
     # Roll a dex check to see if they hit the target, DC 15
@@ -49,7 +49,7 @@ if a[0].lower() == "dunk" or a[0].lower() == "dunk a councilor" or a[0].lower() 
 
     # If they miss, don't try to roll strength, they've failed
     if accuracyRoll.total < 15 and accuracyRoll.result.crit != 2:
-        return f"""-title "{name} attempts to Dunk the Councilor!" -desc "**Meta**\nDC 15 Dexterity Check\n\nDexterity: {accuracyRoll}; **Failure!**" -f "{cc}|{ch.cc_str(cc)} (-1)" """
+        return f"""-title "{name} attempts to Dunk a Professor!" -desc "**Meta**\nDC 15 Dexterity Check\n\nDexterity: {accuracyRoll}; **Failure!**" -f "{cc}|{ch.cc_str(cc)} (-1)" """
     
     # Roll a str check to see if they have enough force to trigger, DC 15
     forceRollStr = ch.skills.strength.d20()
@@ -67,9 +67,9 @@ if a[0].lower() == "dunk" or a[0].lower() == "dunk a councilor" or a[0].lower() 
             baglib.save_bags(bags)
             prizeOut = f"""-f "**Random Prize**: {prize}!\n\nYour prize has been added to your Festival Prizes bag!" """
         
-        return f"""-title "{name} Dunks the Councilor!" -desc "**Meta**\nDC 15 Dexterity Check\n\nDexterity: {accuracyRoll}; **Success!**\n\nDC 15 Strength Check\n\nStrength: {forceRoll}; **Success!**" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
+        return f"""-title "{name} Dunks a Professor!" -desc "**Meta**\nDC 15 Dexterity Check\n\nDexterity: {accuracyRoll}; **Success!**\n\nDC 15 Strength Check\n\nStrength: {forceRoll}; **Success!**" {prizeOut} -f "{cc}|{ch.cc_str(cc)} (-1)" """
     else:
-        return f"""-title "{name} attempts to Dunk the Councilor!" -desc "**Meta**\nDC 15 Dexterity Check\n\nDexterity: {accuracyRoll}; **Success!**\n\nDC 15 Strength Check\n\nStrength: {forceRoll}; **Failure!**" -f "{cc}|{ch.cc_str(cc)} (-1)" """
+        return f"""-title "{name} attempts to Dunk a Professor!" -desc "**Meta**\nDC 15 Dexterity Check\n\nDexterity: {accuracyRoll}; **Success!**\n\nDC 15 Strength Check\n\nStrength: {forceRoll}; **Failure!**" -f "{cc}|{ch.cc_str(cc)} (-1)" """
 
 # Let's find the game they want to play
 gameSelection = ([g for g in gameOptions if a[0].lower() == g.lower()] if a else []) or [g for g in gameOptions if a[0].lower() in g.lower()] if a else []

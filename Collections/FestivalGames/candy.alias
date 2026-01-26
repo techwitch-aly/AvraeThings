@@ -1,0 +1,39 @@
+embed
+<drac2>
+a = &ARGS&
+args = argparse(&ARGS&)
+ch = character()
+
+if a[0].lower() == "bubblegum":
+    return f'''-title "{name} eats some Bigby's Bubblegum!" -desc "Grants the ability to cast Mage Hand while actively chewing." -f "```!cast “mage hand” -i```" '''
+elif a[0].lower() == "bomb":
+    return f"""-title "{name} eats a Bomb Bon!" -desc "It crackles in your tummy and gives you fire breath for one minute. Cannot be used to attack others." """
+elif a[0].lower() == "chocolate":
+    return f"""-title "{name} eats some Chocolate Bark!" -desc "Eating this yummy candy give you Barkskin for one minute." """
+elif a[0].lower() == "gummy":
+    catchStr = ch.skills.acrobatics.d20()
+    catchRoll = vroll(catchStr)
+    if catchRoll.total >= 15 and not catchRoll.result.crit == 2:
+        return f""" -title "{name} catches and eats some Gummy Wyrms!" -desc "Catch them if you can! They try to fly away once unwrapped, but you manage to catch them!" -f "**Meta**\nDC 15 Acrobatics Check\n\nAcrobatics: {catchRoll}; **Success!**" """
+    else:
+        return f""" -title "{name} tries to eat some Gummy Wyrms!" -desc "Catch them if you can! They try to fly away once unwrapped and manage to escape!" -f "**Meta**\nDC 15 Acrobatics Check\n\nAcrobatics: {catchRoll}; **Failure!**" """
+elif a[0].lower() == "jawbreaker":
+    duration = vroll("1d6")
+    return f"""-title "{name} eats a Joker Jawbreaker!" -desc "Causes your face to stretch into a wide smile for 1d6 minutes" -f "Duration: {duration} minutes" """
+elif a[0].lower() == "laughy" or a[0].lower() == "taffy":
+    return f"""-title "{name} eats some Laughy Taffy!" -desc "You can't stop laughing! You are considered under the effects of the Tasha's Hideous Laughter spell for one minute." """
+elif a[0].lower() == "ooze" or a[0].lower() == "cubes":
+    damage = vroll("1d4")
+    return f"""-title "{name} eats some Ooze Cubes!" -desc "These cubes are sticky and squishy and burn on the way down." -f "You take {damage} acid damage." """
+elif a[0].lower() == "pixie" or a[0].lower() == "stix":
+    outcome = vroll("1d10")
+    pixieDuration = vroll("1d4")
+    if outcome.total <= 5:
+        return f"""-title "{name} eats some Pixie Stix!" -desc "You suddenly feel very sleepy." -f "You fall asleep for {pixieDuration} minutes. Have a good nap!" """
+    else:
+        return f"""-title "{name} eats some Pixie Stix!" -desc "You feel light and fluttery! Spectral fairy wings appear on your back and let you fly!" -f "You gain a flying speed of 30 feet for {pixieDuration} minutes." """
+else:
+    return f"""-title "Festival Candy Alias Help" -desc "Couldn't find that candy type." """
+</drac2>
+-thumb {{ch.image}}
+-footer "Festival Games | !candy"
