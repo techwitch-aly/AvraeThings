@@ -48,7 +48,7 @@ if a[0].lower() == "dunk" or a[0].lower() == "dunk a professor" or a[0].lower() 
     accuracyRoll = vroll(accuracyRollStr)
 
     # If they miss, don't try to roll strength, they've failed
-    if accuracyRoll.total < 15 and accuracyRoll.result.crit != 2:
+    if accuracyRoll.total < 15 or accuracyRoll.result.crit == 2:
         return f"""-title "{name} attempts to Dunk a Professor!" -desc "**Meta**\nDC 15 Dexterity Check\n\nDexterity: {accuracyRoll}; **Failure!**" -f "{cc}|{ch.cc_str(cc)} (-1)" """
     
     # Roll a str check to see if they have enough force to trigger, DC 15
