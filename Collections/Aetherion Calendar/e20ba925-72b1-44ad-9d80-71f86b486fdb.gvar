@@ -1,0 +1,149 @@
+{
+  "length": 365,
+  "name": "Calendar of Aetherion",
+  "moon": 
+    [
+      "🌕 Full Moon",
+      "🌖 Waning Gibbous",
+      "🌗 Last Quarter",
+      "🌘 Waning Crescent",
+      "🌑 New Moon",
+      "🌒 Waxing Crescent",
+      "🌓 First Quarter",
+      "🌔 Waxing Gibbous"
+    ],
+  "moonCycle": 4,
+  "seasons": 
+    [
+      {
+        "name": "❄️ Winter",
+        "start": 1,
+        "end": 78
+      },
+      {
+        "name": "🌸 Spring",
+        "start": 79,
+        "end": 151 
+      },
+      {
+        "name": "☀️ Summer",
+        "start": 152,
+        "end": 265
+      },
+      {
+        "name": "🍁 Fall",
+        "start": 266,
+        "end": 354
+      },
+      {
+        "name": "❄ Winter",
+        "start": 355,
+        "end": 365
+      }
+    ],
+  "months":
+    [
+      {
+        "name": "Rakhoh", # January
+        "length": 31,
+        "holidays":[]
+      },
+      {
+        "name": "Alirk", # February
+        "length": 28,
+        "holidays":
+          [
+            {
+              "name": "Lover's Day",
+              "day": 14
+            }
+          ]
+      },
+      {
+        "name": "Jecit", # March
+        "length": 31,
+        "holidays":
+          [
+            {
+              "name": "Ostara",
+              "day": 21
+            }
+          ]
+      },
+      {
+        "name": "Rahm", # April
+        "length": 30,
+        "holidays":[]
+      },
+     
+      {
+        "name": "Naaes", # May
+        "length": 31,
+        "holidays":[]
+      },
+      {
+        "name": "Hocn", # June
+        "length": 30,
+        "holidays":
+          [
+            {
+              "name": "Summer Solstice",
+              "day": 21
+            }
+          ]
+        },
+      {
+        "name": "Syrduss", # July
+        "length": 31,
+        "holidays":[]
+      },
+     
+      {
+        "name": "Diats", # August
+        "length": 31,
+        "holidays":[]
+      },
+      {
+        "name": "Qypers", # September
+        "length": 30,
+        "holidays":
+          [
+            
+          ]
+      },
+      {
+        "name": "Kefihs", # October
+        "length": 31,
+        "holidays":
+          [
+            {
+              "name": "Hallow's Eve",
+              "day": 31
+            }
+          ]
+      },
+      {
+        "name": "Tlunaas", # November
+        "length": 30,
+        "holidays":
+          [
+            
+          ]
+      },
+      {
+        "name": "Durarst", # December
+        "length": 31,
+        "holidays":
+          [
+            {
+              "name": "Winter Solstice",
+              "day": 21
+            },
+            {
+              "name": "Skyshard Eve",
+              "day": 31
+            }
+          ]
+      }
+    ]
+}
