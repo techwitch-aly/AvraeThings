@@ -19,5 +19,5 @@ if nextFeeding:
     else:
         return f"""-title "{ch.name} risks going feral!" -desc "{ch.name} must feed every {interval} months." -f "Hunger Present|Next feeding is overdo! Check if they have gone feral!\n\n`!dhampir feral`" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir" """
 else:
-    return f"""-title "{ch.name} does not remember when last they fed!" -desc "Dhampirs must feed every {interval} months in-game ({interval} weeks IRL)" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir" """
+    return f"""-title "{ch.name} does not remember when last they fed!" -desc "Dhampirs must feed every {interval} months." -thumb "{ch.image}" -footer "DhampirHelper | !dhampir" """
 </drac2>

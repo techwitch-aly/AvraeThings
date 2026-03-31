@@ -8,14 +8,14 @@ period = 6
 # seconds in a minute, times minutes in an hour, times hours in a day
 day = 60 * 60 * 24
 
-# the default feeding interval is six IRL weeks
-interval = day * 7 * period
+# the default feeding interval is six IRL months (180 days, assume 30 days per month)
+interval = day * 30 * period
 
 # Check if the character has a custom interval
 customModifier = ch.get_cvar("dhampir_interval")
 if customModifier:
     period = int(customModifier)
-    interval = day * 7 * period
+    interval = day * 30 * period
 
 # current unix timestamp (seconds since 1/1/70 00:00:00)
 now = time()

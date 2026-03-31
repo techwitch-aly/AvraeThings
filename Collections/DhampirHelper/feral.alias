@@ -14,7 +14,7 @@ nextFeeding = int(nextFeeding)
 now = time()
 today = int(now - (now % day))
 
-# If the next feeding is clearing in the future, give a chill message
+# If the next feeding is clearly in the future, give a chill message
 # If today is the last safe day, give a more clear warning about feeding soon
 if nextFeeding > today:
     return f"""-title "{ch.name} is safe from their dhampiric hunger!" -desc "Next feeding required by {dateutils.unix_to_date(int(nextFeeding))}" -thumb "{ch.image}" -footer "DhampirHelper | !dhampir feral" """
@@ -30,13 +30,13 @@ wisSave = vroll(rollString)
 
 # Update the save DC as needed
 secondsDiff = today - nextFeeding
-daysDiff = secondsDiff // day
+weeksDiff = secondsDiff // (day * 7)
 
 dcIncreaseNote = ""
-if daysDiff > 1:
-    dcIncreaseNote = f"""-f "DC Increased|The DC was increased because feeding is {daysDiff} days overdue." """
+if weeksDiff > 1:
+    dcIncreaseNote = f"""-f "DC Increased|The DC was increased because feeding is {weeksDiff} weeks overdue." """
     # Adjust for the offset
-    saveDC += (daysDiff - 1)
+    saveDC += (weeksDiff - 1)
 
 # The roll is successful if it is over the DC AND not a NAT1 OR is a NAT20
 success = (wisSave.total >= saveDC and wisSave.result.crit != 2) or wisSave.result.crit == 1
