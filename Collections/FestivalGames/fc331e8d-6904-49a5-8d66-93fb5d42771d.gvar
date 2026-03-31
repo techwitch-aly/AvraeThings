@@ -1,37 +1,37 @@
 {
-    "Flumph Hunt": {
-        "name": "Flumph Hunt",
-        "description": "Can you hit all the flumphs as they pass by?",
-        "check": "wisdom",
+    "Awakening Stones": {
+        "name": "Awakening Stones",
+        "description": "Can you lift all three stones to wake the earth?",
+        "check": "strength",
         "style": "progressive",
-        "dcList": [13, 15, 17]
+        "dcList": [12, 14, 16]
     },
-    "Cloudgazer's Lost Token": {
-        "name": "Cloudgazer's Lost Token",
-        "description": "Can you find the lost token?",
-        "check": "wisdom",
-        "style": "single",
-        "dc": 18
+    "Hare's Dash": {
+        "name": "Hare's Dash",
+        "description": "Can you catch the spring hare?",
+        "check": "dexterity",
+        "style": "twoOfThree",
+        "dcList": [15, 17]
     },
-    "Petal Prediction": {
-        "name": "Petal Prediction",
-        "description": "Can you predict the next petal to bloom?",
+    "The Long Thaw": {
+        "name": "The Long Thaw",
+        "description": "Can you handle the chill of winter and retrieve all the stones?",
+        "check": "constitution",
+        "style": "progressive",
+        "dcList": [12, 14, 16]
+    },
+    "The Seed Reeder": {
+        "name": "The Seed Reeder",
+        "description": "Can you gather the seeds from the enchanted plants?",
         "check": "intelligence",
         "style": "single",
         "dc": 18
     },
-    "Rogue's Ring Toss": {
-        "name": "Rogue's Ring Toss",
-        "description": "Can you get two of your three rings on the mini anchors?",
-        "check": "dexterity",
-        "style": "twoOfThree",
-        "dcList": [15,17]
-    },
-    "Dragon's Lair Climb": {
-        "name": "Dragon's Lair Climb",
-        "description": "Can you climb the dragon's lair?",
-        "check": "strength",
-        "style": "single",
-        "dc": 18
+    "Court the Dawn": {
+        "name": "Court the Dawn",
+        "description": "Can you convince the spring sun to rise this year?",
+        "check": "charisma",
+        "style": "progressive",
+        "dcList": [11, 13, 16]
     }
 }
