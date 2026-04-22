@@ -1,0 +1,92 @@
+embed
+<drac2>
+using(weatherutils="a78db38c-7114-40ba-b6ff-54a1aa4772ca")
+a = &ARGS&
+args = argparse(&ARGS&)
+weatherSettingsBase = load_json(get_gvar("9655e0ee-53b5-47e1-8942-dfb0aaaa79fb"))
+conditionIcons = {
+    "Clear": "☀️",
+    "Partly Cloudy": "⛅",
+    "Cloudy": "☁️",
+    "Rain": "🌧️",
+    "Snow": "❄️",
+    "Severe Storm": "⛈️",
+    "Blizzard": "🌨️"
+}
+
+weather = args.last("weather")
+
+# Positional arguments:
+# a[0] will be the city
+# a[1] will be the month
+
+# Flagged arguments:
+# -weather will be the specific weather condition to force (e.g. Rain, Snow, Clear, etc.)
+# -low will be the low temperature to force
+# -high will be the high temperature to force
+
+# Error if either positional arguments are missing
+citySelection = ([g for g in weatherSettingsBase if a[0].lower() == g.lower()] if a else []) or [g for g in weatherSettingsBase if a[0].lower() in g.lower()] if a else []
+
+if len(citySelection) == 0:
+    err(f"_ _\nI'm sorry, I don't know of any cities by that name.  Please try again.")
+
+if len(citySelection) > 1:
+    err(f"_ _\nI'm sorry, I found multiple cities matching that name.  Please be more specific.\n\n{', '.join(citySelection)}")
+
+monthSelection = ([m for m in weatherSettingsBase[citySelection[0]] if a[1].lower() == m.lower()] if len(a) > 1 else []) or [m for m in weatherSettingsBase[citySelection[0]] if a[1].lower() in m.lower()] if len(a) > 1 else []
+
+if len(monthSelection) == 0:
+    err(f"_ _\nI'm sorry, I don't know of any months by that name.  Please try again.")
+
+if len(monthSelection) > 1:
+    err(f"_ _\nI'm sorry, I found multiple months matching that name.  Please be more specific.\n\n{', '.join(monthSelection)}")
+
+# At this point, we should have a single city and month selected, so we can pull the weather settings for that city and month.
+weatherSettings = weatherSettingsBase[citySelection[0]][monthSelection[0]]
+
+# Also get the metadata about the city for display purposes
+weatherMeta = weatherSettingsBase[citySelection[0]]["meta"]
+
+# Determine if we've saved off the prior day's high and low temperatures for trend potential
+# This is stored as a JSON string in a uvar, so we need to load it as JSON to get the values out
+# We can't save svars from commands, so each user that runs this will have their own saved prior temperatures
+# This might be less than ideal, a subcommand will be introduced to let a user record the prior temps
+priorTempData = load_json(get_uvar("weatherPrior")) if get_uvar("weatherPrior") else None
+priorLow = priorTempData[weatherMeta.city].low if priorTempData and priorTempData[weatherMeta.city] else None
+priorHigh = priorTempData[weatherMeta.city].high if priorTempData and priorTempData[weatherMeta.city] else None
+
+# Trend potential low and high temps based on the range and prior temperture
+low = weatherutils.get_trended_temp(weatherSettings.low, weatherSettings.high, weatherSettings.trend, priorLow)
+high = weatherutils.get_trended_temp(weatherSettings.low, weatherSettings.high, weatherSettings.trend, priorHigh)
+
+# Ensure low is always the lower value and high is always the higher value
+# Also convert to Celsius for display purposes
+outputLow = min(low, high)
+outputLowC = round(weatherutils.convert_to_celsius(outputLow))
+outputHigh = max(low, high)
+outputHighC = round(weatherutils.convert_to_celsius(outputHigh))
+
+# Save off today's temperatures for tomorrow's trend potential
+priorTempData = priorTempData or {}
+priorTempData[weatherMeta.city] = {"low": outputLow, "high": outputHigh}
+set_uvar("weatherPrior", dump_json(priorTempData))
+
+# Next determine the weather condition, which is based on a probability table in the weather config data
+conditions = weatherutils.roll_weather_conditions(weatherSettings.conditions)
+
+# Based on the high temperature and conditions, we might need to adjust the conditions (e.g. if it's below freezing, rain becomes snow, etc.)
+if outputHigh < 32 and conditions == "Severe Storm":
+    conditions = "Blizzard"
+
+if outputHigh < 32 and conditions == "Rain":
+    conditions = "Snow"
+
+conditionIcon = conditionIcons[conditions]
+
+</drac2>
+-title "Today's Weather for {{weatherMeta.city}} in {{monthSelection[0].title()}}"
+-f "Conditions|{{conditionIcon}} {{conditions}}"
+-f "Wind|💨 tbd"
+-f "Temperature|🌡️ **High:** {{outputHigh}} °F ({{outputHighC}} °C) | **Low:** {{outputLow}} °F ({{outputLowC}} °C)"
+-footer "New Weather Command Testing"
