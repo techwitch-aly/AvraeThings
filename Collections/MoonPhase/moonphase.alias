@@ -1,0 +1,30 @@
+embed
+<drac2>
+lunarEpoch = 947116800
+day = 60 * 60 * 24
+now = time()
+daysSinceEpoch = (now - lunarEpoch) / day
+cyclePosition = daysSinceEpoch % 29.53059
+phaseFraction = round(cyclePosition / 29.53059, 4)
+if phaseFraction <= 0.0625:
+    moonphase = "🌑 New Moon"
+elif phaseFraction <= 0.1875:
+    moonphase = "🌒 Waxing Crescent"
+elif phaseFraction <= 0.3125:
+    moonphase = "🌓 First Quarter"
+elif phaseFraction <= 0.4375:
+    moonphase = "🌔 Waxing Gibbous"
+elif phaseFraction <= 0.5625:
+    moonphase = "🌕 Full Moon"
+elif phaseFraction <= 0.6875:
+    moonphase = "🌖 Waning Gibbous"
+elif phaseFraction <= 0.8125:
+    moonphase = "🌗 Last Quarter"
+elif phaseFraction <= 0.9375:
+    moonphase = "🌘 Waning Crescent"
+else:
+    moonphase = "🌑 New Moon"
+</drac2>
+-title "Aetherion's Moon Phase"
+-f "Current Moon Phase|The moon is currently a {{moonphase}}."
+-footer "🌙MoonPhase | !moonphase"
